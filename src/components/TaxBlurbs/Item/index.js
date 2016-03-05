@@ -11,6 +11,7 @@ export default class TaxBlurbsItem extends Component {
     savings: PropTypes.number.isRequired,
     inputs: PropTypes.arrayOf(React.PropTypes.shape({
       label: PropTypes.string.isRequired,
+      handleChange: PropTypes.func.isRequired,
     })),
   };
 
@@ -30,9 +31,12 @@ export default class TaxBlurbsItem extends Component {
         <ul styleName="inputs">
           {
             inputs.map(input => (
-              <li styleName="item">
+              <li key={input.label} styleName="item">
                 <label styleName="label">{input.label}</label>
-                <input styleName="input" />
+                <input
+                  styleName="input"
+                  onChange={input.handleChange}
+                />
               </li>
             ))
           }

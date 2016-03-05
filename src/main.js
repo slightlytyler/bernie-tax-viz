@@ -6,12 +6,7 @@ import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import makeRoutes from 'routes';
 import Root from 'containers/Root';
 import configureStore from 'store';
-
-// Create redux store and sync with react-router-redux. We have installed the
-// react-router-redux reducer under the key "router" in src/routes/index.js,
-// so we need to provide a custom `selectLocationState` to inform
-// react-router-redux of its location.
-const initialState = window.__INITIAL_STATE__;
+import initialState from 'constants/initialState';
 
 // Configure history for react-router
 const browserHistory = useRouterHistory(createBrowserHistory)({

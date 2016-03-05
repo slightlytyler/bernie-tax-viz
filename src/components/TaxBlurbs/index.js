@@ -16,24 +16,42 @@ export default class TaxBlurbs extends Component {
           name="Tax Blurb 1"
           savings={125}
           inputs={[
-            { label: 'Input A' },
-            { label: 'Input B' },
-            { label: 'Input C' },
+            {
+              label: 'Input A',
+              handleChange: () => console.log('Update value from input A'),
+            },
+            {
+              label: 'Input B',
+              handleChange: () => console.log('Update value from input B'),
+            },
+            {
+              label: 'Input C',
+              handleChange: () => console.log('Update value from input C'),
+            },
           ]}
         />
         <Item
           name="Tax Blurb 2"
           savings={-53}
           inputs={[
-            { label: 'Input D' },
+            {
+              label: 'Input D',
+              handleChange: () => console.log('Update value from input D'),
+            },
           ]}
         />
         <Item
           name="Tax Blurb 3"
           savings={25}
           inputs={[
-            { label: 'Input E' },
-            { label: 'Input F' },
+            {
+              label: 'Input E',
+              handleChange: () => console.log('Update value from input E'),
+            },
+            {
+              label: 'Input F',
+              handleChange: () => console.log('Update value from input F'),
+            },
           ]}
         />
       </ul>
