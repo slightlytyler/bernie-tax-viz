@@ -8,7 +8,7 @@ import colors from 'styles/colors';
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class MainVizCategoriesItem extends Component {
   static propTypes ={
-    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     difference: PropTypes.number.isRequired,
     invertDifference: PropTypes.bool,
     color: PropTypes.string.isRequired,
@@ -17,7 +17,7 @@ export default class MainVizCategoriesItem extends Component {
 
   render() {
     const {
-      name,
+      title,
       difference,
       invertDifference,
       color,
@@ -37,7 +37,7 @@ export default class MainVizCategoriesItem extends Component {
           backgroundColor,
         }}
       >
-        <section styleName="title">{name}</section>
+        <section styleName="title">{title}</section>
         <section
           styleName="difference"
           style={{
