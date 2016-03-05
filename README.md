@@ -1,6 +1,6 @@
-# Summary-App
+# Bernie Tax Viz
 
-This app allows users to submit a url to an article, or a body of text and receive back a summary
+An app for visualizing the effects of Bernie Sander's tax plan
 
 ## Dev
 
