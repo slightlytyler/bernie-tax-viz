@@ -3,7 +3,6 @@ import cssModules from 'react-css-modules';
 
 import styles from './styles.styl';
 import Item from './item';
-import Total from './total';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class MainVizCategories extends Component {
@@ -42,7 +41,15 @@ export default class MainVizCategories extends Component {
           />
         </ul>
 
-        <Total value={1789} />
+        <ul styleName="categories" style={{ color: '#0277BD' }}>
+          <Item
+            name="Savings"
+            difference={1750}
+            invertDifference
+            color="#0277BD"
+            invertColor
+          />
+        </ul>
       </div>
     );
   }
