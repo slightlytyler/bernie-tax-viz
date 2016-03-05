@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import cssModules from 'react-css-modules';
 
 import styles from './styles.styl';
-import Item from './item';
+import Item from './Item';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class MainVizCategories extends Component {

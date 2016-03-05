@@ -3,7 +3,7 @@ import cssModules from 'react-css-modules';
 
 import styles from './styles.styl';
 import logo from 'assets/title.svg';
-import MainViz from 'pods/main-viz';
+import MainViz from 'components/MainViz';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class IndexLayout extends Component {
