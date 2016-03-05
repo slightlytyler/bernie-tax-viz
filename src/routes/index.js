@@ -3,10 +3,10 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import Example from 'pods/example/component';
+import IndexLayout from 'pods/index/layout';
 
 export default (store) => (
   <Route path="/">
-    <IndexRoute component={Example} />
+    <IndexRoute component={IndexLayout} />
   </Route>
 );

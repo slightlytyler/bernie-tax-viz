@@ -53,7 +53,7 @@ const karmaConfig = {
       'react/lib/ReactContext': 'window',
       'text-encoding': 'window'
     },
-    sassLoader: webpackConfig.sassLoader
+    stylusLoader: webpackConfig.stylusLoader
   },
   webpackMiddleware: {
     noInfo: true
