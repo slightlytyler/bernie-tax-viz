@@ -9,14 +9,11 @@ export default class TaxBlurbsItem extends Component {
   static propTypes ={
     name: PropTypes.string.isRequired,
     savings: PropTypes.number.isRequired,
-    inputs: PropTypes.arrayOf(React.PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      handleChange: PropTypes.func.isRequired,
-    })),
+    children: React.PropTypes.element,
   };
 
   render() {
-    const { name, savings, inputs } = this.props;
+    const { name, savings, children } = this.props;
 
     return (
       <li
@@ -29,20 +26,7 @@ export default class TaxBlurbsItem extends Component {
         <section styleName="title">{name}</section>
 
         <ul styleName="inputs">
-          {
-            inputs
-            ? inputs.map(input => (
-              <li key={input.label} styleName="item">
-                <label styleName="label">{input.label}</label>
-                <input
-                  styleName="input"
-                  value={input.value}
-                  onChange={input.handleChange}
-                />
-              </li>
-            ))
-            : undefined
-          }
+          {children}
         </ul>
       </li>
     );

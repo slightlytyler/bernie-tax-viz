@@ -5,13 +5,11 @@ import cssModules from 'react-css-modules';
 
 import styles from './styles.styl';
 import Item from './Item';
+import TaxableIncomeBlurb from './TaxableIncome';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 class TaxBlurbs extends Component {
   static propTypes ={
-    taxableIncome: PropTypes.number,
-    filingStatus: PropTypes.oneOf(['single', 'married']),
-    agi: PropTypes.number,
     capitalGains: PropTypes.number,
     estateBenefits: PropTypes.number,
     monthlyInsurancePremium: PropTypes.number,
@@ -22,9 +20,6 @@ class TaxBlurbs extends Component {
 
   render() {
     const {
-      taxableIncome,
-      filingStatus,
-      agi,
       capitalGains,
       estateBenefits,
       monthlyInsurancePremium,
@@ -35,27 +30,7 @@ class TaxBlurbs extends Component {
 
     return (
       <ul styleName="tax-blurbs">
-        <Item
-          name="Income"
-          savings={125}
-          inputs={[
-            {
-              label: 'Taxable Income',
-              value: taxableIncome,
-              handleChange: e => updateInputs('taxableIncome', e.target.value),
-            },
-            {
-              label: 'Filing Status',
-              value: filingStatus,
-              handleChange: e => updateInputs('filingStatus', e.target.value),
-            },
-            {
-              label: 'AGI (optional)',
-              value: agi,
-              handleChange: e => updateInputs('agi', e.target.value),
-            },
-          ]}
-        />
+        <TaxableIncomeBlurb />
         <Item
           name="Capital Gains"
           savings={-53}
