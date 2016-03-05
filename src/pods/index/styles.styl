@@ -1,2 +1,47 @@
-.test
-  color: red
+.base
+  width: 100vw
+  min-height: 100vh
+  padding: 2rem 4rem
+
+  & > .title
+    text-align: center
+
+.pane
+  padding: 2rem
+  border: 1px solid black
+
+  &:not(:last-child)
+    margin-bottom: 1rem
+
+.instructions
+  height: 10rem
+  background-color: #efefef
+
+.main-viz
+  display: flex
+
+  .categories, .person-viz
+    display: flex
+    justify-content: center
+    align-items: center
+    flex: 1
+
+  .categories
+    list-style: none
+    display: flex
+    flex-direction: column
+    padding: 0
+    margin: 0
+
+.line-items
+  list-style: none
+  display: flex
+  flex-direction: column
+  padding: 0
+  margin: 0
+
+  .inputs
+    list-style: none
+    display: flex
+    padding: 0
+    margin: 0
