@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import cssModules from 'react-css-modules';
 
@@ -10,23 +11,28 @@ class TaxBlurbs extends Component {
   static propTypes ={
     taxableIncome: PropTypes.number,
     filingStatus: PropTypes.oneOf(['single', 'married']),
+    agi: PropTypes.number,
     capitalGains: PropTypes.number,
     estateBenefits: PropTypes.number,
     monthlyInsurancePremium: PropTypes.number,
     insuranceDeductible: PropTypes.number,
     anticipatedYearlyHealthSpending: PropTypes.number,
+    updateInputs: PropTypes.func.isRequired,
   };
 
   render() {
     const {
       taxableIncome,
       filingStatus,
+      agi,
       capitalGains,
       estateBenefits,
       monthlyInsurancePremium,
       insuranceDeductible,
       anticipatedYearlyHealthSpending,
+      updateInputs,
     } = this.props;
+
     return (
       <ul styleName="tax-blurbs">
         <Item
@@ -36,12 +42,17 @@ class TaxBlurbs extends Component {
             {
               label: 'Taxable Income',
               value: taxableIncome,
-              handleChange: () => console.log('Update value from input A'),
+              handleChange: e => updateInputs('taxableIncome', e.target.value),
             },
             {
               label: 'Filing Status',
               value: filingStatus,
-              handleChange: () => console.log('Update value from input B'),
+              handleChange: e => updateInputs('filingStatus', e.target.value),
+            },
+            {
+              label: 'AGI (optional)',
+              value: agi,
+              handleChange: e => updateInputs('agi', e.target.value),
             },
           ]}
         />
@@ -52,7 +63,7 @@ class TaxBlurbs extends Component {
             {
               label: 'Capital Gains',
               value: capitalGains,
-              handleChange: () => console.log('Update value from input D'),
+              handleChange: e => updateInputs('capitalGains', e.target.value),
             },
           ]}
         />
@@ -67,7 +78,7 @@ class TaxBlurbs extends Component {
             {
               label: 'Income',
               value: estateBenefits,
-              handleChange: () => console.log('Update value from input D'),
+              handleChange: e => updateInputs('estateBenefits', e.target.value),
             },
           ]}
         />
@@ -78,17 +89,17 @@ class TaxBlurbs extends Component {
             {
               label: 'Monthly Insurance Premium',
               value: monthlyInsurancePremium,
-              handleChange: () => console.log('Update value from input D'),
+              handleChange: e => updateInputs('monthlyInsurancePremium', e.target.value),
             },
             {
               label: 'Insurance Deductible',
               value: insuranceDeductible,
-              handleChange: () => console.log('Update value from input D'),
+              handleChange: e => updateInputs('insuranceDeductible', e.target.value),
             },
             {
               label: 'Anticipated Yearly Health Spending',
               value: anticipatedYearlyHealthSpending,
-              handleChange: () => console.log('Update value from input D'),
+              handleChange: e => updateInputs('anticipatedYearlyHealthSpending', e.target.value),
             },
           ]}
         />
@@ -97,6 +108,9 @@ class TaxBlurbs extends Component {
   }
 }
 
-export default connect(state => ({
-  ...state.inputs,
-}))(TaxBlurbs);
+import { actions } from 'reducers/inputs';
+
+export default connect(
+  state => ({ ...state.inputs }),
+  dispatch => bindActionCreators(actions, dispatch),
+)(TaxBlurbs);
