@@ -1,11 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import Item from '../Item';
+import TextField from 'material-ui/lib/text-field';
+import Slider from 'material-ui/lib/slider';
 
 class TaxBlurbsACATaxItem extends Component {
   static propTypes ={
     monthlyInsurancePremium: PropTypes.number,
     insuranceDeductible: PropTypes.number,
     anticipatedYearlyHealthSpending: PropTypes.number,
+    maxAnticipatedYearlyHealthSpending: PropTypes.number,
     savings: PropTypes.number.isRequired,
     updateMonthlyInsurancePremium: PropTypes.func.isRequired,
     updateInsuranceDeductible: PropTypes.func.isRequired,
@@ -20,9 +23,23 @@ class TaxBlurbsACATaxItem extends Component {
     this.props.updateInsuranceDeductible(e.target.value)
   ;
 
-  updateAnticipatedYearlyHealthSpending = e =>
-    this.props.updateAnticipatedYearlyHealthSpending(e.target.value)
-  ;
+  updateAnticipatedYearlyHealthSpending = (e, value) => {
+    const {
+      maxAnticipatedYearlyHealthSpending,
+      updateAnticipatedYearlyHealthSpending,
+    } = this.props;
+    const newValue = Number(
+      value
+      ? value * maxAnticipatedYearlyHealthSpending
+      : e.target.value
+    );
+
+    updateAnticipatedYearlyHealthSpending(
+        newValue > maxAnticipatedYearlyHealthSpending
+        ? maxAnticipatedYearlyHealthSpending
+        : newValue
+    );
+  };
 
   render() {
     const {
@@ -34,6 +51,7 @@ class TaxBlurbsACATaxItem extends Component {
       monthlyInsurancePremium,
       insuranceDeductible,
       anticipatedYearlyHealthSpending,
+      maxAnticipatedYearlyHealthSpending,
       savings,
     } = this.props;
 
@@ -42,18 +60,41 @@ class TaxBlurbsACATaxItem extends Component {
         name="ACA Tax"
         savings={savings}
       >
-        <input
+        <TextField
+          type="number"
+          floatingLabelText="Monthly Insurance Premium"
           value={monthlyInsurancePremium}
+          defaultValue={0}
           onChange={updateMonthlyInsurancePremium}
+          style={{ width: '20em', marginRight: '2em', fontSize: '1.25em' }}
+          underlineFocusStyle={{ borderColor: 'white' }}
         />
-        <input
+        <TextField
+          type="number"
+          floatingLabelText="Insurance Deductible"
           value={insuranceDeductible}
+          defaultValue={0}
           onChange={updateInsuranceDeductible}
+          style={{ width: '20em', marginRight: '2em', fontSize: '1.25em' }}
+          underlineFocusStyle={{ borderColor: 'white' }}
         />
-        <input
-          value={anticipatedYearlyHealthSpending}
-          onChange={updateAnticipatedYearlyHealthSpending}
-        />
+        <div>
+          <Slider
+            value={anticipatedYearlyHealthSpending / maxAnticipatedYearlyHealthSpending}
+            defaultValue={0}
+            onChange={updateAnticipatedYearlyHealthSpending}
+            style={{ width: '24.5em', margin: '.5em 0' }}
+          />
+          <TextField
+            type="number"
+            floatingLabelText="Anticipated Yearly Health Spending"
+            value={Math.round(anticipatedYearlyHealthSpending)}
+            defaultValue={0}
+            onChange={updateAnticipatedYearlyHealthSpending}
+            style={{ width: '20em', fontSize: '1.25em' }}
+            underlineFocusStyle={{ borderColor: 'white' }}
+          />
+        </div>
       </Item>
     );
   }
@@ -68,6 +109,7 @@ export default connect(
     monthlyInsurancePremium: state.inputs.monthlyInsurancePremium,
     insuranceDeductible: state.inputs.insuranceDeductible,
     anticipatedYearlyHealthSpending: state.inputs.anticipatedYearlyHealthSpending,
+    maxAnticipatedYearlyHealthSpending: 20000,
     savings: 1200,
   }),
   dispatch => bindActionCreators({

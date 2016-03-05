@@ -9,7 +9,10 @@ export default class TaxBlurbsItem extends Component {
   static propTypes ={
     name: PropTypes.string.isRequired,
     savings: PropTypes.number.isRequired,
-    children: React.PropTypes.element,
+    children: React.PropTypes.oneOfType([
+      React.PropTypes.element,
+      React.PropTypes.arrayOf(React.PropTypes.element),
+    ]),
   };
 
   render() {

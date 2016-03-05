@@ -7,6 +7,8 @@ import makeRoutes from 'routes';
 import Root from 'containers/Root';
 import configureStore from 'store';
 import initialState from 'constants/initialState';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 // Configure history for react-router
 const browserHistory = useRouterHistory(createBrowserHistory)({

@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import Item from '../Item';
+import TextField from 'material-ui/lib/text-field';
+import SelectField from 'material-ui/lib/select-field';
+import MenuItem from 'material-ui/lib/menus/menu-item';
 
 class TaxBlurbsTaxableIncomeItem extends Component {
   static propTypes ={
@@ -12,11 +15,11 @@ class TaxBlurbsTaxableIncomeItem extends Component {
     updateAGI: PropTypes.func.isRequired,
   };
 
-  updateTaxableIncome = e => this.props.updateTaxableIncome(e.target.value);
+  updateTaxableIncome = e => this.props.updateTaxableIncome(Number(e.target.value));
 
-  updateFilingStatus = e => this.props.updateFilingStatus(e.target.value);
+  updateFilingStatus = (e, index, value) => this.props.updateFilingStatus(value);
 
-  updateAGI = e => this.props.updateAGI(e.target.value);
+  updateAGI = e => this.props.updateAGI(Number(e.target.value));
 
   render() {
     const {
@@ -36,9 +39,32 @@ class TaxBlurbsTaxableIncomeItem extends Component {
         name="Income"
         savings={savings}
       >
-        <input value={taxableIncome} onChange={updateTaxableIncome} />
-        <input value={filingStatus} onChange={updateFilingStatus} />
-        <input value={agi} onChange={updateAGI} />
+        <TextField
+          type="number"
+          floatingLabelText="Taxable Income"
+          value={taxableIncome}
+          defaultValue={0}
+          onChange={updateTaxableIncome}
+          style={{ width: '20em', marginRight: '2em', fontSize: '1.25em' }}
+          underlineFocusStyle={{ borderColor: 'white' }}
+        />
+        <SelectField
+          floatingLabelText="Filing Status"
+          value={filingStatus}
+          onChange={updateFilingStatus}
+          style={{ width: '20em', marginRight: '2em', fontSize: '1.25em' }}
+        >
+          <MenuItem value="single" primaryText="Single"/>
+          <MenuItem value="married" primaryText="Married"/>
+        </SelectField>
+        <TextField
+          type="number"
+          floatingLabelText="AGI (optional)"
+          value={agi}
+          onChange={updateAGI}
+          style={{ width: '15em', fontSize: '1.25em' }}
+          underlineFocusStyle={{ borderColor: 'white' }}
+        />
       </Item>
     );
   }

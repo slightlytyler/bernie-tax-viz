@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Item from '../Item';
+import TextField from 'material-ui/lib/text-field';
 
 class TaxBlurbsCapitalGainsItem extends Component {
   static propTypes ={
@@ -8,7 +9,7 @@ class TaxBlurbsCapitalGainsItem extends Component {
     updateCapitalGains: PropTypes.func.isRequired,
   };
 
-  updateCapitalGains = e => this.props.updateCapitalGains(e.target.value);
+  updateCapitalGains = e => this.props.updateCapitalGains(Number(e.target.value));
 
   render() {
     return (
@@ -16,7 +17,15 @@ class TaxBlurbsCapitalGainsItem extends Component {
         name="Capital Gains"
         savings={this.props.savings}
       >
-        <input value={this.props.capitalGains} onChange={this.updateCapitalGains} />
+        <TextField
+          type="number"
+          floatingLabelText="Income"
+          value={this.props.capitalGains}
+          defaultValue={0}
+          onChange={this.props.updateCapitalGains}
+          style={{ width: '20em', fontSize: '1.25em' }}
+          underlineFocusStyle={{ borderColor: 'white' }}
+        />
       </Item>
     );
   }
