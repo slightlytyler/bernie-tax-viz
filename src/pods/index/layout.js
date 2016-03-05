@@ -1,50 +1,24 @@
 import React, { Component } from 'react';
 import cssModules from 'react-css-modules';
+
 import styles from './styles.styl';
+import logo from 'assets/title.svg';
+import MainViz from 'pods/main-viz';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class IndexLayout extends Component {
   render() {
     return (
       <div styleName="base">
-        <h1 styleName="title">Bernie Sander Tax Plan</h1>
-        <div styleName="pane instructions" />
+        <header styleName="title">
+          <img src={logo} styleName="logo" />
+        </header>
+        <div className="pane" styleName="instructions" />
 
-        <div styleName="pane main-viz">
-          <ul styleName="categories">
-            <li styleName="item">
-              <section styleName="title">Cat 1</section>
-              <section styleName="difference">12</section>
-            </li>
-
-            <li styleName="item">
-              <section styleName="title">Cat 2</section>
-              <section styleName="difference">12</section>
-            </li>
-
-            <li styleName="item">
-              <section styleName="title">Cat 3</section>
-              <section styleName="difference">12</section>
-            </li>
-
-            <li styleName="item">
-              <section styleName="title">Cat 4</section>
-              <section styleName="difference">12</section>
-            </li>
-
-            <li styleName="item">
-              <section styleName="title">Cat 5</section>
-              <section styleName="difference">12</section>
-            </li>
-          </ul>
-
-          <div styleName="person-viz">
-            person viz
-          </div>
-        </div>
+        <MainViz />
 
         <ul styleName="line-items">
-          <li styleName="item pane positive">
+          <li className="pane" styleName="item positive">
             <section styleName="title">Tax Item 1</section>
 
             <ul styleName="inputs">
@@ -60,7 +34,7 @@ export default class IndexLayout extends Component {
             </ul>
           </li>
 
-          <li styleName="item pane positive">
+          <li className="pane" styleName="item positive">
             <section styleName="title">Tax Item 2</section>
 
             <ul styleName="inputs">
@@ -76,7 +50,7 @@ export default class IndexLayout extends Component {
             </ul>
           </li>
 
-          <li styleName="item pane positive">
+          <li className="pane" styleName="item positive">
             <section styleName="title">Tax Item 3</section>
 
             <ul styleName="inputs">

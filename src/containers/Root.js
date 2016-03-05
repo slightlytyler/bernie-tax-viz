@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
+import 'styles/app.styl';
 
 export default class Root extends React.Component {
   static propTypes = {
@@ -8,6 +9,8 @@ export default class Root extends React.Component {
     routes: PropTypes.element.isRequired,
     store: PropTypes.object.isRequired,
   };
+
+  disableDevTools = true;
 
   get content() {
     return (
@@ -38,7 +41,7 @@ export default class Root extends React.Component {
       <Provider store={this.props.store}>
         <div style={{ height: '100%', overflow: 'auto' }}>
           {this.content}
-          {this.devTools}
+          {!this.disableDevTools && this.devTools}
         </div>
       </Provider>
     );
