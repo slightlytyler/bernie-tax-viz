@@ -6,6 +6,7 @@ class TaxBlurbsTaxableIncomeItem extends Component {
     taxableIncome: PropTypes.number,
     filingStatus: PropTypes.oneOf(['single', 'married']),
     agi: PropTypes.number,
+    savings: PropTypes.number,
     updateTaxableIncome: PropTypes.func.isRequired,
     updateFilingStatus: PropTypes.func.isRequired,
     updateAGI: PropTypes.func.isRequired,
@@ -27,12 +28,13 @@ class TaxBlurbsTaxableIncomeItem extends Component {
       taxableIncome,
       filingStatus,
       agi,
+      savings,
     } = this.props;
 
     return (
       <Item
         name="Income"
-        savings={125}
+        savings={savings}
       >
         <input value={taxableIncome} onChange={updateTaxableIncome} />
         <input value={filingStatus} onChange={updateFilingStatus} />
@@ -51,6 +53,7 @@ export default connect(
     taxableIncome: state.inputs.taxableIncome,
     filingStatus: state.inputs.filingStatus,
     agi: state.inputs.agi,
+    savings: 125,
   }),
   dispatch => bindActionCreators({
     updateTaxableIncome: income => actions.updateInputs('taxableIncome', income),
