@@ -1,0 +1,21 @@
+.item
+  display: flex
+  width: 100%
+  font-size: 3em
+  border: .075em solid currentColor
+
+  &:not(:last-child)
+    border-bottom-width: 0
+
+  .title, .difference
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: .5em
+
+  .title
+    flex: 9
+    border-right: .075em solid currentColor
+
+  .difference
+    flex: 4

@@ -13,6 +13,7 @@ export default class IndexLayout extends Component {
         <header styleName="title">
           <img src={logo} styleName="logo" />
         </header>
+
         <div className="pane" styleName="instructions" />
 
         <MainViz />

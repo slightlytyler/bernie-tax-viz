@@ -64,6 +64,7 @@
   "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
   "license": "MIT",
   "dependencies": {
+    "accounting": "^0.4.1",
     "better-npm-run": "0.0.5",
     "co-request": "^1.0.0",
     "d3": "^3.5.16",
