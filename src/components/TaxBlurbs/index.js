@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import cssModules from 'react-css-modules';
 
 import styles from './styles.styl';
-import TaxableIncomeBlurb from './TaxableIncome';
+import IncomeBlurb from './Income';
 import CapitalGainsBlurb from './CapitalGains';
 import PayrollTaxBlurb from './PayrollTax';
 import EstateBenefitsBlurb from './EstateBenefits';
@@ -13,7 +13,7 @@ export default class TaxBlurbs extends Component {
   render() {
     return (
       <ul styleName="tax-blurbs">
-        <TaxableIncomeBlurb />
+        <IncomeBlurb />
         <CapitalGainsBlurb />
         <PayrollTaxBlurb />
         <EstateBenefitsBlurb />

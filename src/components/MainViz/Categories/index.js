@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import cssModules from 'react-css-modules';
 
-import categories from 'constants/categories';
 import styles from './styles.styl';
-import Item from './Item';
+import Income from './Income';
+import CapitalGains from './CapitalGains';
+import PayrollTax from './PayrollTax';
+import EstateBenefits from './EstateBenefits';
+import ACATax from './ACATax';
+import Savings from './Savings';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class MainVizCategories extends Component {
@@ -11,26 +15,15 @@ export default class MainVizCategories extends Component {
     return (
       <div styleName="container">
         <ul styleName="categories">
-          {
-            categories.map(category => (
-              <Item
-                key={category.title}
-                title={category.title}
-                color={category.color}
-                difference={category.difference}
-              />
-            ))
-          }
+          <Income />
+          <CapitalGains />
+          <PayrollTax />
+          <EstateBenefits />
+          <ACATax />
         </ul>
 
         <ul styleName="categories" style={{ color: '#0277BD' }}>
-          <Item
-            title="Savings"
-            difference={1750}
-            invertDifference
-            color="#0277BD"
-            invertColor
-          />
+          <Savings />
         </ul>
       </div>
     );

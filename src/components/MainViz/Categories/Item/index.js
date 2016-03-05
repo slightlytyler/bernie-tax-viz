@@ -9,8 +9,7 @@ import colors from 'styles/colors';
 export default class MainVizCategoriesItem extends Component {
   static propTypes ={
     title: PropTypes.string.isRequired,
-    difference: PropTypes.number.isRequired,
-    invertDifference: PropTypes.bool,
+    savings: PropTypes.number.isRequired,
     color: PropTypes.string.isRequired,
     invertColor: PropTypes.bool,
   };
@@ -18,14 +17,11 @@ export default class MainVizCategoriesItem extends Component {
   render() {
     const {
       title,
-      difference,
-      invertDifference,
+      savings,
       color,
       invertColor,
     } = this.props;
-    const isPositive =
-      (difference < 0 && !invertDifference) || (difference >= 0 && invertDifference)
-    ;
+    const isPositive = savings >= 0;
     const textColor = invertColor ? color : 'currentColor';
     const backgroundColor = invertColor ? colors.white : color;
 
@@ -39,12 +35,12 @@ export default class MainVizCategoriesItem extends Component {
       >
         <section styleName="title">{title}</section>
         <section
-          styleName="difference"
+          styleName="savings"
           style={{
             backgroundColor: isPositive ? colors['positive-green'] : colors['negative-red'],
           }}
         >
-          {accounting.formatMoney(difference)}
+          {accounting.formatMoney(savings)}
         </section>
       </li>
     );
