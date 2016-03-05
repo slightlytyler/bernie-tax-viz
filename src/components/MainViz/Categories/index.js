@@ -25,7 +25,7 @@ export default class MainVizCategories extends Component {
 
         <ul styleName="categories" style={{ color: '#0277BD' }}>
           <Item
-            name="Savings"
+            title="Savings"
             difference={1750}
             invertDifference
             color="#0277BD"

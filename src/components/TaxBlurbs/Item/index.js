@@ -30,15 +30,18 @@ export default class TaxBlurbsItem extends Component {
 
         <ul styleName="inputs">
           {
-            inputs.map(input => (
+            inputs
+            ? inputs.map(input => (
               <li key={input.label} styleName="item">
                 <label styleName="label">{input.label}</label>
                 <input
                   styleName="input"
+                  value={input.value}
                   onChange={input.handleChange}
                 />
               </li>
             ))
+            : undefined
           }
         </ul>
       </li>

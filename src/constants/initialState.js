@@ -1,11 +1,11 @@
 export default {
   inputs: {
-    taxableIncome: 60000,
+    taxableIncome: 75000,
     filingStatus: 'single',
-    capitalGains: 0,
-    estateGift: 0,
+    capitalGains: 1250,
+    estateBenefits: 0,
     monthlyInsurancePremium: 125,
-    insuranceDeductible: 250,
+    insuranceDeductible: 300,
     anticipatedYearlyHealthSpending: 500,
   },
 };
