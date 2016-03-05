@@ -14,12 +14,27 @@ export default class TaxBlurbs extends Component {
       <ul styleName="tax-blurbs">
         <Item
           name="Tax Blurb 1"
+          savings={125}
+          inputs={[
+            { label: 'Input A' },
+            { label: 'Input B' },
+            { label: 'Input C' },
+          ]}
         />
         <Item
           name="Tax Blurb 2"
+          savings={-53}
+          inputs={[
+            { label: 'Input D' },
+          ]}
         />
         <Item
           name="Tax Blurb 3"
+          savings={25}
+          inputs={[
+            { label: 'Input E' },
+            { label: 'Input F' },
+          ]}
         />
       </ul>
     );
