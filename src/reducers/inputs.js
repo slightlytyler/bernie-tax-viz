@@ -63,12 +63,22 @@ export const incomeTaxRateSelector = createSelector(
 export const ordinaryIncomeTaxSelector = createSelector(
   taxableIncomeSelector,
   incomeTaxRateSelector,
-  (taxableIncome, taxRate) => {
-    return mapValues(taxRate, value => (value.ordinaryIncome / 100) * taxableIncome);
-  }
+  (taxableIncome, taxRate) =>
+    mapValues(taxRate, value => (value.ordinaryIncome / 100) * taxableIncome)
 );
-export const ordinaryIncomeTaxSavingsSelector = createSelector(
+export const ordinaryIncomeSavingsSelector = createSelector(
   ordinaryIncomeTaxSelector,
+  incomeTax => incomeTax.current - incomeTax.sanders
+);
+
+export const capitalGainsTaxSelector = createSelector(
+  capitalGainsSelector,
+  incomeTaxRateSelector,
+  (capitalGains, taxRate) =>
+    mapValues(taxRate, value => (value.capitalGains / 100) * capitalGains)
+);
+export const capitalGainsSavingsSelector = createSelector(
+  capitalGainsTaxSelector,
   incomeTax => incomeTax.current - incomeTax.sanders
 );
 

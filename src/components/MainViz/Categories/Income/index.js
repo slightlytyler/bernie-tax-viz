@@ -18,10 +18,10 @@ class MainVizCategoriesIncomeItem extends Component {
 }
 
 import { connect } from 'react-redux';
-import { ordinaryIncomeTaxSavingsSelector } from 'reducers/inputs';
+import { ordinaryIncomeSavingsSelector } from 'reducers/inputs';
 
 export default connect(
   state => ({
-    savings: ordinaryIncomeTaxSavingsSelector(state),
+    savings: ordinaryIncomeSavingsSelector(state),
   }),
 )(MainVizCategoriesIncomeItem);

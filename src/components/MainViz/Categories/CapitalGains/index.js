@@ -18,9 +18,10 @@ class MainVizCategoriesCapitalGainsItem extends Component {
 }
 
 import { connect } from 'react-redux';
+import { capitalGainsSavingsSelector } from 'reducers/inputs';
 
 export default connect(
   state => ({
-    savings: 125,
+    savings: capitalGainsSavingsSelector(state),
   }),
 )(MainVizCategoriesCapitalGainsItem);
