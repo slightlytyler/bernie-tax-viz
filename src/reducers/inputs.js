@@ -1,12 +1,17 @@
+//
 // Constants
+//
 const UPDATE_INPUTS = 'UPDATE_INPUTS';
 
+//
 // Selectors
+//
 import { createSelector } from 'reselect';
 import mapValues from 'lodash.mapvalues';
 import incomeTaxRates from 'constants/incomeTaxRates';
 
 export const inputsSelector = state => state.inputs;
+
 export const taxableIncomeSelector = createSelector(
   inputsSelector,
   inputs => inputs.taxableIncome
@@ -83,12 +88,23 @@ export const capitalGainsSavingsSelector = createSelector(
   incomeTax => incomeTax.current - incomeTax.sanders
 );
 
+export const totalSavingsSelector = createSelector(
+  ordinaryIncomeSavingsSelector,
+  capitalGainsSavingsSelector,
+  (ordinaryIncomeSavings, capitalGainsSavings) =>
+    ordinaryIncomeSavings + capitalGainsSavings
+);
+
+//
 // Actions
+//
 export const actions = {
   updateInputs: (key, val) => ({ type: UPDATE_INPUTS, key, val }),
 };
 
+//
 // Reducers
+//
 export default function (state = {}, action) {
   switch (action.type) {
     case UPDATE_INPUTS:

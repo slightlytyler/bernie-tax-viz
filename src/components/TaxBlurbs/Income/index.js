@@ -72,14 +72,20 @@ class TaxBlurbsTaxableIncomeItem extends Component {
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import {
+  taxableIncomeSelector,
+  filingStatusSelector,
+  agiSelector,
+  ordinaryIncomeSavingsSelector,
+} from 'reducers/inputs';
 import { actions } from 'reducers/inputs';
 
 export default connect(
   state => ({
-    taxableIncome: state.inputs.taxableIncome,
-    filingStatus: state.inputs.filingStatus,
-    agi: state.inputs.agi,
-    savings: 125,
+    taxableIncome: taxableIncomeSelector(state),
+    filingStatus: filingStatusSelector(state),
+    agi: agiSelector(state),
+    savings: ordinaryIncomeSavingsSelector(state),
   }),
   dispatch => bindActionCreators({
     updateTaxableIncome: income => actions.updateInputs('taxableIncome', income),

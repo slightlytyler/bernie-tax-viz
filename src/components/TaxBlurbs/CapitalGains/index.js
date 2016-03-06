@@ -22,7 +22,7 @@ class TaxBlurbsCapitalGainsItem extends Component {
           floatingLabelText="Income"
           value={this.props.capitalGains}
           defaultValue={0}
-          onChange={this.props.updateCapitalGains}
+          onChange={this.updateCapitalGains}
           style={{ width: '20em', fontSize: '1.25em' }}
           underlineFocusStyle={{ borderColor: 'white' }}
         />
@@ -33,12 +33,16 @@ class TaxBlurbsCapitalGainsItem extends Component {
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { actions } from 'reducers/inputs';
+import {
+  capitalGainsSelector,
+  capitalGainsSavingsSelector,
+  actions,
+} from 'reducers/inputs';
 
 export default connect(
   state => ({
-    capitalGains: state.inputs.capitalGains,
-    savings: 0,
+    capitalGains: capitalGainsSelector(state),
+    savings: capitalGainsSavingsSelector(state),
   }),
   dispatch => bindActionCreators({
     updateCapitalGains: gains => actions.updateInputs('capitalGains', gains),

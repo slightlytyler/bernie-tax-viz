@@ -19,9 +19,10 @@ class MainVizCategoriesSavingsItem extends Component {
 }
 
 import { connect } from 'react-redux';
+import { totalSavingsSelector } from 'reducers/inputs';
 
 export default connect(
   state => ({
-    savings: 750,
+    savings: totalSavingsSelector(state),
   }),
 )(MainVizCategoriesSavingsItem);
