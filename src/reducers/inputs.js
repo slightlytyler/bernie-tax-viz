@@ -9,6 +9,7 @@ const UPDATE_INPUTS = 'UPDATE_INPUTS';
 import { createSelector } from 'reselect';
 import incomeTaxRates from 'constants/incomeTaxRates';
 import agiTaxRates from 'constants/agiTaxRates';
+import payrollTaxRates from 'constants/payrollTaxRates';
 
 export const inputsSelector = state => state.inputs;
 
@@ -142,6 +143,58 @@ export const capitalGainsTaxSelector = createSelector(
 );
 export const capitalGainsSavingsSelector = createSelector(
   capitalGainsTaxSelector,
+  incomeTax => incomeTax.current - incomeTax.sanders
+);
+
+export const payrollTaxSelector = createSelector(
+  taxableIncomeSelector,
+  filingStatusSelector,
+  (income, filingStatus) => {
+    const payrollTaxRatesForStatus = payrollTaxRates[filingStatus];
+    const payrollTaxBrackets = Array.from(payrollTaxRatesForStatus.keys());
+
+    let totalTax = {
+      current: 0,
+      sanders: 0,
+    };
+
+    for (const bracketCeiling of payrollTaxBrackets) {
+      const bracketIndex = payrollTaxBrackets.indexOf(bracketCeiling);
+      const bracketFloor =
+        bracketIndex === 0
+        ? 0
+        : payrollTaxBrackets[bracketIndex - 1]
+      ;
+      let difference;
+
+      if (income > bracketCeiling) {
+        difference = bracketCeiling - bracketFloor;
+      } else {
+        difference = income - bracketFloor;
+      }
+
+      const currentTax =
+        difference * (payrollTaxRatesForStatus.get(bracketCeiling).current / 100)
+      ;
+      const sandersTax =
+        difference * (payrollTaxRatesForStatus.get(bracketCeiling).sanders / 100)
+      ;
+
+      totalTax = {
+        current: totalTax.current + currentTax,
+        sanders: totalTax.sanders + sandersTax,
+      };
+
+      if (income <= bracketCeiling) {
+        break;
+      }
+    }
+
+    return totalTax;
+  }
+);
+export const payrollSavingsSelector = createSelector(
+  payrollTaxSelector,
   incomeTax => incomeTax.current - incomeTax.sanders
 );
 
