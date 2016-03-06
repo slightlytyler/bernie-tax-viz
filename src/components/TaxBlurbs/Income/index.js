@@ -77,8 +77,8 @@ import {
   filingStatusSelector,
   agiSelector,
   ordinaryIncomeSavingsSelector,
+  actions,
 } from 'reducers/inputs';
-import { actions } from 'reducers/inputs';
 
 export default connect(
   state => ({
