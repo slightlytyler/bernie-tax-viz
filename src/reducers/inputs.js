@@ -7,8 +7,8 @@ const UPDATE_INPUTS = 'UPDATE_INPUTS';
 // Selectors
 //
 import { createSelector } from 'reselect';
-import mapValues from 'lodash.mapvalues';
 import incomeTaxRates from 'constants/incomeTaxRates';
+import agiTaxRates from 'constants/agiTaxRates';
 
 export const inputsSelector = state => state.inputs;
 
@@ -45,32 +45,89 @@ export const anticipatedYearlyHealthSpendingSelector = createSelector(
   inputs => inputs.anticipatedYearlyHealthSpending
 );
 
-export const incomeTaxRateSelector = createSelector(
-  taxableIncomeSelector,
-  capitalGainsSelector,
-  agiSelector,
-  filingStatusSelector,
-  (taxableIncome, capitalGains, agi, filingStatus) => {
-    const taxRatesForStatus = incomeTaxRates[filingStatus];
-    const adjustedGross = (taxableIncome + capitalGains) * agi;
-    let taxRateBracket;
+function incomeTaxCalculator(type, income, filingStatus, agi) {
+  const incomeTaxRatesForStatus = incomeTaxRates[filingStatus];
+  const incomeTaxBrackets = Array.from(incomeTaxRatesForStatus.keys());
+  const agiTaxRatesForStatus = agiTaxRates[filingStatus];
+  const agiTaxBrackets = Array.from(agiTaxRatesForStatus.keys());
+  let totalTax = {
+    current: 0,
+    sanders: 0,
+  };
 
-    for (const key of taxRatesForStatus.keys()) {
-      if (key > adjustedGross || key === 'over') {
-        taxRateBracket = key;
-        break;
-      }
+  for (const bracketCeiling of incomeTaxBrackets) {
+    const bracketIndex = incomeTaxBrackets.indexOf(bracketCeiling);
+    const bracketFloor =
+      bracketIndex === 0
+      ? 0
+      : incomeTaxBrackets[bracketIndex - 1]
+    ;
+    let difference;
+
+    if (income > bracketCeiling) {
+      difference = bracketCeiling - bracketFloor;
+    } else {
+      difference = income - bracketFloor;
     }
 
-    return taxRatesForStatus.get(taxRateBracket);
+    const currentTax =
+      difference * (incomeTaxRatesForStatus.get(bracketCeiling).current[type] / 100)
+    ;
+    const sandersTax =
+      difference * (incomeTaxRatesForStatus.get(bracketCeiling).sanders[type] / 100)
+    ;
+
+    totalTax = {
+      current: totalTax.current + currentTax,
+      sanders: totalTax.sanders + sandersTax,
+    };
+
+    if (income <= bracketCeiling) {
+      break;
+    }
   }
-);
+
+  for (const bracketCeiling of agiTaxBrackets) {
+    const bracketIndex = agiTaxBrackets.indexOf(bracketCeiling);
+    const bracketFloor =
+      bracketIndex === 0
+      ? 0
+      : agiTaxBrackets[bracketIndex - 1]
+    ;
+    const adjustedIncome = income * agi;
+    let difference;
+
+    if (adjustedIncome > bracketCeiling) {
+      difference = bracketCeiling - bracketFloor;
+    } else {
+      difference = adjustedIncome - bracketFloor;
+    }
+
+    const currentTax =
+      difference * (agiTaxRatesForStatus.get(bracketCeiling).current[type] / 100)
+    ;
+    const sandersTax =
+      difference * (agiTaxRatesForStatus.get(bracketCeiling).sanders[type] / 100)
+    ;
+
+    totalTax = {
+      current: totalTax.current + currentTax,
+      sanders: totalTax.sanders + sandersTax,
+    };
+
+    if (income <= bracketCeiling) {
+      break;
+    }
+  }
+
+  return totalTax;
+}
 
 export const ordinaryIncomeTaxSelector = createSelector(
   taxableIncomeSelector,
-  incomeTaxRateSelector,
-  (taxableIncome, taxRate) =>
-    mapValues(taxRate, value => (value.ordinaryIncome / 100) * taxableIncome)
+  filingStatusSelector,
+  agiSelector,
+  (income, filingStatus, agi) => incomeTaxCalculator('ordinaryIncome', income, filingStatus, agi)
 );
 export const ordinaryIncomeSavingsSelector = createSelector(
   ordinaryIncomeTaxSelector,
@@ -79,9 +136,9 @@ export const ordinaryIncomeSavingsSelector = createSelector(
 
 export const capitalGainsTaxSelector = createSelector(
   capitalGainsSelector,
-  incomeTaxRateSelector,
-  (capitalGains, taxRate) =>
-    mapValues(taxRate, value => (value.capitalGains / 100) * capitalGains)
+  filingStatusSelector,
+  agiSelector,
+  (income, filingStatus, agi) => incomeTaxCalculator('capitalGains', income, filingStatus, agi)
 );
 export const capitalGainsSavingsSelector = createSelector(
   capitalGainsTaxSelector,
