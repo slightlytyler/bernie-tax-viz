@@ -42,11 +42,12 @@ export const anticipatedYearlyHealthSpendingSelector = createSelector(
 
 export const incomeTaxRateSelector = createSelector(
   taxableIncomeSelector,
+  capitalGainsSelector,
   agiSelector,
   filingStatusSelector,
-  (taxableIncome, agi, filingStatus) => {
+  (taxableIncome, capitalGains, agi, filingStatus) => {
     const taxRatesForStatus = incomeTaxRates[filingStatus];
-    const adjustedGross = taxableIncome * agi;
+    const adjustedGross = (taxableIncome + capitalGains) * agi;
     let taxRateBracket;
 
     for (const key of taxRatesForStatus.keys()) {
