@@ -13,10 +13,10 @@ class PersonViz extends Component {
 
   colors = [
     colors.taxableIncome,
-    colors.capitalGains,
-    colors.payroll,
-    colors.estate,
     colors.aca,
+    colors.payroll,
+    colors.capitalGains,
+    colors.estate,
     colors['positive-green'],
     colors['negative-red'],
   ];
