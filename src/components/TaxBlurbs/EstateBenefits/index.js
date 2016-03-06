@@ -33,12 +33,16 @@ class TaxBlurbsEstateBenefitsItem extends Component {
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { actions } from 'reducers/inputs';
+import {
+  estateBenefitsSelector,
+  estateSavingsSelector,
+  actions,
+} from 'reducers/inputs';
 
 export default connect(
   state => ({
-    estateBenefits: state.inputs.estateBenefits,
-    savings: -53,
+    estateBenefits: estateBenefitsSelector(state),
+    savings: estateSavingsSelector(state),
   }),
   dispatch => bindActionCreators({
     updateEstateBenefits: income => actions.updateInputs('estateBenefits', income),

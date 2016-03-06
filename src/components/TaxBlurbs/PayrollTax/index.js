@@ -17,9 +17,10 @@ class TaxBlurbsPayrollTaxItem extends Component {
 }
 
 import { connect } from 'react-redux';
+import { payrollSavingsSelector } from 'reducers/inputs';
 
 export default connect(
   state => ({
-    savings: 0,
+    savings: payrollSavingsSelector(state),
   }),
 )(TaxBlurbsPayrollTaxItem);
