@@ -9,7 +9,7 @@ class TaxBlurbsEstateBenefitsItem extends Component {
     updateEstateBenefits: PropTypes.func.isRequired,
   };
 
-  updateEstateBenefits = e => this.props.updateEstateBenefits(e.target.value);
+  updateEstateBenefits = e => this.props.updateEstateBenefits(Number(e.target.value));
 
   render() {
     return (
@@ -22,7 +22,7 @@ class TaxBlurbsEstateBenefitsItem extends Component {
           floatingLabelText="Expected benefits"
           value={this.props.estateBenefits}
           defaultValue={0}
-          onChange={this.props.updateEstateBenefits}
+          onChange={this.updateEstateBenefits}
           style={{ width: '20em', fontSize: '1.25em' }}
           underlineFocusStyle={{ borderColor: 'white' }}
         />
