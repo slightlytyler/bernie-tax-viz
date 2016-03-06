@@ -16,11 +16,11 @@ class TaxBlurbsACATaxItem extends Component {
   };
 
   updateMonthlyInsurancePremium = e =>
-    this.props.updateMonthlyInsurancePremium(e.target.value)
+    this.props.updateMonthlyInsurancePremium(Number(e.target.value))
   ;
 
   updateInsuranceDeductible = e =>
-    this.props.updateInsuranceDeductible(e.target.value)
+    this.props.updateInsuranceDeductible(Number(e.target.value))
   ;
 
   updateAnticipatedYearlyHealthSpending = (e, value) => {
@@ -28,11 +28,11 @@ class TaxBlurbsACATaxItem extends Component {
       maxAnticipatedYearlyHealthSpending,
       updateAnticipatedYearlyHealthSpending,
     } = this.props;
-    const newValue = Number(
+    const newValue = Math.round(Number(
       value
       ? value * maxAnticipatedYearlyHealthSpending
       : e.target.value
-    );
+    ));
 
     updateAnticipatedYearlyHealthSpending(
         newValue > maxAnticipatedYearlyHealthSpending
