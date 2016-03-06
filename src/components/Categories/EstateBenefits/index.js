@@ -18,9 +18,10 @@ class MainVizCategoriesEstateBenefitsItem extends Component {
 }
 
 import { connect } from 'react-redux';
+import { estateSavingsSelector } from 'reducers/inputs';
 
 export default connect(
   state => ({
-    savings: 125,
+    savings: estateSavingsSelector(state),
   }),
 )(MainVizCategoriesEstateBenefitsItem);

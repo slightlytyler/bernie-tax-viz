@@ -10,6 +10,7 @@ import { createSelector } from 'reselect';
 import incomeTaxRates from 'constants/incomeTaxRates';
 import agiTaxRates from 'constants/agiTaxRates';
 import payrollTaxRates from 'constants/payrollTaxRates';
+import estateTaxRates from 'constants/estateTaxRates';
 
 export const inputsSelector = state => state.inputs;
 
@@ -196,6 +197,75 @@ export const payrollTaxSelector = createSelector(
 export const payrollSavingsSelector = createSelector(
   payrollTaxSelector,
   incomeTax => incomeTax.current - incomeTax.sanders
+);
+
+export const estateTaxSelector = createSelector(
+  estateBenefitsSelector,
+  filingStatusSelector,
+  (income, filingStatus) => {
+    const { current: currentTaxRates, sanders: sandersTaxRates } = estateTaxRates;
+
+    const currentTaxRatesForStatus = currentTaxRates[filingStatus];
+    const currentTaxBrackets = Array.from(currentTaxRatesForStatus.keys());
+    let currentTaxLiability = 0;
+
+    for (const bracketCeiling of currentTaxBrackets) {
+      const bracketIndex = currentTaxBrackets.indexOf(bracketCeiling);
+      const bracketFloor =
+        bracketIndex === 0
+        ? 0
+        : currentTaxBrackets[bracketIndex - 1]
+      ;
+      let difference;
+
+      if (income > bracketCeiling) {
+        difference = bracketCeiling - bracketFloor;
+      } else {
+        difference = income - bracketFloor;
+      }
+
+      currentTaxLiability = difference * (currentTaxRatesForStatus.get(bracketCeiling) / 100);
+
+      if (income <= bracketCeiling) {
+        break;
+      }
+    }
+
+    const sandersTaxRatesForStatus = sandersTaxRates[filingStatus];
+    const sandersTaxBrackets = Array.from(sandersTaxRatesForStatus.keys());
+    let sandersTaxLiability = 0;
+
+    for (const bracketCeiling of sandersTaxBrackets) {
+      const bracketIndex = sandersTaxBrackets.indexOf(bracketCeiling);
+      const bracketFloor =
+        bracketIndex === 0
+        ? 0
+        : sandersTaxBrackets[bracketIndex - 1]
+      ;
+      let difference;
+
+      if (income > bracketCeiling) {
+        difference = bracketCeiling - bracketFloor;
+      } else {
+        difference = income - bracketFloor;
+      }
+
+      sandersTaxLiability = difference * (sandersTaxRatesForStatus.get(bracketCeiling) / 100);
+
+      if (income <= bracketCeiling) {
+        break;
+      }
+    }
+
+    return {
+      current: currentTaxLiability,
+      sanders: sandersTaxLiability,
+    };
+  }
+);
+export const estateSavingsSelector = createSelector(
+  estateTaxSelector,
+  tax => tax.current - tax.sanders
 );
 
 export const totalSavingsSelector = createSelector(
