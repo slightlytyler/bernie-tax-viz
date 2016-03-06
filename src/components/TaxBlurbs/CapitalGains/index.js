@@ -15,6 +15,11 @@ class TaxBlurbsCapitalGainsItem extends Component {
     return (
       <Item
         name="Capital Gains"
+        blurb={`
+          Capital gains are your investments' increases in value. These come
+          from things like stocks and bonds. The Plan will tax capital gains
+          above the 28% bracket the same way it taxes ordinary income.
+        `}
         savings={this.props.savings}
       >
         <TextField

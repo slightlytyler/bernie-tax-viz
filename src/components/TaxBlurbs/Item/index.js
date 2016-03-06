@@ -8,6 +8,7 @@ import colors from 'styles/colors';
 export default class TaxBlurbsItem extends Component {
   static propTypes ={
     name: PropTypes.string.isRequired,
+    blurb: PropTypes.string.isRequired,
     savings: PropTypes.number.isRequired,
     children: React.PropTypes.oneOfType([
       React.PropTypes.element,
@@ -16,7 +17,7 @@ export default class TaxBlurbsItem extends Component {
   };
 
   render() {
-    const { name, savings, children } = this.props;
+    const { name, blurb, savings, children } = this.props;
 
     return (
       <li
@@ -27,7 +28,7 @@ export default class TaxBlurbsItem extends Component {
         }}
       >
         <section styleName="title">{name}</section>
-
+        <p styleName="blurb">{blurb}</p>
         <ul styleName="inputs">
           {children}
         </ul>

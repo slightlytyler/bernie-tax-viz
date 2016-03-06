@@ -58,6 +58,10 @@ class TaxBlurbsACATaxItem extends Component {
     return (
       <Item
         name="ACA Tax"
+        blurb={`
+          The Plan will replace all of your annual healthcare costs with a 2.2%
+          tax on your ordinary income as a part of Medicare For All.
+        `}
         savings={savings}
       >
         <TextField

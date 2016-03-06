@@ -15,6 +15,16 @@ class TaxBlurbsEstateBenefitsItem extends Component {
     return (
       <Item
         name="Estate Benefits"
+        blurb={`
+          A certain amount of a gift or inheritance is exempt from the federal
+          gift and estate taxes. In 2016, the exemption is $5.45 million for
+          individuals and $10.90 million for couples. The Plan will lower this
+          exemption to $3.5 million for individuals and $7 million for couples,
+          and increase the current tax rate by 5%—15% on the transfers valued
+          above the exemption. It will also add a 10% tax on the transfer of
+          estates worth more than $500 million. This change will affect
+          approximately 10,500 households.
+        `}
         savings={this.props.savings}
       >
         <TextField
