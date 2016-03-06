@@ -37,7 +37,7 @@
       }
     },
     "deploy": {
-      "command": "npm run clean && npm run compile",
+      "command": "npm run clean && npm run compile && surge --project ./dist",
       "env": {
         "NODE_ENV": "production",
         "DEBUG": "app:*"
