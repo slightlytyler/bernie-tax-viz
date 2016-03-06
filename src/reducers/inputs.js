@@ -268,11 +268,44 @@ export const estateSavingsSelector = createSelector(
   tax => tax.current - tax.sanders
 );
 
+const sandersACATaxRate = 2.2;
+const outOfPocketMax = 8000;
+const coinsuranceRate = 20;
+export const acaTaxSelector = createSelector(
+    taxableIncomeSelector,
+    monthlyInsurancePremiumSelector,
+    insuranceDeductibleSelector,
+    anticipatedYearlyHealthSpendingSelector,
+    (income, premium, deductible, healthSpending) => {
+      let currentOutOfPocket;
+
+      if (healthSpending >= outOfPocketMax) {
+        currentOutOfPocket = outOfPocketMax;
+      } else if (healthSpending >= deductible) {
+        currentOutOfPocket = deductible + ((coinsuranceRate / 100) * (healthSpending - deductible));
+      } else {
+        currentOutOfPocket = healthSpending;
+      }
+
+      return {
+        current: (12 * premium) + currentOutOfPocket,
+        sanders: (sandersACATaxRate / 100) * income,
+      };
+    }
+);
+export const acaSavingsSelector = createSelector(
+  acaTaxSelector,
+  tax => tax.current - tax.sanders
+);
+
 export const totalSavingsSelector = createSelector(
   ordinaryIncomeSavingsSelector,
   capitalGainsSavingsSelector,
-  (ordinaryIncomeSavings, capitalGainsSavings) =>
-    ordinaryIncomeSavings + capitalGainsSavings
+  payrollSavingsSelector,
+  estateSavingsSelector,
+  acaSavingsSelector,
+  (ordinaryIncomeSavings, capitalGainsSavings, payrollSavings, estateSavings, acaSavings) =>
+    ordinaryIncomeSavings + capitalGainsSavings + payrollSavings + estateSavings + acaSavings
 );
 
 //

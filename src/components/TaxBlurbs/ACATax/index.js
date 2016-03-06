@@ -102,7 +102,7 @@ class TaxBlurbsACATaxItem extends Component {
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { actions } from 'reducers/inputs';
+import { acaSavingsSelector, actions } from 'reducers/inputs';
 
 export default connect(
   state => ({
@@ -110,7 +110,7 @@ export default connect(
     insuranceDeductible: state.inputs.insuranceDeductible,
     anticipatedYearlyHealthSpending: state.inputs.anticipatedYearlyHealthSpending,
     maxAnticipatedYearlyHealthSpending: 20000,
-    savings: 1200,
+    savings: acaSavingsSelector(state),
   }),
   dispatch => bindActionCreators({
     updateMonthlyInsurancePremium: premium => (
