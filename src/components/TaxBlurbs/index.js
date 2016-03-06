@@ -14,10 +14,10 @@ export default class TaxBlurbs extends Component {
     return (
       <ul styleName="tax-blurbs">
         <IncomeBlurb />
-        <CapitalGainsBlurb />
-        <PayrollTaxBlurb />
-        <EstateBenefitsBlurb />
         <ACATaxBlurb />
+        <PayrollTaxBlurb />
+        <CapitalGainsBlurb />
+        <EstateBenefitsBlurb />
       </ul>
     );
   }

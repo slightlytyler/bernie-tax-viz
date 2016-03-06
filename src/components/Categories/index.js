@@ -16,10 +16,10 @@ export default class MainVizCategories extends Component {
       <div styleName="container">
         <ul styleName="categories">
           <Income />
-          <CapitalGains />
-          <PayrollTax />
-          <EstateBenefits />
           <ACATax />
+          <PayrollTax />
+          <CapitalGains />
+          <EstateBenefits />
         </ul>
 
         <ul styleName="categories" style={{ color: '#0277BD' }}>

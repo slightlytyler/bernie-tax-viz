@@ -83,10 +83,10 @@ export default connect(
           ],
         },
         {
-          name: 'Capital Gains',
+          name: 'ACA Tax',
           values: [
-            { x: 1, y: capitalGainsTax.current },
-            { x: 2, y: capitalGainsTax.sanders },
+            { x: 1, y: acaTax.current },
+            { x: 2, y: acaTax.sanders },
           ],
         },
         {
@@ -97,17 +97,17 @@ export default connect(
           ],
         },
         {
+          name: 'Capital Gains',
+          values: [
+            { x: 1, y: capitalGainsTax.current },
+            { x: 2, y: capitalGainsTax.sanders },
+          ],
+        },
+        {
           name: 'Estate Benefits',
           values: [
             { x: 1, y: estateTax.current },
             { x: 2, y: estateTax.sanders },
-          ],
-        },
-        {
-          name: 'ACA Tax',
-          values: [
-            { x: 1, y: acaTax.current },
-            { x: 2, y: acaTax.sanders },
           ],
         },
         {
