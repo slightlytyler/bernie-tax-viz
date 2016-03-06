@@ -122,7 +122,7 @@ const single = new Map([
 ]);
 
 const married = new Map([
-  [21,300, {
+  [21300, {
     current: {
       ordinaryIncome: 0,
       capitalGains: 0,
@@ -132,7 +132,7 @@ const married = new Map([
       capitalGains: 0,
     },
   }],
-  [40,300, {
+  [40300, {
     current: {
       ordinaryIncome: 10,
       capitalGains: 0,
