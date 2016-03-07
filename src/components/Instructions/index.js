@@ -43,9 +43,9 @@ export default class Title extends Component {
             <img src={share} styleName="icon" />
             <span styleName="text">Spread the word!</span>
           </li>
-        </ul>
 
-        <img src={close} styleName="close" />
+          <img src={close} styleName="close" />
+        </ul>
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import SelectField from 'material-ui/lib/select-field';
 import MenuItem from 'material-ui/lib/menus/menu-item';
+import colors from 'styles/colors';
 import Item from '../Item';
 import TextField from 'components/TextField';
 
@@ -57,6 +58,8 @@ class TaxBlurbsTaxableIncomeItem extends Component {
           value={filingStatus}
           onChange={updateFilingStatus}
           style={{ width: '20em', marginRight: '2em', fontSize: '1.25em' }}
+          labelStyle={{ color: colors.white }}
+          floatingLabelStyle={{ whiteSpace: 'nowrap', color: colors.white }}
         >
           <MenuItem value="single" primaryText="Single"/>
           <MenuItem value="married" primaryText="Married"/>
