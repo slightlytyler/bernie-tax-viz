@@ -27,21 +27,21 @@ export default class Title extends Component {
           </li>
           <li styleName="item">
             <img src={clipboard} styleName="icon" />
-            <span styleName="text">Enter your data</span>
+            <span styleName="text">Enter some data</span>
           </li>
           <li styleName="item arrow">
             <img src={arrow} styleName="image" />
           </li>
           <li styleName="item">
             <img src={chart} styleName="icon" />
-            <span styleName="text">View your savings</span>
+            <span styleName="text">View the savings</span>
           </li>
           <li styleName="item arrow">
             <img src={arrow} styleName="image" />
           </li>
           <li styleName="item">
             <img src={share} styleName="icon" />
-            <span styleName="text">Spread the word!</span>
+            <span styleName="text">Share the viz!</span>
           </li>
 
           <img src={close} styleName="close" />

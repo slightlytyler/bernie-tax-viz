@@ -7,29 +7,43 @@ export default class Footer extends Component {
   render() {
     return (
       <footer styleName="footer">
-        <span>The Plan</span>
+        <span>thePlan</span>
         <a
           href="http://taxpolicycenter.org/UploadedPDF/2000639-an-analysis-of-senator-bernie-sanderss-tax-proposals.pdf"
           styleName="link"
         >
-          Tax Policy Center
+          .data(taxPolicyCenter)
         </a>
         <a
           href="http://http://berniecare.org/"
           styleName="link"
         >
-          berniecare.org
+          .math(bernieCare)
         </a>
         <a
           href="http://http://bernietax.com/"
           styleName="link"
         >
-          bernietax.com
+          .const(bernieTax)
         </a>
+        <span>figures = estimatesNotAdvice;</span>
+        <span></span>
         <span>.</span>
-        <span>Figures provided are estimates, not advice.</span>
-        <span>.</span>
-        <span>admin@dataviz.work</span>
+        <span>
+          admin@dataViz.work
+        </span>
+        <span><a
+          href="https://github.com/slightlytyler/bernie-tax-viz"
+          styleName="link"
+        >
+          @gitHub
+        </a></span>
+        <span><a
+          href="https://twitter.com/dataviz_work"
+          styleName="link"
+        >
+          @dataviz_work
+        </a></span>
       </footer>
     );
   }
