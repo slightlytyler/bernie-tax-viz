@@ -22,9 +22,9 @@ export const filingStatusSelector = createSelector(
   inputsSelector,
   inputs => inputs.filingStatus
 );
-export const agiSelector = createSelector(
+export const dependentsSelector = createSelector(
   inputsSelector,
-  inputs => inputs.agi
+  inputs => inputs.dependents
 );
 export const capitalGainsSelector = createSelector(
   inputsSelector,
@@ -45,6 +45,17 @@ export const insuranceDeductibleSelector = createSelector(
 export const anticipatedYearlyHealthSpendingSelector = createSelector(
   inputsSelector,
   inputs => inputs.anticipatedYearlyHealthSpending
+);
+
+export const agiSelector = createSelector(
+  taxableIncomeSelector,
+  filingStatusSelector,
+  dependentsSelector,
+  (income, filingStatus, dependents) => {
+    const exemptions = (filingStatus === 'married' ? 2 : 1) + dependents;
+
+    return income - (4000 * exemptions);
+  }
 );
 
 function incomeTaxCalculator(type, income, filingStatus, agi) {
@@ -96,13 +107,13 @@ function incomeTaxCalculator(type, income, filingStatus, agi) {
       ? 0
       : agiTaxBrackets[bracketIndex - 1]
     ;
-    const adjustedIncome = income * agi;
+
     let difference;
 
-    if (adjustedIncome > bracketCeiling) {
+    if (agi > bracketCeiling) {
       difference = bracketCeiling - bracketFloor;
     } else {
-      difference = adjustedIncome - bracketFloor;
+      difference = agi - bracketFloor;
     }
 
     const currentTax =

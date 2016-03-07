@@ -8,29 +8,29 @@ class TaxBlurbsTaxableIncomeItem extends Component {
   static propTypes ={
     taxableIncome: PropTypes.number,
     filingStatus: PropTypes.oneOf(['single', 'married']),
-    agi: PropTypes.number,
+    dependents: PropTypes.number,
     savings: PropTypes.number,
     updateTaxableIncome: PropTypes.func.isRequired,
     updateFilingStatus: PropTypes.func.isRequired,
-    updateAGI: PropTypes.func.isRequired,
+    updateDependents: PropTypes.func.isRequired,
   };
 
   updateTaxableIncome = e => this.props.updateTaxableIncome(Number(e.target.value));
 
   updateFilingStatus = (e, index, value) => this.props.updateFilingStatus(value);
 
-  updateAGI = e => this.props.updateAGI(Number(e.target.value));
+  updateDependents = e => this.props.updateDependents(Number(e.target.value));
 
   render() {
     const {
       updateTaxableIncome,
       updateFilingStatus,
-      updateAGI,
+      updateDependents,
     } = this;
     const {
       taxableIncome,
       filingStatus,
-      agi,
+      dependents,
       savings,
     } = this.props;
 
@@ -65,9 +65,9 @@ class TaxBlurbsTaxableIncomeItem extends Component {
         </SelectField>
         <TextField
           type="number"
-          floatingLabelText="AGI (optional)"
-          value={agi}
-          onChange={updateAGI}
+          floatingLabelText="Dependents"
+          value={dependents}
+          onChange={updateDependents}
           style={{ width: '15em', fontSize: '1.25em' }}
           underlineFocusStyle={{ borderColor: 'white' }}
         />
@@ -81,7 +81,7 @@ import { connect } from 'react-redux';
 import {
   taxableIncomeSelector,
   filingStatusSelector,
-  agiSelector,
+  dependentsSelector,
   ordinaryIncomeSavingsSelector,
   actions,
 } from 'reducers/inputs';
@@ -90,12 +90,12 @@ export default connect(
   state => ({
     taxableIncome: taxableIncomeSelector(state),
     filingStatus: filingStatusSelector(state),
-    agi: agiSelector(state),
+    dependents: dependentsSelector(state),
     savings: ordinaryIncomeSavingsSelector(state),
   }),
   dispatch => bindActionCreators({
     updateTaxableIncome: income => actions.updateInputs('taxableIncome', income),
     updateFilingStatus: status => actions.updateInputs('filingStatus', status),
-    updateAGI: agi => actions.updateInputs('agi', agi),
+    updateDependents: dependents => actions.updateInputs('dependents', dependents),
   }, dispatch),
 )(TaxBlurbsTaxableIncomeItem);
