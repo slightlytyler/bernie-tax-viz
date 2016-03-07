@@ -18,20 +18,29 @@ export default class TaxBlurbsItem extends Component {
 
   render() {
     const { name, blurb, savings, children } = this.props;
-
+    const magnitudeColor = savings >= 0 ? colors['positive-green'] : colors['negative-red'];
     return (
       <li
         className="pane"
         styleName="base"
         style={{
-          backgroundColor: savings >= 0 ? colors['positive-green'] : colors['negative-red'],
+          backgroundColor: magnitudeColor,
+          borderColor: magnitudeColor,
         }}
       >
-        <section styleName="title">{name}</section>
-        <p styleName="blurb">{blurb}</p>
-        <ul styleName="inputs">
-          {children}
-        </ul>
+        <div styleName="text">
+          <section styleName="title">{name}</section>
+          <p styleName="blurb">{blurb}</p>
+        </div>
+        {
+          children
+          ? (
+            <ul styleName="inputs">
+              {children}
+            </ul>
+          )
+          : undefined
+        }
       </li>
     );
   }
