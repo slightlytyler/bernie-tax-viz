@@ -8,7 +8,6 @@ export default class Footer extends Component {
     return (
       <footer className="pane" styleName="footer">
         <span>The Plan</span>
-        <span>sources:</span>
         <a
           href="http://taxpolicycenter.org/UploadedPDF/2000639-an-analysis-of-senator-bernie-sanderss-tax-proposals.pdf"
           styleName="link"
