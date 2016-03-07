@@ -24,22 +24,22 @@ class Cases extends Component {
           inkBarStyle={{ backgroundColor: colors.darkBernieBlue }}
         >
           <Tab
-            label="Case One"
+            label="Low Income"
             value="case1"
             style={{ backgroundColor: colors.bernieBlue }}
           />
           <Tab
-            label="Case Two"
+            label="Middle Income"
             value="case2"
             style={{ backgroundColor: colors.bernieBlue }}
           />
           <Tab
-            label="Case Three"
+            label="High Income"
             value="case3"
             style={{ backgroundColor: colors.bernieBlue }}
           />
           <Tab
-            label="Case Four"
+            label="Super High Income"
             value="case4"
             style={{ backgroundColor: colors.bernieBlue }}
           />
