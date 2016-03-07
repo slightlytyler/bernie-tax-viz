@@ -42,12 +42,12 @@ class TaxBlurbsTaxableIncomeItem extends Component {
           `Ordinary income is the money you earn by selling things or working.
           This includes your wages and profits you make on personal sales. The
           Plan will leave the lowest four tax brackets (up to the 28% bracket)
-          unchanged, and add a new tax on the highest-earners' AGI. `
+          unchanged, and add a few new tax brackets for the highest-earners. `
         }
       >
         <TextField
           type="number"
-          floatingLabelText="Taxable Income"
+          floatingLabelText="Gross Income"
           value={taxableIncome}
           defaultValue={0}
           onChange={updateTaxableIncome}
