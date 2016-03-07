@@ -23,7 +23,7 @@ class PersonViz extends Component {
   colorsFn = idx => this.colors[idx];
 
   colorAccessor = (series, idx) => (
-    idx === 4 && series.x === 'Current'
+    idx === (this.props.barData.length - 1) && series.x === 'Current'
       ? idx + 1
       : idx
   );
