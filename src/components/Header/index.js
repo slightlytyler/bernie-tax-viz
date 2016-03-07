@@ -10,8 +10,10 @@ export default class Header extends Component {
   render() {
     return (
       <header styleName="header">
-        <img src={text} styleName="text" />
-        <img src={vector} styleName="vector" />
+        <div styleName="container">
+          <img src={text} styleName="text" />
+          <img src={vector} styleName="vector" />
+        </div>
       </header>
     );
   }
