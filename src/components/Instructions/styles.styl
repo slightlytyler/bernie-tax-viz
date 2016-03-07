@@ -1,6 +1,47 @@
 .instructions
+  position: relative
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10rem
+  flex-direction: column
+  justify-content: center
+  align-items: center
   background-color: #efefef
+
+  .icons
+    list-style: none
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 80%
+
+  .item
+    position: relative
+    display: flex
+    flex: 2
+    flex-direction: column
+    justify-content: flex-end
+    align-items: center
+    max-width: 8em
+
+    &:not(:last-child)
+      margin-right: 4em
+
+    &.arrow
+      flex: 1
+
+      .image
+        width: 100%
+
+    .icon
+      width: 75%
+      margin-bottom: 1em
+
+    .text
+      font-size: 1.25em
+      white-space: nowrap
+
+  .close
+    position: absolute
+    right: .5em
+    top: .5em
+    width: 2em
+    cursor: pointer
