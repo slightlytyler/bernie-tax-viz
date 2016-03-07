@@ -1,15 +1,5 @@
 export default {
-  case1: {
-    taxableIncome: 60000,
-    filingStatus: 'single',
-    dependents: 0,
-    capitalGains: 15000,
-    estateBenefits: 50000,
-    monthlyInsurancePremium: 125,
-    insuranceDeductible: 5000,
-    anticipatedYearlyHealthSpending: 2000,
-  },
-  case2: {
+    case1: {
     taxableIncome: 13000,
     filingStatus: 'married',
     dependents: 4,
@@ -19,6 +9,18 @@ export default {
     insuranceDeductible: 5000,
     anticipatedYearlyHealthSpending: 5000,
   },
+    
+    case2: {
+    taxableIncome: 60000,
+    filingStatus: 'single',
+    dependents: 0,
+    capitalGains: 15000,
+    estateBenefits: 50000,
+    monthlyInsurancePremium: 125,
+    insuranceDeductible: 5000,
+    anticipatedYearlyHealthSpending: 2000,
+  },
+
   case3: {
     taxableIncome: 120000,
     filingStatus: 'single',
