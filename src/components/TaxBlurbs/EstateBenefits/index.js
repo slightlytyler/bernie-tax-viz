@@ -16,9 +16,9 @@ class TaxBlurbsEstateBenefitsItem extends Component {
       <Item
         name="Estate Benefits"
         blurb={`
-          The first $5.45m for singles or $10.90m for couples is exempt from Estate Taxes. The Plan will lower this
-          exemption to $3.5m/$7m and increase the current tax rate by 5%—25%.
-          The largest increase will affect approximately 10,500 households.
+          The first $5.45m for singles or $10.90m for couples is exempt from Estate Taxes.
+          The Plan will lower this exemption to $3.5m/$7m and increase the current tax rate
+          by 5%—25%. The largest increase will affect approximately 10,500 households.
         `}
         savings={this.props.savings}
       >
