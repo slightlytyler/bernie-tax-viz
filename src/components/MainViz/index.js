@@ -9,7 +9,7 @@ import PersonViz from 'components/PersonViz';
 export default class MainViz extends Component {
   render() {
     return (
-      <div className="pane" styleName="main-viz">
+      <div className="pane flush" styleName="main-viz">
         <Categories />
         <PersonViz />
       </div>
