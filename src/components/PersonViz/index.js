@@ -33,9 +33,10 @@ class PersonViz extends Component {
     return (
       <div styleName="person-viz">
         <BarChart
+          title="the plans, compared"
           data={this.props.barData}
           width={700}
-          height={700}
+          height={550}
           colors={this.colorsFn}
           colorAccessor={this.colorAccessor}
           yAxisClassName="hide"
