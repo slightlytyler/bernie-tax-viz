@@ -6,7 +6,7 @@ import styles from './styles.styl';
 export default class Footer extends Component {
   render() {
     return (
-      <footer className="pane" styleName="footer">
+      <footer styleName="footer">
         <span>The Plan</span>
         <a
           href="http://taxpolicycenter.org/UploadedPDF/2000639-an-analysis-of-senator-bernie-sanderss-tax-proposals.pdf"
