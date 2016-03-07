@@ -19,7 +19,7 @@ class TaxBlurbsCapitalGainsItem extends Component {
           Capital gains are your investments' increases in value. Currently, income from
           capital gains is taxed at lower income rates and lower medicare rates than ordinary income.
           The Plan will tax capital gains above the 28% income bracket the same way it taxes ordinary income.
-          The Plan will also raise the medicare surtax on capital gains from 3.8% to 10%.
+          The Plan will also raise the medicare surtax on capital gains by 6.2%.
         `}
         savings={this.props.savings}
       >
