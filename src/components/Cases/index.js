@@ -17,7 +17,7 @@ class Cases extends Component {
     const { currentCase, updateUserCase } = this.props;
 
     return (
-      <div styleName="cases">
+      <div id="cases" styleName="cases">
         <Tabs
           value={currentCase}
           onChange={updateUserCase}
