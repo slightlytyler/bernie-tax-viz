@@ -37,7 +37,14 @@ export default class MainVizCategoriesItem extends Component {
         <section
           styleName="savings"
           style={{
-            backgroundColor: isPositive ? colors['positive-green'] : colors['negative-red'],
+            color: invertColor
+             ? isPositive ? 'currentColor' : colors['negative-red']
+             : colors.black
+            ,
+            backgroundColor: invertColor
+              ? colors.white
+              : isPositive ? colors['positive-green'] : colors['negative-red']
+            ,
           }}
         >
           {accounting.formatMoney(savings)}
