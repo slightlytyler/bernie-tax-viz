@@ -28,6 +28,7 @@ class TaxBlurbsEstateBenefitsItem extends Component {
           floatingLabelText="What is your expected lifetime estate benefit?"
           value={this.props.estateBenefits}
           defaultValue={0}
+          step={1000}
           onChange={this.updateEstateBenefits}
         />
       </Item>

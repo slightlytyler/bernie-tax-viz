@@ -266,7 +266,13 @@ export const totalSavingsSelector = createSelector(
 // Actions
 //
 export const actions = {
-  updateInputs: (key, val) => ({ type: UPDATE_INPUTS, key, val }),
+  updateInputs: (key, val) => {
+    if (typeof val === 'number' && val < 0) {
+      return { type: UPDATE_INPUTS, key, val: 0 };
+    }
+
+    return { type: UPDATE_INPUTS, key, val };
+  },
 };
 
 //

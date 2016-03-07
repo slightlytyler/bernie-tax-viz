@@ -52,6 +52,7 @@ class TaxBlurbsTaxableIncomeItem extends Component {
           floatingLabelText="How much will you make this year?"
           value={taxableIncome}
           defaultValue={0}
+          step={1000}
           onChange={updateTaxableIncome}
         />
         <SelectField

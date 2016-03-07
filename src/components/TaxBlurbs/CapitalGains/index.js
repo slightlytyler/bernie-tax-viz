@@ -29,6 +29,7 @@ class TaxBlurbsCapitalGainsItem extends Component {
           floatingLabelText="How much Capital Gains will you realize next year?"
           value={this.props.capitalGains}
           defaultValue={0}
+          step={1000}
           onChange={this.updateCapitalGains}
         />
       </Item>

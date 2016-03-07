@@ -37,8 +37,9 @@ class TaxBlurbsACATaxItem extends Component {
         <TextField
           type="number"
           floatingLabelText="What is your Anticipated Yearly Health Spending?"
-          value={Math.round(anticipatedYearlyHealthSpending)}
+          value={anticipatedYearlyHealthSpending}
           defaultValue={0}
+          step={1000}
           onChange={updateAnticipatedYearlyHealthSpending}
         />
       </Item>
