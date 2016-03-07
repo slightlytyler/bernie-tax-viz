@@ -12,11 +12,11 @@ class PersonViz extends Component {
   };
 
   colors = [
-    colors.taxableIncome,
-    colors.aca,
-    colors.payroll,
-    colors.capitalGains,
     colors.estate,
+    colors.capitalGains,
+    colors.payroll,
+    colors.aca,
+    colors.taxableIncome,
     colors['positive-green'],
     colors['negative-red'],
   ];
@@ -78,24 +78,10 @@ export default connect(
     return {
       barData: [
         {
-          name: 'Taxable Income',
+          name: 'Estate Benefits',
           values: [
-            { x: 'Current', y: ordinaryIncomeTax.current },
-            { x: 'Sanders', y: ordinaryIncomeTax.sanders },
-          ],
-        },
-        {
-          name: 'ACA Tax',
-          values: [
-            { x: 'Current', y: acaTax.current },
-            { x: 'Sanders', y: acaTax.sanders },
-          ],
-        },
-        {
-          name: 'Payroll Tax',
-          values: [
-            { x: 'Current', y: payrollTax.current },
-            { x: 'Sanders', y: payrollTax.sanders },
+            { x: 'Current', y: estateTax.current },
+            { x: 'Sanders', y: estateTax.sanders },
           ],
         },
         {
@@ -106,10 +92,24 @@ export default connect(
           ],
         },
         {
-          name: 'Estate Benefits',
+          name: 'Payroll Tax',
           values: [
-            { x: 'Current', y: estateTax.current },
-            { x: 'Sanders', y: estateTax.sanders },
+            { x: 'Current', y: payrollTax.current },
+            { x: 'Sanders', y: payrollTax.sanders },
+          ],
+        },
+        {
+          name: 'ACA Tax',
+          values: [
+            { x: 'Current', y: acaTax.current },
+            { x: 'Sanders', y: acaTax.sanders },
+          ],
+        },
+        {
+          name: 'Taxable Income',
+          values: [
+            { x: 'Current', y: ordinaryIncomeTax.current },
+            { x: 'Sanders', y: ordinaryIncomeTax.sanders },
           ],
         },
         {
