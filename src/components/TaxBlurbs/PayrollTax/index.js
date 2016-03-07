@@ -11,10 +11,11 @@ class TaxBlurbsPayrollTaxItem extends Component {
       <Item
         name="Other Payroll Taxes"
         blurb={`
-          Today, payroll taxes on your wages contribute towards SS, Medicare, and Medicaid.
-          The Plan will tax 0.2% from the first $118,500 of your taxable income to
-          pay for paid family and medical leave. It will also add a 6.2% tax on
-          earnings over $200,000 ($250,000 for couples) to help expand and strengthen Social Security.
+          Today, payroll taxes on your wages contribute towards SS, Medicare, and
+          Medicaid. The Plan will tax 0.2% from the first $118,500 of your taxable
+          income to pay for paid family and medical leave. It will also add a 6.2%
+          tax on earnings over $200,000 ($250,000 for couples) to help expand and
+          strengthen Social Security.
         `}
         savings={this.props.savings}
       />

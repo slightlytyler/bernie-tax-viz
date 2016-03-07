@@ -42,9 +42,10 @@ class TaxBlurbsTaxableIncomeItem extends Component {
         blurb={
           `Ordinary Income tax is the marginal tax rate you pay on ordinary income.
           Ordinary Income is the money you earn by selling things or working.
-          The Plan will leave the lowest four tax brackets unchanged (up to the 33% bracket; single income under $230,451)
-          , and add additional tax brackets for the very highest-earners (up to 52% for income over $10 million).
-          `}
+          The Plan will leave the lowest four tax brackets unchanged (up to the 33%
+          bracket; single income under $230,451), and add additional tax brackets for the
+          very highest-earners (up to 52% for income over $10 million).
+        `}
       >
         <TextField
           type="number"
