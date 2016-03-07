@@ -7,7 +7,7 @@ export default class CustomTextField extends Component {
     return (
       <TextField
         {...this.props}
-        style={{ width: '20em', marginRight: '2em', fontSize: '1.25em' }}
+        style={{ width: '20em', marginRight: '2em', fontSize: '1.5em' }}
         inputStyle={{ color: colors.white }}
         floatingLabelStyle={{ whiteSpace: 'nowrap', color: colors.white }}
         underlineFocusStyle={{ borderColor: 'white' }}
