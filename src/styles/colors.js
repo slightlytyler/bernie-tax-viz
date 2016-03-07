@@ -4,6 +4,7 @@ export default {
   'negative-red': '#E57373',
   'positive-green': '#00E676',
   bernieBlue: '#147fd7',
+  darkBernieBlue: '#003F70',
   taxableIncome: '#FFB74D',
   capitalGains: '#FFF59D',
   payroll: '#80DEEA',

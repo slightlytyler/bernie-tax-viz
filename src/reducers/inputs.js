@@ -1,7 +1,8 @@
 //
 // Constants
 //
-const UPDATE_INPUTS = 'UPDATE_INPUTS';
+export const UPDATE_INPUTS = 'UPDATE_INPUTS';
+import { UPDATE_USER_CASE } from 'reducers/userCase';
 
 //
 // Selectors
@@ -102,6 +103,11 @@ export const ordinaryIncomeTaxSelector = createSelector(
 export const ordinaryIncomeSavingsSelector = createSelector(
   ordinaryIncomeTaxSelector,
   incomeTax => incomeTax.current - incomeTax.sanders
+);
+
+export const maxAnticipatedYearlyHealthSpendingSelector = createSelector(
+  agiSelector,
+  agi => agi * 3
 );
 
 export const capitalGainsTaxSelector = createSelector(
@@ -269,10 +275,15 @@ export const actions = {
 //
 // Reducers
 //
+import cases from 'constants/cases';
+
 export default function (state = {}, action) {
   switch (action.type) {
     case UPDATE_INPUTS:
       return Object.assign({}, state, { [action.key]: action.val });
+
+    case UPDATE_USER_CASE:
+      return cases[action.userCase];
 
     default:
       return state;
