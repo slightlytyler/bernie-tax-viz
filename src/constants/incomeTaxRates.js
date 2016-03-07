@@ -1,5 +1,15 @@
 const single = new Map([
-  [9500, {
+  [10650, {
+    current: {
+      ordinaryIncome: 0,
+      capitalGains: 0,
+    },
+    sanders: {
+      ordinaryIncome: 0,
+      capitalGains: 0,
+    },
+  }],
+  [20150, {
     current: {
       ordinaryIncome: 10,
       capitalGains: 0,
@@ -9,7 +19,7 @@ const single = new Map([
       capitalGains: 0,
     },
   }],
-  [38600, {
+  [49250, {
     current: {
       ordinaryIncome: 15,
       capitalGains: 0,
@@ -19,17 +29,17 @@ const single = new Map([
       capitalGains: 0,
     },
   }],
-  [93550, {
+  [104200, {
     current: {
       ordinaryIncome: 25,
       capitalGains: 15,
     },
     sanders: {
-      ordinaryIncome: 25,
+      ordinaryIncome: 28,
       capitalGains: 15,
     },
   }],
-  [195100, {
+  [200000, {
     current: {
       ordinaryIncome: 28,
       capitalGains: 15,
@@ -39,40 +49,101 @@ const single = new Map([
       capitalGains: 15,
     },
   }],
-  [424150, {
+  [205750, {
+    current: {
+      ordinaryIncome: 28,
+      capitalGains: 15,
+    },
+    sanders: {
+      ordinaryIncome: 37,
+      capitalGains: 34,
+    },
+  }],
+  [434800, {
     current: {
       ordinaryIncome: 33,
       capitalGains: 15,
     },
     sanders: {
-      ordinaryIncome: 28,
-      capitalGains: 28,
+      ordinaryIncome: 37,
+      capitalGains: 37,
     },
   }],
-  [425850, {
+  [434800, {
+    current: {
+      ordinaryIncome: 33,
+      capitalGains: 15,
+    },
+    sanders: {
+      ordinaryIncome: 37,
+      capitalGains: 37,
+    },
+  }],
+  [436500, {
     current: {
       ordinaryIncome: 35,
       capitalGains: 15,
     },
     sanders: {
-      ordinaryIncome: 28,
-      capitalGains: 28,
+      ordinaryIncome: 37,
+      capitalGains: 37,
     },
   }],
+  [500000, {
+    current: {
+      ordinaryIncome: 39.6,
+      capitalGains: 20,
+    },
+    sanders: {
+      ordinaryIncome: 37,
+      capitalGains: 37,
+    },
+  }],
+  [2000000, {
+    current: {
+      ordinaryIncome: 39.6,
+      capitalGains: 20,
+    },
+    sanders: {
+      ordinaryIncome: 43,
+      capitalGains: 43,
+    },
+  }],
+    [10000000, {
+    current: {
+      ordinaryIncome: 39.6,
+      capitalGains: 20,
+    },
+    sanders: {
+      ordinaryIncome: 48,
+      capitalGains: 48,
+    },
+  }],
+
   ['over', {
     current: {
       ordinaryIncome: 39.6,
       capitalGains: 20,
     },
     sanders: {
-      ordinaryIncome: 28,
-      capitalGains: 28,
+      ordinaryIncome: 52,
+      capitalGains: 52,
     },
   }],
 ]);
 
 const married = new Map([
-  [19000, {
+  [21300, {
+    current: {
+      ordinaryIncome: 0,
+      capitalGains: 0,
+    },
+    sanders: {
+      ordinaryIncome: 0,
+      capitalGains: 0,
+    },
+  }],
+  [40300, {
     current: {
       ordinaryIncome: 10,
       capitalGains: 0,
@@ -82,7 +153,7 @@ const married = new Map([
       capitalGains: 0,
     },
   }],
-  [77200, {
+  [98500, {
     current: {
       ordinaryIncome: 15,
       capitalGains: 0,
@@ -92,17 +163,17 @@ const married = new Map([
       capitalGains: 0,
     },
   }],
-  [155850, {
+  [177150, {
     current: {
       ordinaryIncome: 25,
       capitalGains: 15,
     },
     sanders: {
-      ordinaryIncome: 25,
+      ordinaryIncome: 28,
       capitalGains: 15,
     },
   }],
-  [237500, {
+  [250000, {
     current: {
       ordinaryIncome: 28,
       capitalGains: 15,
@@ -112,34 +183,76 @@ const married = new Map([
       capitalGains: 15,
     },
   }],
-  [424150, {
+  [258800, {
+    current: {
+      ordinaryIncome: 28,
+      capitalGains: 15,
+    },
+    sanders: {
+      ordinaryIncome: 37,
+      capitalGains: 34,
+    },
+  }],
+  [445450, {
     current: {
       ordinaryIncome: 33,
       capitalGains: 15,
     },
     sanders: {
-      ordinaryIncome: 28,
-      capitalGains: 28,
+      ordinaryIncome: 37,
+      capitalGains: 37,
     },
   }],
-  [479100, {
+  [500000, {
+    current: {
+      ordinaryIncome: 33,
+      capitalGains: 15,
+    },
+    sanders: {
+      ordinaryIncome: 37,
+      capitalGains: 37,
+    },
+  }],
+  [500400, {
     current: {
       ordinaryIncome: 35,
       capitalGains: 15,
     },
     sanders: {
-      ordinaryIncome: 28,
-      capitalGains: 28,
+      ordinaryIncome: 37,
+      capitalGains: 37,
     },
   }],
+
+  [2000000, {
+    current: {
+      ordinaryIncome: 39.6,
+      capitalGains: 20,
+    },
+    sanders: {
+      ordinaryIncome: 43,
+      capitalGains: 43,
+    },
+  }],
+    [10000000, {
+    current: {
+      ordinaryIncome: 39.6,
+      capitalGains: 20,
+    },
+    sanders: {
+      ordinaryIncome: 48,
+      capitalGains: 48,
+    },
+  }],
+
   ['over', {
     current: {
       ordinaryIncome: 39.6,
       capitalGains: 20,
     },
     sanders: {
-      ordinaryIncome: 28,
-      capitalGains: 28,
+      ordinaryIncome: 52,
+      capitalGains: 52,
     },
   }],
 ]);
