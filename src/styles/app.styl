@@ -14,9 +14,19 @@
     line-height: 2
 
   .pane
-    padding: 2rem
+    overflow: auto
     margin-bottom: 2em
     border-radius: 4px
+
+    & > *
+      padding-left: 2rem
+      padding-right: 2rem
+
+      &:first-child
+        padding-top: 2rem
+
+      &:last-child
+        padding-bottom: 2rem
 
   .hide
     display: none
