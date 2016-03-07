@@ -313,10 +313,9 @@ export const totalSavingsSelector = createSelector(
   ordinaryIncomeSavingsSelector,
   capitalGainsSavingsSelector,
   payrollSavingsSelector,
-  estateSavingsSelector,
   acaSavingsSelector,
-  (ordinaryIncomeSavings, capitalGainsSavings, payrollSavings, estateSavings, acaSavings) =>
-    ordinaryIncomeSavings + capitalGainsSavings + payrollSavings + estateSavings + acaSavings
+  (ordinaryIncomeSavings, capitalGainsSavings, payrollSavings, acaSavings) =>
+    ordinaryIncomeSavings + capitalGainsSavings + payrollSavings + acaSavings
 );
 
 //
