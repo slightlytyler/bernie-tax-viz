@@ -7,7 +7,7 @@ export default class Footer extends Component {
   render() {
     return (
       <footer className="pane" styleName="footer">
-        <span>The Plan by dataviz.work</span>
+        <span>The Plan</span>
         <span>sources:</span>
         <a
           href="http://taxpolicycenter.org/UploadedPDF/2000639-an-analysis-of-senator-bernie-sanderss-tax-proposals.pdf"
@@ -31,7 +31,6 @@ export default class Footer extends Component {
         <span>Figures provided are estimates, not advice.</span>
         <span>.</span>
         <span>admin@dataviz.work</span>
-        <span>comments/suggestions.</span>
       </footer>
     );
   }
