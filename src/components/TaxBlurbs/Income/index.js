@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import Item from '../Item';
-import TextField from 'material-ui/lib/text-field';
 import SelectField from 'material-ui/lib/select-field';
 import MenuItem from 'material-ui/lib/menus/menu-item';
+import Item from '../Item';
+import TextField from 'components/TextField';
 
 class TaxBlurbsTaxableIncomeItem extends Component {
   static propTypes ={
@@ -51,8 +51,6 @@ class TaxBlurbsTaxableIncomeItem extends Component {
           value={taxableIncome}
           defaultValue={0}
           onChange={updateTaxableIncome}
-          style={{ width: '20em', marginRight: '2em', fontSize: '1.25em' }}
-          underlineFocusStyle={{ borderColor: 'white' }}
         />
         <SelectField
           floatingLabelText="Are you single or married?"
@@ -68,8 +66,6 @@ class TaxBlurbsTaxableIncomeItem extends Component {
           floatingLabelText="How many dependents do you have?"
           value={dependents}
           onChange={updateDependents}
-          style={{ width: '15em', fontSize: '1.25em' }}
-          underlineFocusStyle={{ borderColor: 'white' }}
         />
       </Item>
     );

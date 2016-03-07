@@ -3,7 +3,7 @@ export default {
   white: '#FAFAFA',
   'negative-red': '#E57373',
   'positive-green': '#00E676',
-  burnieBlue: '#147fd7',
+  bernieBlue: '#147fd7',
   taxableIncome: '#FFB74D',
   capitalGains: '#FFF59D',
   payroll: '#80DEEA',

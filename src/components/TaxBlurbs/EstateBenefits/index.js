@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Item from '../Item';
-import TextField from 'material-ui/lib/text-field';
+import TextField from 'components/TextField';
 
 class TaxBlurbsEstateBenefitsItem extends Component {
   static propTypes ={
@@ -33,8 +33,6 @@ class TaxBlurbsEstateBenefitsItem extends Component {
           value={this.props.estateBenefits}
           defaultValue={0}
           onChange={this.updateEstateBenefits}
-          style={{ width: '20em', fontSize: '1.25em' }}
-          underlineFocusStyle={{ borderColor: 'white' }}
         />
       </Item>
     );
