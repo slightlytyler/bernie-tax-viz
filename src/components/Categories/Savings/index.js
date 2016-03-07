@@ -9,7 +9,7 @@ class MainVizCategoriesSavingsItem extends Component {
   render() {
     return (
       <Item
-        title="Savings"
+        title="Yearly Savings"
         color="#0277BD"
         invertColor
         savings={this.props.savings}
