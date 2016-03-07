@@ -40,7 +40,7 @@ export default class MainVizCategoriesItem extends Component {
           style={{
             color: (
               invertColor
-                ? 'currentColor'
+                ? magnitudeColor
                 : colors.black
             ),
             backgroundColor: (
