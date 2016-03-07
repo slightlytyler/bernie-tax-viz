@@ -28,6 +28,7 @@ export default class Footer extends Component {
         </a>
         <span>figures = estimatesNotAdvice;</span>
         <span></span>
+        <span>.</span>
         <span>
           admin@dataViz.work
         </span>
