@@ -42,8 +42,8 @@ class TaxBlurbsTaxableIncomeItem extends Component {
         blurb={
           `Ordinary income is the money you earn by selling things or working.
           The Plan will leave the lowest four tax brackets (up to the 28% bracket)
-          unchanged, and add a few tax brackets for the highest-earners. `
-        }
+          unchanged, and add tax brackets for the very highest-earners, up to 52% for income over $10 million.
+          `}
       >
         <TextField
           type="number"

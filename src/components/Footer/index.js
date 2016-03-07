@@ -28,7 +28,9 @@ export default class Footer extends Component {
         >
           .const(bernieTax)
         </a>
-        <span>figures = estimatesNotAdvice;</span>
+        <span>figures = estimatesNotAdvice</span>
+        <span>&& notOfficial;</span>
+
         <span></span>
         <span>.</span>
         <span>
@@ -40,12 +42,9 @@ export default class Footer extends Component {
         >
           @gitHub
         </a></span>
-        <span><a
-          href="https://twitter.com/dataviz_work"
-          styleName="link"
-        >
-          @dataviz_work
-        </a></span>
+        <span><a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet?text=Hello%20world">
+Tweet</a></span>
       </footer>
     );
   }

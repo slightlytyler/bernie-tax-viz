@@ -18,7 +18,8 @@ class TaxBlurbsEstateBenefitsItem extends Component {
         blurb={`
           The first $5.45m for singles or $10.90m for couples is exempt from Estate Taxes.
           The Plan will lower this exemption to $3.5m/$7m and increase the current tax rate
-          by 5%—25%. The largest increase will affect approximately 10,500 households.
+          by 5%—25%. The largest increase will affect approximately 10,500 households. If you
+          will inherit less than $7m during your life, you are not affected.
         `}
         savings={this.props.savings}
       >

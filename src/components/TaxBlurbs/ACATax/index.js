@@ -44,7 +44,8 @@ class TaxBlurbsACATaxItem extends Component {
         name="ACA Tax"
         blurb={`
           The Plan replaces all annual health-care out-of-pocket costs with
-          a 2.2% payroll tax under Medicare for All.
+          a 2.2% payroll tax under Medicare for All. Instead of paying for premiums, co-pays, co-insurance
+          or any other cost, you will pay 2.2% of your income.
         `}
         savings={savings}
       >

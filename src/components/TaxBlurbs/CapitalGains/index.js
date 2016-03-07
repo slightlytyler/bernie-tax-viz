@@ -16,15 +16,16 @@ class TaxBlurbsCapitalGainsItem extends Component {
       <Item
         name="Capital Gains"
         blurb={`
-          Capital gains are your investments' increases in value.
+          Capital gains are your investments' increases in value. Currently, income from
+          capital gains is taxed at lower rates than ordinary income.
           The Plan will tax capital gains
-          above the 28% bracket the same way it taxes ordinary income.
+          above the 28% income bracket the same way it taxes ordinary income.
         `}
         savings={this.props.savings}
       >
         <TextField
           type="number"
-          floatingLabelText="How much Capital Gains will you have next year?"
+          floatingLabelText="How much Capital Gains will you realize next year?"
           value={this.props.capitalGains}
           defaultValue={0}
           onChange={this.updateCapitalGains}
