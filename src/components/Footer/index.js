@@ -6,7 +6,7 @@ import styles from './styles.styl';
 export default class Footer extends Component {
   render() {
     return (
-      <footer styleName="footer">
+      <footer className="pane" styleName="footer">
         Some text or something
       </footer>
     );
