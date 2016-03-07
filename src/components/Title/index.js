@@ -3,7 +3,7 @@ import cssModules from 'react-css-modules';
 
 import styles from './styles.styl';
 import vector from 'assets/bernie-vector.svg';
-import text from 'assets/text.svg';
+import text from 'assets/taxplan-05.svg';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class Title extends Component {
