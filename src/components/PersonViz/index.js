@@ -114,7 +114,7 @@ export default connect(
         {
           name: 'Savings',
           values: [
-            { x: 'test', y: positiveTotalSavings ? 0 : Math.abs(totalCurrent - totalSanders) },
+            { x: 'Current', y: positiveTotalSavings ? 0 : Math.abs(totalCurrent - totalSanders) },
             { x: 'Sanders', y: positiveTotalSavings ? Math.abs(totalSavings) : 0 },
           ],
         },

@@ -4,9 +4,9 @@ export default {
   'negative-red': '#E57373',
   'positive-green': '#00E676',
   burnieBlue: '#147fd7',
-  taxableIncome: '#FF9100',
-  capitalGains: '#00B0FF',
-  payroll: '#1DE9B6',
-  estate: '#FF80AB',
+  taxableIncome: '#FFB74D',
+  capitalGains: '#FFF59D',
+  payroll: '#80DEEA',
+  estate: '#FFAB91',
   aca: '#EA80FC',
 };

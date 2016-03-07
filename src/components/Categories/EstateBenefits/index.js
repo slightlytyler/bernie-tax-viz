@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import colors from 'styles/colors';
 import Item from '../Item';
 
 class MainVizCategoriesEstateBenefitsItem extends Component {
@@ -10,7 +11,7 @@ class MainVizCategoriesEstateBenefitsItem extends Component {
     return (
       <Item
         title=" Estate Benefits"
-        color="#FF80AB"
+        color={colors.estate}
         savings={this.props.savings}
       />
     );
