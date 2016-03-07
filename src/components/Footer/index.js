@@ -8,7 +8,7 @@ export default class Footer extends Component {
     return (
       <footer className="pane" styleName="footer">
         <span>The Plan by dataviz.work</span>
-        <span>information sourced from:</span>
+        <span>sources:</span>
         <a
           href="http://taxpolicycenter.org/UploadedPDF/2000639-an-analysis-of-senator-bernie-sanderss-tax-proposals.pdf"
           styleName="link"
@@ -27,8 +27,11 @@ export default class Footer extends Component {
         >
           bernietax.com
         </a>
-        <span>Figures provided are solely estimates and are not tax advice.</span>
-        <span>Please email admin@dataviz.work with comments and suggestions.</span>
+        <span>.</span>
+        <span>Figures provided are estimates, not advice.</span>
+        <span>.</span>
+        <span>admin@dataviz.work</span>
+        <span>comments/suggestions.</span>
       </footer>
     );
   }
