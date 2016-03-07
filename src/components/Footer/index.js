@@ -14,10 +14,12 @@ export default class Footer extends Component {
         >
           .data(taxPolicyCenter)
         </a>
+         .engine(react, react-d3)
         <a
           href="http://http://berniecare.org/"
           styleName="link"
         >
+
           .math(bernieCare)
         </a>
         <a
