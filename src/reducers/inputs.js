@@ -107,15 +107,6 @@ export const ordinaryIncomeSavingsSelector = createSelector(
   incomeTax => incomeTax.current - incomeTax.sanders
 );
 
-export const maxAnticipatedYearlyHealthSpendingSelector = createSelector(
-  agiSelector,
-  agi => {
-    const calculatedMax = agi * 3;
-
-    return calculatedMax > 50000 ? calculatedMax : 50000;
-  }
-);
-
 export const capitalGainsTaxSelector = createSelector(
   capitalGainsSelector,
   filingStatusSelector,
