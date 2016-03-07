@@ -15,8 +15,10 @@
 
   .pane
     overflow: auto
-    margin-bottom: 2em
     border-radius: 4px
+
+    &:not(:last-child)
+      margin-bottom: 2em
 
     &:not(.flush) > *
       padding-left: 2rem
