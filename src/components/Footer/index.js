@@ -7,6 +7,21 @@ export default class Footer extends Component {
   render() {
     return (
       <footer styleName="footer">
+        <div styleName="social-links">
+          <a
+            href="https://twitter.com/intent/tweet?button_hashtag=berniesplan"
+            className="twitter-hashtag-button"
+            data-url="bernies-tax.dataviz.work"
+          >
+            Tweet #berniesplan
+          </a>
+          <div
+            className="fb-share-button"
+            data-href="http://bernies-tax.dataviz.work/"
+            data-layout="button"
+            data-size="large"
+          />
+        </div>
         <span>thePlan ep. 1</span>
 
         <a
@@ -53,7 +68,6 @@ export default class Footer extends Component {
         >
           @gitHub
         </a></span>
-
       </footer>
     );
   }
