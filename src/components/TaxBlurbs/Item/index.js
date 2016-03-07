@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import cssModules from 'react-css-modules';
+import accounting from 'accounting';
 
 import styles from './styles.styl';
 import colors from 'styles/colors';
@@ -29,7 +30,15 @@ export default class TaxBlurbsItem extends Component {
         }}
       >
         <div styleName="text">
-          <section styleName="title">{name}</section>
+          <header styleName="header">
+            <section styleName="title">{name}</section>
+            <section
+              styleName="savings"
+              style={{ color: magnitudeColor }}
+            >
+              {accounting.formatMoney(savings, '$', 0)}
+            </section>
+          </header>
           <p styleName="blurb">{blurb}</p>
         </div>
         {
