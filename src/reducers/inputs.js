@@ -57,11 +57,9 @@ export const agiSelector = createSelector(
   }
 );
 
-function incomeTaxCalculator(type, income, filingStatus, agi) {
+function incomeTaxCalculator(type, agi, filingStatus) {
   const incomeTaxRatesForStatus = incomeTaxRates[filingStatus];
   const incomeTaxBrackets = Array.from(incomeTaxRatesForStatus.keys());
-  const agiTaxRatesForStatus = agiTaxRates[filingStatus];
-  const agiTaxBrackets = Array.from(agiTaxRatesForStatus.keys());
   let totalTax = {
     current: 0,
     sanders: 0,
@@ -94,7 +92,7 @@ function incomeTaxCalculator(type, income, filingStatus, agi) {
       sanders: totalTax.sanders + sandersTax,
     };
 
-    if (income <= bracketCeiling) {
+    if (agi <= bracketCeiling) {
       break;
     }
   }
@@ -107,7 +105,7 @@ export const ordinaryIncomeTaxSelector = createSelector(
   taxableIncomeSelector,
   filingStatusSelector,
   agiSelector,
-  (income, filingStatus, agi) => incomeTaxCalculator('ordinaryIncome', income, filingStatus, agi)
+  (income, filingStatus, agi) => incomeTaxCalculator('ordinaryIncome', agi, filingStatus)
 );
 export const ordinaryIncomeSavingsSelector = createSelector(
   ordinaryIncomeTaxSelector,
@@ -118,7 +116,7 @@ export const capitalGainsTaxSelector = createSelector(
   capitalGainsSelector,
   filingStatusSelector,
   agiSelector,
-  (income, filingStatus, agi) => incomeTaxCalculator('capitalGains', income, filingStatus, agi)
+  (income, filingStatus, agi) => incomeTaxCalculator('capitalGains', agi, filingStatus)
 );
 export const capitalGainsSavingsSelector = createSelector(
   capitalGainsTaxSelector,
@@ -126,9 +124,9 @@ export const capitalGainsSavingsSelector = createSelector(
 );
 
 export const payrollTaxSelector = createSelector(
-  taxableIncomeSelector,
+  agiSelector,
   filingStatusSelector,
-  (income, filingStatus) => {
+  (agi, filingStatus) => {
     const payrollTaxRatesForStatus = payrollTaxRates[filingStatus];
     const payrollTaxBrackets = Array.from(payrollTaxRatesForStatus.keys());
 
@@ -146,10 +144,10 @@ export const payrollTaxSelector = createSelector(
       ;
       let difference;
 
-      if (income > bracketCeiling) {
+      if (agi > bracketCeiling) {
         difference = bracketCeiling - bracketFloor;
       } else {
-        difference = income - bracketFloor;
+        difference = agi - bracketFloor;
       }
 
       const currentTax =
@@ -164,7 +162,7 @@ export const payrollTaxSelector = createSelector(
         sanders: totalTax.sanders + sandersTax,
       };
 
-      if (income <= bracketCeiling) {
+      if (agi <= bracketCeiling) {
         break;
       }
     }
@@ -248,19 +246,12 @@ export const estateSavingsSelector = createSelector(
 
 const sandersACATaxRate = 2.2;
 export const acaTaxSelector = createSelector(
-    agiSelector,
-    anticipatedYearlyHealthSpendingSelector,
-    (agi, healthSpending) => {
-      let currentOutOfPocket;
-      currentOutOfPocket = healthSpending;
-      return {
-        current: currentOutOfPocket,
-        sanders: (sandersACATaxRate / 100) * agi,
-      };
-
-    }
-
-
+  agiSelector,
+  anticipatedYearlyHealthSpendingSelector,
+  (agi, healthSpending) => ({
+    current: healthSpending,
+    sanders: (sandersACATaxRate / 100) * agi,
+  })
 );
 export const acaSavingsSelector = createSelector(
   acaTaxSelector,

@@ -22,6 +22,7 @@ export default class MainVizCategoriesItem extends Component {
       invertColor,
     } = this.props;
     const isPositive = savings >= 0;
+    const magnitudeColor = isPositive ? colors['positive-green'] : colors['negative-red'];
     const textColor = invertColor ? color : 'currentColor';
     const backgroundColor = invertColor ? colors.white : color;
 
@@ -37,14 +38,16 @@ export default class MainVizCategoriesItem extends Component {
         <section
           styleName="savings"
           style={{
-            color: invertColor
-             ? isPositive ? 'currentColor' : colors['negative-red']
-             : colors.black
-            ,
-            backgroundColor: invertColor
-              ? colors.white
-              : isPositive ? colors['positive-green'] : colors['negative-red']
-            ,
+            color: (
+              invertColor
+                ? 'currentColor'
+                : colors.black
+            ),
+            backgroundColor: (
+              invertColor
+                ? colors.white
+                : magnitudeColor
+            ),
           }}
         >
           {accounting.formatMoney(savings)}
