@@ -43,9 +43,7 @@ class TaxBlurbsACATaxItem extends Component {
       <Item
         name="ACA Tax"
         blurb={`
-          The Plan will replace all of your annual healthcare costs (including premiums
-          and all other out-of-pocket costs) with a 2.2%tax on your ordinary income as
-          a part of funding Medicare For All.
+          The Plan replaces all annual health-care out-of-pocket costs with a 2.2% payroll tax under Medicare for All.
         `}
         savings={savings}
       >

@@ -9,7 +9,7 @@ import text from 'assets/taxplan-05.svg';
 export default class Header extends Component {
   render() {
     return (
-      <header styleName="header">
+      <header className="pane" styleName="header">
         <img src={text} styleName="text" />
         <img src={vector} styleName="vector" />
       </header>
