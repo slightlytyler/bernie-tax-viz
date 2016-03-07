@@ -19,8 +19,8 @@ export default class Title extends Component {
       <div className="pane" styleName="instructions">
         <div styleName="container">
           <p styleName="blurb">
-            The Tax Plan ft. Senator Bernie Sanders is an interactive applet that
-            let's you quickly explore, experiment with and share the effect that
+            The Tax Plan with Senator Bernie Sanders is an interactive applet that
+            lets you quickly explore, experiment with and share the effect that
             Senator Bernie Sander's tax plan would have on people across the income spectrum.
           </p>
           <ul styleName="icons">
