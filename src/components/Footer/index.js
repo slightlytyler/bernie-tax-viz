@@ -7,7 +7,8 @@ export default class Footer extends Component {
   render() {
     return (
       <footer styleName="footer">
-        <span>thePlan</span>
+        <span>thePlan ep. 1</span>
+
         <a
           href="http://taxpolicycenter.org/UploadedPDF/2000639-an-analysis-of-senator-bernie-sanderss-tax-proposals.pdf"
           styleName="link"
@@ -42,9 +43,12 @@ export default class Footer extends Component {
         >
           @gitHub
         </a></span>
-        <span><a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet?text=Hello%20world">
-Tweet</a></span>
+        <span>
+          <a class="twitter-share-button"
+           href="https://twitter.com/intent/tweet?text=thePlan%20ep.1%20">
+          Tweet
+          </a>
+        </span>
       </footer>
     );
   }
