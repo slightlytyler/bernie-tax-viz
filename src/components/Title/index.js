@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import cssModules from 'react-css-modules';
 
 import styles from './styles.styl';
-import logo from 'assets/title.svg';
+import vector from 'assets/bernie-vector.svg';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class Title extends Component {
@@ -12,7 +12,7 @@ export default class Title extends Component {
   render() {
     return (
       <header styleName="title">
-        <img src={logo} styleName="logo" />
+        <img src={vector} styleName="vector" />
       </header>
     );
   }

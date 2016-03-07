@@ -10,7 +10,7 @@ export default class Root extends React.Component {
     store: PropTypes.object.isRequired,
   };
 
-  disableDevTools = false;
+  disableDevTools = true;
 
   get content() {
     return (
