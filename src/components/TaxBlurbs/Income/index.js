@@ -56,7 +56,7 @@ class TaxBlurbsTaxableIncomeItem extends Component {
           floatingLabelText="Are you single or married?"
           value={filingStatus}
           onChange={updateFilingStatus}
-          style={{ width: '20em', marginRight: '2em', fontSize: '1.25em' }}
+          style={{ width: '20em', marginRight: '2em', fontSize: '1.5em' }}
           labelStyle={{ color: colors.white }}
           floatingLabelStyle={{ whiteSpace: 'nowrap', color: colors.white }}
         >

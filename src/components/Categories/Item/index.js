@@ -50,7 +50,7 @@ export default class MainVizCategoriesItem extends Component {
             ),
           }}
         >
-          {accounting.formatMoney(savings)}
+          {accounting.formatMoney(savings, '$', 0)}
         </section>
       </li>
     );
