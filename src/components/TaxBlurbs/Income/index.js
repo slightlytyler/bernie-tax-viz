@@ -41,9 +41,8 @@ class TaxBlurbsTaxableIncomeItem extends Component {
         savings={savings}
         blurb={
           `Ordinary income is the money you earn by selling things or working.
-          This includes your wages and profits that you make on personal sales. The
-          Plan will leave the lowest four tax brackets (up to the 28% bracket)
-          unchanged, and add a few new tax brackets for the highest-earners. `
+          The Plan will leave the lowest four tax brackets (up to the 28% bracket)
+          unchanged, and add a few tax brackets for the highest-earners. `
         }
       >
         <TextField

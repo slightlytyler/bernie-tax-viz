@@ -16,14 +16,9 @@ class TaxBlurbsEstateBenefitsItem extends Component {
       <Item
         name="Estate Benefits"
         blurb={`
-          A certain amount of a gift or inheritance is exempt from the federal
-          gift and estate taxes. In 2016, the exemption is $5.45 million for
-          individuals and $10.90 million for couples. The Plan will lower this
-          exemption to $3.5 million for individuals and $7 million for couples,
-          and increase the current tax rate by 5%—15% on the value
-          above the exemption. It will also add a 10% tax on the transfer of
-          estates worth more than $500 million. This change will affect
-          approximately 10,500 households.
+          The first $5.45m for singles or $10.90m for couples is exempt from Estate Taxes. The Plan will lower this
+          exemption to $3.5m/$7m and increase the current tax rate by 5%—25%.
+          The largest increase will affect approximately 10,500 households.
         `}
         savings={this.props.savings}
       >
