@@ -109,7 +109,7 @@ const single = new Map([
       capitalGains: 43,
     },
   }],
-    [10000000, {
+  [10000000, {
     current: {
       ordinaryIncome: 39.6,
       capitalGains: 20,
@@ -223,7 +223,6 @@ const married = new Map([
       capitalGains: 37,
     },
   }],
-
   [2000000, {
     current: {
       ordinaryIncome: 39.6,
@@ -234,7 +233,7 @@ const married = new Map([
       capitalGains: 43,
     },
   }],
-    [10000000, {
+  [10000000, {
     current: {
       ordinaryIncome: 39.6,
       capitalGains: 20,
@@ -244,7 +243,6 @@ const married = new Map([
       capitalGains: 48,
     },
   }],
-
   ['over', {
     current: {
       ordinaryIncome: 39.6,
