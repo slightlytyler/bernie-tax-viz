@@ -72,6 +72,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
   anticipatedYearlyHealthSpendingSelector,
+  maxAnticipatedYearlyHealthSpendingSelector,
   acaSavingsSelector,
   actions,
 } from 'reducers/inputs';
@@ -79,7 +80,7 @@ import {
 export default connect(
   state => ({
     anticipatedYearlyHealthSpending: anticipatedYearlyHealthSpendingSelector(state),
-    maxAnticipatedYearlyHealthSpending: 20000,
+    maxAnticipatedYearlyHealthSpending: maxAnticipatedYearlyHealthSpendingSelector(state),
     savings: acaSavingsSelector(state),
   }),
   dispatch => bindActionCreators({
