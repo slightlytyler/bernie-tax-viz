@@ -41,11 +41,12 @@ export const anticipatedYearlyHealthSpendingSelector = createSelector(
 
 export const agiSelector = createSelector(
   taxableIncomeSelector,
+  capitalGainsSelector,
   filingStatusSelector,
   dependentsSelector,
-  (income, filingStatus, dependents) => {
+  (income, capitalGains, filingStatus, dependents) => {
     const exemptions = (filingStatus === 'married' ? 2 : 1) + dependents;
-    const agi = income - (4000 * exemptions);
+    const agi = (income + capitalGains) - (4000 * exemptions);
 
     return agi > 0 ? agi : 0;
   }
