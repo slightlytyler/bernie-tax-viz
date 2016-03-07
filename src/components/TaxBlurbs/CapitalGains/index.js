@@ -24,7 +24,7 @@ class TaxBlurbsCapitalGainsItem extends Component {
       >
         <TextField
           type="number"
-          floatingLabelText="Income"
+          floatingLabelText="How much Capital Gains will you have next year?"
           value={this.props.capitalGains}
           defaultValue={0}
           onChange={this.updateCapitalGains}

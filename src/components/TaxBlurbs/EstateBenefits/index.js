@@ -20,7 +20,7 @@ class TaxBlurbsEstateBenefitsItem extends Component {
           gift and estate taxes. In 2016, the exemption is $5.45 million for
           individuals and $10.90 million for couples. The Plan will lower this
           exemption to $3.5 million for individuals and $7 million for couples,
-          and increase the current tax rate by 5%—15% on the transfers valued
+          and increase the current tax rate by 5%—15% on the value
           above the exemption. It will also add a 10% tax on the transfer of
           estates worth more than $500 million. This change will affect
           approximately 10,500 households.
@@ -29,7 +29,7 @@ class TaxBlurbsEstateBenefitsItem extends Component {
       >
         <TextField
           type="number"
-          floatingLabelText="Expected benefits"
+          floatingLabelText="What is your expected lifetime estate benefit?"
           value={this.props.estateBenefits}
           defaultValue={0}
           onChange={this.updateEstateBenefits}

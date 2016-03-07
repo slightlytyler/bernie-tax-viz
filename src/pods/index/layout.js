@@ -14,8 +14,8 @@ export default class IndexLayout extends Component {
       <div styleName="base">
         <Title />
         <Instructions />
-        <MainViz />
         <TaxBlurbs />
+        <MainViz />
       </div>
     );
   }

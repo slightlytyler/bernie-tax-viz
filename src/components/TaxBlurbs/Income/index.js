@@ -40,14 +40,14 @@ class TaxBlurbsTaxableIncomeItem extends Component {
         savings={savings}
         blurb={
           `Ordinary income is the money you earn by selling things or working.
-          This includes your wages and profits you make on personal sales. The
+          This includes your wages and profits that you make on personal sales. The
           Plan will leave the lowest four tax brackets (up to the 28% bracket)
           unchanged, and add a few new tax brackets for the highest-earners. `
         }
       >
         <TextField
           type="number"
-          floatingLabelText="Gross Income"
+          floatingLabelText="How much will you make this year?"
           value={taxableIncome}
           defaultValue={0}
           onChange={updateTaxableIncome}
@@ -55,7 +55,7 @@ class TaxBlurbsTaxableIncomeItem extends Component {
           underlineFocusStyle={{ borderColor: 'white' }}
         />
         <SelectField
-          floatingLabelText="Filing Status"
+          floatingLabelText="Are you single or married?"
           value={filingStatus}
           onChange={updateFilingStatus}
           style={{ width: '20em', marginRight: '2em', fontSize: '1.25em' }}
@@ -65,7 +65,7 @@ class TaxBlurbsTaxableIncomeItem extends Component {
         </SelectField>
         <TextField
           type="number"
-          floatingLabelText="Dependents"
+          floatingLabelText="How many dependents do you have?"
           value={dependents}
           onChange={updateDependents}
           style={{ width: '15em', fontSize: '1.25em' }}

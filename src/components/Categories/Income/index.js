@@ -10,7 +10,7 @@ class MainVizCategoriesIncomeItem extends Component {
   render() {
     return (
       <Item
-        title="Income"
+        title="Income Taxes"
         color={colors.taxableIncome}
         savings={this.props.savings}
       />

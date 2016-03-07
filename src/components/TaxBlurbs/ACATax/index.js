@@ -59,11 +59,12 @@ class TaxBlurbsACATaxItem extends Component {
       <Item
         name="ACA Tax"
         blurb={`
-          The Plan will replace all of your annual healthcare costs with a 2.2%
-          tax on your ordinary income as a part of Medicare For All.
+          The Plan will replace all of your annual healthcare costs (including premiums and all other out-of-pocket costs) with a 2.2%
+          tax on your ordinary income as a part of funding Medicare For All.
         `}
         savings={savings}
       >
+        //remove
         <TextField
           type="number"
           floatingLabelText="Monthly Insurance Premium"
@@ -73,6 +74,7 @@ class TaxBlurbsACATaxItem extends Component {
           style={{ width: '20em', marginRight: '2em', fontSize: '1.25em' }}
           underlineFocusStyle={{ borderColor: 'white' }}
         />
+        //remove
         <TextField
           type="number"
           floatingLabelText="Insurance Deductible"
@@ -91,7 +93,7 @@ class TaxBlurbsACATaxItem extends Component {
           />
           <TextField
             type="number"
-            floatingLabelText="Anticipated Yearly Health Spending"
+            floatingLabelText="What is your Anticipated Yearly Health Spending?"
             value={Math.round(anticipatedYearlyHealthSpending)}
             defaultValue={0}
             onChange={updateAnticipatedYearlyHealthSpending}
