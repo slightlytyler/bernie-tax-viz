@@ -33,14 +33,6 @@ export const estateBenefitsSelector = createSelector(
   inputsSelector,
   inputs => inputs.estateBenefits
 );
-export const monthlyInsurancePremiumSelector = createSelector(
-  inputsSelector,
-  inputs => inputs.monthlyInsurancePremium
-);
-export const insuranceDeductibleSelector = createSelector(
-  inputsSelector,
-  inputs => inputs.insuranceDeductible
-);
 export const anticipatedYearlyHealthSpendingSelector = createSelector(
   inputsSelector,
   inputs => inputs.anticipatedYearlyHealthSpending
