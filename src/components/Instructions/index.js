@@ -49,7 +49,7 @@ export default class Title extends Component {
           <img src={close} styleName="close" />
         </ul>
         Below are 5 examples of tax scenarios, by income, from Low Income to Super-High Income.
-        Click each example to pre-fill the form with their data.
+        Click each example to pre-fill the form with their data, or fill in your own estimation as you scroll down.
       </div>
     );
   }

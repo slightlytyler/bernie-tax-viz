@@ -33,7 +33,7 @@ class PersonViz extends Component {
     return (
       <div styleName="person-viz">
         <BarChart
-          title="the plans, compared"
+          title="the plans vs the data. the savings"
           data={this.props.barData}
           width={700}
           height={550}

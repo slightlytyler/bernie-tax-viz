@@ -15,7 +15,13 @@ export default class Footer extends Component {
         >
           .data(taxPolicyCenter)
         </a>
-         .engine(react, react-d3)
+        <a
+          href="www.reactd3.org/"
+          styleName="link"
+        >
+          .engine(react, react-d3)
+        </a>
+
         <a
           href="http://http://berniecare.org/"
           styleName="link"
@@ -31,24 +37,23 @@ export default class Footer extends Component {
         </a>
         <span>figures = estimatesNotAdvice</span>
         <span>&& notOfficial;</span>
-
-        <span></span>
         <span>.</span>
         <span>
-          admin@dataViz.work
+          inquiries: admin@dataViz.work
         </span>
+        <span><a
+          href="https://twitter.com/dataviz_work"
+          styleName="link"
+        >
+          @dataviz_work
+        </a></span>
         <span><a
           href="https://github.com/slightlytyler/bernie-tax-viz"
           styleName="link"
         >
           @gitHub
         </a></span>
-        <span>
-          <a class="twitter-share-button"
-           href="https://twitter.com/intent/tweet?text=thePlan%20ep.1%20">
-          Tweet
-          </a>
-        </span>
+
       </footer>
     );
   }
