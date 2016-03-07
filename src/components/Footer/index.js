@@ -28,11 +28,20 @@ export default class Footer extends Component {
         </a>
         <span>figures = estimatesNotAdvice;</span>
         <span></span>
-        <span>//admin@dataViz.work <a
+        <span>
+          admin@dataViz.work
+        </span>
+        <span><a
           href="https://github.com/slightlytyler/bernie-tax-viz"
           styleName="link"
         >
-          gitHub
+          @gitHub
+        </a></span>
+        <span><a
+          href="https://twitter.com/dataviz_work"
+          styleName="link"
+        >
+          @dataviz_work
         </a></span>
       </footer>
     );
