@@ -45,8 +45,9 @@ export const agiSelector = createSelector(
   dependentsSelector,
   (income, filingStatus, dependents) => {
     const exemptions = (filingStatus === 'married' ? 2 : 1) + dependents;
+    const agi = income - (4000 * exemptions);
 
-    return income - (4000 * exemptions);
+    return agi > 0 ? agi : 0;
   }
 );
 
@@ -107,7 +108,11 @@ export const ordinaryIncomeSavingsSelector = createSelector(
 
 export const maxAnticipatedYearlyHealthSpendingSelector = createSelector(
   agiSelector,
-  agi => agi * 3
+  agi => {
+    const calculatedMax = agi * 3;
+
+    return calculatedMax > 50000 ? calculatedMax : 50000;
+  }
 );
 
 export const capitalGainsTaxSelector = createSelector(
