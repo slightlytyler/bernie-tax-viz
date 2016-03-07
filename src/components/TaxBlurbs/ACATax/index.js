@@ -23,9 +23,11 @@ class TaxBlurbsACATaxItem extends Component {
     ));
 
     updateAnticipatedYearlyHealthSpending(
-        newValue > maxAnticipatedYearlyHealthSpending
-        ? maxAnticipatedYearlyHealthSpending
-        : newValue
+        (newValue > maxAnticipatedYearlyHealthSpending
+          ? maxAnticipatedYearlyHealthSpending
+          : newValue
+        )
+        || 0
     );
   };
 

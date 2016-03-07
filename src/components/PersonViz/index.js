@@ -12,7 +12,6 @@ class PersonViz extends Component {
   };
 
   colors = [
-    colors.estate,
     colors.capitalGains,
     colors.payroll,
     colors.aca,
@@ -33,7 +32,7 @@ class PersonViz extends Component {
     return (
       <div styleName="person-viz">
         <BarChart
-          title="the plans vs the data. the savings"
+          title="the plans compared"
           data={this.props.barData}
           width={700}
           height={550}
@@ -77,13 +76,6 @@ export default connect(
 
     return {
       barData: [
-        {
-          name: 'Estate Benefits',
-          values: [
-            { x: 'Current', y: estateTax.current },
-            { x: 'Sanders', y: estateTax.sanders },
-          ],
-        },
         {
           name: 'Capital Gains',
           values: [

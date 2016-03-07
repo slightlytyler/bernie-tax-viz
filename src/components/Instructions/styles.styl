@@ -1,17 +1,21 @@
 .instructions
   position: relative
-  display: flex;
-  flex-direction: column
-  justify-content: center
-  align-items: center
   background-color: #efefef
+
+  .container
+    display: flex;
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    max-width: 60em
+    margin: 0 auto
 
   .icons
     list-style: none
     display: flex
     justify-content: space-between
     align-items: flex-end
-    width: 80%
+    padding: 0
 
   .item
     position: relative
@@ -20,17 +24,13 @@
     flex-direction: column
     justify-content: flex-end
     align-items: center
-    max-width: 12em
 
     &.arrow
       flex: 1
       align-self: center
-      margin-left: .5em
-      margin-right: .5em
 
       .image
         width: 100%
-        max-width: 5em
 
     .icon
       width: 75%

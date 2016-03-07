@@ -9,9 +9,11 @@ import PersonViz from 'components/PersonViz';
 export default class MainViz extends Component {
   render() {
     return (
-      <div className="pane flush" styleName="main-viz">
-        <Categories />
-        <PersonViz />
+      <div styleName="main-viz">
+        <div styleName="container">
+          <Categories />
+          <PersonViz />
+        </div>
       </div>
     );
   }
