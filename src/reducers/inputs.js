@@ -8,7 +8,6 @@ const UPDATE_INPUTS = 'UPDATE_INPUTS';
 //
 import { createSelector } from 'reselect';
 import incomeTaxRates from 'constants/incomeTaxRates';
-import agiTaxRates from 'constants/agiTaxRates';
 import payrollTaxRates from 'constants/payrollTaxRates';
 import estateTaxRates from 'constants/estateTaxRates';
 
@@ -77,10 +76,10 @@ function incomeTaxCalculator(type, income, filingStatus, agi) {
     ;
     let difference;
 
-    if (income > bracketCeiling) {
+    if (agi > bracketCeiling) {
       difference = bracketCeiling - bracketFloor;
     } else {
-      difference = income - bracketFloor;
+      difference = agi - bracketFloor;
     }
 
     const currentTax =
@@ -100,38 +99,6 @@ function incomeTaxCalculator(type, income, filingStatus, agi) {
     }
   }
 
-  for (const bracketCeiling of agiTaxBrackets) {
-    const bracketIndex = agiTaxBrackets.indexOf(bracketCeiling);
-    const bracketFloor =
-      bracketIndex === 0
-      ? 0
-      : agiTaxBrackets[bracketIndex - 1]
-    ;
-
-    let difference;
-
-    if (agi > bracketCeiling) {
-      difference = bracketCeiling - bracketFloor;
-    } else {
-      difference = agi - bracketFloor;
-    }
-
-    const currentTax =
-      difference * (agiTaxRatesForStatus.get(bracketCeiling).current[type] / 100)
-    ;
-    const sandersTax =
-      difference * (agiTaxRatesForStatus.get(bracketCeiling).sanders[type] / 100)
-    ;
-
-    totalTax = {
-      current: totalTax.current + currentTax,
-      sanders: totalTax.sanders + sandersTax,
-    };
-
-    if (income <= bracketCeiling) {
-      break;
-    }
-  }
 
   return totalTax;
 }
@@ -280,29 +247,20 @@ export const estateSavingsSelector = createSelector(
 );
 
 const sandersACATaxRate = 2.2;
-const outOfPocketMax = 8000;
-const coinsuranceRate = 20;
 export const acaTaxSelector = createSelector(
-    taxableIncomeSelector,
-    monthlyInsurancePremiumSelector,
-    insuranceDeductibleSelector,
+    agiSelector,
     anticipatedYearlyHealthSpendingSelector,
-    (income, premium, deductible, healthSpending) => {
+    (agi, healthSpending) => {
       let currentOutOfPocket;
-
-      if (healthSpending >= outOfPocketMax) {
-        currentOutOfPocket = outOfPocketMax;
-      } else if (healthSpending >= deductible) {
-        currentOutOfPocket = deductible + ((coinsuranceRate / 100) * (healthSpending - deductible));
-      } else {
-        currentOutOfPocket = healthSpending;
-      }
-
+      currentOutOfPocket = healthSpending;
       return {
-        current: (12 * premium) + currentOutOfPocket,
-        sanders: (sandersACATaxRate / 100) * income,
+        current: currentOutOfPocket,
+        sanders: (sandersACATaxRate / 100) * agi,
       };
+
     }
+
+
 );
 export const acaSavingsSelector = createSelector(
   acaTaxSelector,
