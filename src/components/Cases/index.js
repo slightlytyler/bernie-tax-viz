@@ -18,6 +18,7 @@ class Cases extends Component {
 
     return (
       <div id="cases" styleName="cases">
+        <header styleName="header">The Taxpayers</header>
         <Tabs
           value={currentCase}
           onChange={updateUserCase}
