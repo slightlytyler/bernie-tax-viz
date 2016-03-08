@@ -4,6 +4,8 @@ import { BarChart } from 'react-d3';
 
 import colors from 'styles/colors';
 import styles from './styles.styl';
+import CategoriesList from 'components/Categories/List';
+import Savings from 'components/Categories/Savings';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 class PersonViz extends Component {
@@ -24,13 +26,17 @@ class PersonViz extends Component {
     return (
       <div styleName="person-viz">
         <BarChart
-          title="the plans compared"
+          title="comparing your expenditures"
           data={this.props.barData}
           width={700}
-          height={550}
+          height={500}
           colors={this.colorsFn}
           yAxisClassName="hide"
         />
+
+        <CategoriesList>
+          <Savings />
+        </CategoriesList>
       </div>
     );
   }

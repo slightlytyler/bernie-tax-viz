@@ -25,7 +25,7 @@ export default class MainVizCategoriesItem extends Component {
     const netZero = savings === 0;
 
     const magnitudeColor = isPositive ? colors['positive-green'] : colors['negative-red'];
-    const textColor = invertColor ? color : 'currentColor';
+    const textColor = invertColor ? color : 'rgba(0, 0, 0, .7)';
 
     const titleBackgroundColor = invertColor ? colors.white : color;
 
