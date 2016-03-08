@@ -2,6 +2,7 @@
 // Constants
 //
 export const UPDATE_INPUTS = 'UPDATE_INPUTS';
+export const SAVE_INPUTS = 'SAVE_INPUTS';
 import { UPDATE_USER_CASE } from 'reducers/userCase';
 
 //
@@ -265,13 +266,21 @@ export const totalSavingsSelector = createSelector(
 //
 // Actions
 //
+let inputsTimeout;
+
 export const actions = {
-  updateInputs: (key, val) => {
+  updateInputs: (key, val) => dispatch => {
+    // No negative values
     if (typeof val === 'number' && val < 0) {
       return { type: UPDATE_INPUTS, key, val: 0 };
     }
+    dispatch({ type: UPDATE_INPUTS, key, val });
 
-    return { type: UPDATE_INPUTS, key, val };
+    if (inputsTimeout) {
+      clearTimeout(inputsTimeout);
+    }
+
+    inputsTimeout = setTimeout(() => dispatch({ type: SAVE_INPUTS }), 1500);
   },
 };
 

@@ -6,9 +6,10 @@ import rootReducer from 'reducers';
 const reducer = storage.reducer(rootReducer);
 
 import createEngine from 'redux-storage-engine-localstorage';
-const engine = createEngine('my-sav');
+const engine = createEngine('bernie-tax-viz');
 
-const storageMiddleware = storage.createMiddleware(engine);
+import { UPDATE_INPUTS } from 'reducers/inputs';
+const storageMiddleware = storage.createMiddleware(engine, [UPDATE_INPUTS]);
 
 const load = storage.createLoader(engine);
 
