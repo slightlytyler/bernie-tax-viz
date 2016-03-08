@@ -16,7 +16,7 @@ export const actions = {
   },
 };
 
-export default function reducer(state = 'case1', action) {
+export default function reducer(state = 'custom', action) {
   switch (action.type) {
     case UPDATE_USER_CASE:
       return action.userCase;
