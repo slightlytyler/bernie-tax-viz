@@ -15,7 +15,7 @@ class PersonViz extends Component {
     colors.capitalGains,
     colors.payroll,
     colors.aca,
-    colors.taxableIncome
+    colors.taxableIncome,
   ];
 
   colorsFn = idx => this.colors[idx];
@@ -41,7 +41,6 @@ import {
   ordinaryIncomeTaxSelector,
   capitalGainsTaxSelector,
   payrollTaxSelector,
-  estateTaxSelector,
   acaTaxSelector,
 } from 'reducers/inputs';
 
@@ -51,12 +50,6 @@ export default connect(
     const capitalGainsTax = capitalGainsTaxSelector(state);
     const payrollTax = payrollTaxSelector(state);
     const acaTax = acaTaxSelector(state);
-    const aggregatedTaxes = [
-      ordinaryIncomeTax,
-      capitalGainsTax,
-      payrollTax,
-      acaTax,
-    ];
 
     return {
       barData: [

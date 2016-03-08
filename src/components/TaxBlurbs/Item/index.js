@@ -29,13 +29,15 @@ export default class TaxBlurbsItem extends Component {
       showThemeColor,
     } = this.props;
     const magnitudeColor = savings >= 0 ? colors['positive-green'] : colors['negative-red'];
+    const color = showThemeColor || savings === 0 ? themeColor : magnitudeColor;
+
     return (
       <li
         className="pane"
         styleName="base"
         style={{
-          backgroundColor: showThemeColor ? themeColor : magnitudeColor,
-          borderColor: showThemeColor ? themeColor : magnitudeColor,
+          backgroundColor: color,
+          borderColor: color,
         }}
       >
         <div styleName="text">
@@ -43,7 +45,7 @@ export default class TaxBlurbsItem extends Component {
             <section styleName="title">{name}</section>
             <section
               styleName="savings"
-              style={{ color: showThemeColor ? themeColor : magnitudeColor }}
+              style={{ color }}
             >
               {accounting.formatMoney(savings, '$', 0)}
             </section>
