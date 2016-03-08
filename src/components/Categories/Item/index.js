@@ -52,7 +52,7 @@ export default class MainVizCategoriesItem extends Component {
                 : colors.black
             ),
             backgroundColor: savingsBackgroundColor,
-            borderColor: invertColor ? colors.white : savingsBorderColor
+            borderColor: invertColor ? colors.white : savingsBorderColor,
           }}
         >
           {accounting.formatMoney(savings, '$', 0)}

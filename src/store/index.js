@@ -9,7 +9,10 @@ import createEngine from 'redux-storage-engine-localstorage';
 const engine = createEngine('bernie-tax-viz');
 
 import { UPDATE_INPUTS } from 'reducers/inputs';
-const storageMiddleware = storage.createMiddleware(engine, [UPDATE_INPUTS]);
+const storageMiddleware = storage.createMiddleware(engine, [
+  UPDATE_INPUTS,
+  '@@router/LOCATION_CHANGE',
+]);
 
 const load = storage.createLoader(engine);
 
