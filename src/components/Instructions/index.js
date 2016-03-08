@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import cssModules from 'react-css-modules';
 
 import styles from './styles.styl';
@@ -10,11 +10,17 @@ import arrow from 'assets/arrow.svg';
 import close from 'assets/close.svg';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
-export default class Title extends Component {
+class Instructions extends Component {
   static propTypes ={
+    hidden: PropTypes.bool.isRequired,
+    hideInstructions: PropTypes.func.isRequired,
   };
 
   render() {
+    if (this.props.hidden) {
+      return undefined;
+    }
+
     return (
       <div className="pane" styleName="instructions">
         <div styleName="container">
@@ -50,7 +56,11 @@ export default class Title extends Component {
               <span styleName="text">Share the viz!</span>
             </li>
 
-            <img src={close} styleName="close" />
+            <img
+              src={close}
+              styleName="close"
+              onClick={this.props.hideInstructions}
+            />
           </ul>
           <p styleName="blurb">
             Below are 4 examples of tax scenarios, by income, from Low Income to
@@ -62,3 +72,14 @@ export default class Title extends Component {
     );
   }
 }
+
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { actions } from 'reducers/instructions';
+
+export default connect(
+  state => state.instructions,
+  dispatch => bindActionCreators({
+    hideInstructions: actions.hideInstructions,
+  }, dispatch),
+)(Instructions);
