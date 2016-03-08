@@ -22,19 +22,27 @@ export default class MainVizCategoriesItem extends Component {
       invertColor,
     } = this.props;
     const isPositive = savings >= 0;
+    const netZero = savings === 0;
+
     const magnitudeColor = isPositive ? colors['positive-green'] : colors['negative-red'];
     const textColor = invertColor ? color : 'currentColor';
-    const backgroundColor = invertColor ? colors.white : color;
+
+    const titleBackgroundColor = invertColor ? colors.white : color;
+
+    const savingsBackgroundColor = (invertColor || netZero) ? colors.white : magnitudeColor;
+    const savingsBorderColor = netZero ? color : magnitudeColor;
 
     return (
-      <li
-        styleName="item"
-        style={{
-          color: textColor,
-          backgroundColor,
-        }}
-      >
-        <section styleName="title">{title}</section>
+      <li styleName="item">
+        <section
+          styleName="title"
+          style={{
+            color: textColor,
+            backgroundColor: titleBackgroundColor,
+          }}
+        >
+          {title}
+        </section>
         <section
           styleName="savings"
           style={{
@@ -43,11 +51,8 @@ export default class MainVizCategoriesItem extends Component {
                 ? magnitudeColor
                 : colors.black
             ),
-            backgroundColor: (
-              invertColor
-                ? colors.white
-                : magnitudeColor
-            ),
+            backgroundColor: savingsBackgroundColor,
+            borderColor: invertColor ? colors.white : savingsBorderColor
           }}
         >
           {accounting.formatMoney(savings, '$', 0)}
