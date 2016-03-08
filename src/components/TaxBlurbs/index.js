@@ -12,7 +12,7 @@ import ACATaxBlurb from './ACATax';
 export default class TaxBlurbs extends Component {
   render() {
     return (
-      <ul styleName="tax-blurbs">
+      <ul id="inputs" styleName="tax-blurbs">
         <IncomeBlurb />
         <ACATaxBlurb />
         <PayrollTaxBlurb />

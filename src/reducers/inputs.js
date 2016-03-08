@@ -2,6 +2,7 @@
 // Constants
 //
 export const UPDATE_INPUTS = 'UPDATE_INPUTS';
+export const CLEAR_INPUTS = 'CLEAR_INPUTS';
 export const SAVE_INPUTS = 'SAVE_INPUTS';
 import { UPDATE_USER_CASE } from 'reducers/userCase';
 
@@ -282,11 +283,13 @@ export const actions = {
 
     inputsTimeout = setTimeout(() => dispatch({ type: SAVE_INPUTS }), 1500);
   },
+  clearInputs: () => ({ type: CLEAR_INPUTS }),
 };
 
 //
 // Reducers
 //
+import blankInputs from 'constants/blankInputs';
 import cases from 'constants/cases';
 
 export default function (state = {}, action) {
@@ -296,6 +299,9 @@ export default function (state = {}, action) {
 
     case UPDATE_USER_CASE:
       return cases[action.userCase];
+
+    case CLEAR_INPUTS:
+      return Object.assign({}, blankInputs);
 
     default:
       return state;

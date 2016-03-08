@@ -1,11 +1,17 @@
 export const UPDATE_USER_CASE = 'UPDATE_USER_CASE';
-import { UPDATE_INPUTS } from 'reducers/inputs';
+import { UPDATE_INPUTS, CLEAR_INPUTS, actions as inputsActions } from 'reducers/inputs';
 
 export const actions = {
   updateUserCase(userCase) {
-    return {
-      type: UPDATE_USER_CASE,
-      userCase,
+    return dispatch => {
+      if (userCase === 'custom') {
+        dispatch(inputsActions.clearInputs());
+      } else {
+        dispatch({
+          type: UPDATE_USER_CASE,
+          userCase,
+        });
+      }
     };
   },
 };
@@ -16,6 +22,7 @@ export default function reducer(state = 'case1', action) {
       return action.userCase;
 
     case UPDATE_INPUTS:
+    case CLEAR_INPUTS:
       return 'custom';
 
     default:
