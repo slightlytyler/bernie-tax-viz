@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react';
+import colors from 'styles/colors';
 import Item from '../Item';
 
 class TaxBlurbsPayrollTaxItem extends Component {
   static propTypes ={
+    taxableIncome: PropTypes.number.isRequired,
     savings: PropTypes.number,
   };
 
@@ -18,16 +20,19 @@ class TaxBlurbsPayrollTaxItem extends Component {
           strengthen Social Security.
         `}
         savings={this.props.savings}
+        themeColor={colors.payroll}
+        showThemeColor={!(this.props.taxableIncome)}
       />
     );
   }
 }
 
 import { connect } from 'react-redux';
-import { payrollSavingsSelector } from 'reducers/inputs';
+import { taxableIncomeSelector, payrollSavingsSelector } from 'reducers/inputs';
 
 export default connect(
   state => ({
+    taxableIncome: taxableIncomeSelector(state),
     savings: payrollSavingsSelector(state),
   }),
 )(TaxBlurbsPayrollTaxItem);

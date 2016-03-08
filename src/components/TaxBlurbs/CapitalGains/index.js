@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import Item from '../Item';
+import colors from 'styles/colors';
 import TextField from 'components/TextField';
+import Item from '../Item';
 
 class TaxBlurbsCapitalGainsItem extends Component {
   static propTypes ={
@@ -23,6 +24,8 @@ class TaxBlurbsCapitalGainsItem extends Component {
           on capital gains by 6.2%.
         `}
         savings={this.props.savings}
+        themeColor={colors.capitalGains}
+        showThemeColor={!(this.props.capitalGains)}
       >
         <TextField
           type="number"

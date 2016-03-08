@@ -11,6 +11,8 @@ export default class TaxBlurbsItem extends Component {
     name: PropTypes.string.isRequired,
     blurb: PropTypes.string.isRequired,
     savings: PropTypes.number.isRequired,
+    themeColor: PropTypes.string.isRequired,
+    showThemeColor: PropTypes.bool.isRequired,
     children: React.PropTypes.oneOfType([
       React.PropTypes.element,
       React.PropTypes.arrayOf(React.PropTypes.element),
@@ -18,15 +20,22 @@ export default class TaxBlurbsItem extends Component {
   };
 
   render() {
-    const { name, blurb, savings, children } = this.props;
+    const {
+      name,
+      blurb,
+      savings,
+      children,
+      themeColor,
+      showThemeColor,
+    } = this.props;
     const magnitudeColor = savings >= 0 ? colors['positive-green'] : colors['negative-red'];
     return (
       <li
         className="pane"
         styleName="base"
         style={{
-          backgroundColor: magnitudeColor,
-          borderColor: magnitudeColor,
+          backgroundColor: showThemeColor ? themeColor : magnitudeColor,
+          borderColor: showThemeColor ? themeColor : magnitudeColor,
         }}
       >
         <div styleName="text">
@@ -34,7 +43,7 @@ export default class TaxBlurbsItem extends Component {
             <section styleName="title">{name}</section>
             <section
               styleName="savings"
-              style={{ color: magnitudeColor }}
+              style={{ color: showThemeColor ? themeColor : magnitudeColor }}
             >
               {accounting.formatMoney(savings, '$', 0)}
             </section>

@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import SelectField from 'material-ui/lib/select-field';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import colors from 'styles/colors';
-import Item from '../Item';
 import TextField from 'components/TextField';
+import Item from '../Item';
 
 class TaxBlurbsTaxableIncomeItem extends Component {
   static propTypes ={
@@ -46,6 +46,8 @@ class TaxBlurbsTaxableIncomeItem extends Component {
           bracket; single income under $230,451), and add additional tax brackets for the
           very highest-earners (up to 52% for income over $10 million).
         `}
+        themeColor={colors.taxableIncome}
+        showThemeColor={!(taxableIncome)}
       >
         <TextField
           type="number"

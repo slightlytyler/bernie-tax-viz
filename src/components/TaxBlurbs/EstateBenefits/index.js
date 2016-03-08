@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import Item from '../Item';
+import colors from 'styles/colors';
 import TextField from 'components/TextField';
+import Item from '../Item';
 
 class TaxBlurbsEstateBenefitsItem extends Component {
   static propTypes ={
@@ -22,6 +23,8 @@ class TaxBlurbsEstateBenefitsItem extends Component {
           will inherit less than $7m during your life, you are not affected.
         `}
         savings={this.props.savings}
+        themeColor={colors.estate}
+        showThemeColor={!(this.props.estateBenefits)}
       >
         <TextField
           type="number"

@@ -15,18 +15,10 @@ class PersonViz extends Component {
     colors.capitalGains,
     colors.payroll,
     colors.aca,
-    colors.taxableIncome,
-    colors['positive-green'],
-    colors['negative-red'],
+    colors.taxableIncome
   ];
 
   colorsFn = idx => this.colors[idx];
-
-  colorAccessor = (series, idx) => (
-    idx === (this.props.barData.length - 1) && series.x === 'Current'
-      ? idx + 1
-      : idx
-  );
 
   render() {
     return (
@@ -37,7 +29,6 @@ class PersonViz extends Component {
           width={700}
           height={550}
           colors={this.colorsFn}
-          colorAccessor={this.colorAccessor}
           yAxisClassName="hide"
         />
       </div>
@@ -52,7 +43,6 @@ import {
   payrollTaxSelector,
   estateTaxSelector,
   acaTaxSelector,
-  totalSavingsSelector,
 } from 'reducers/inputs';
 
 export default connect(
@@ -60,19 +50,13 @@ export default connect(
     const ordinaryIncomeTax = ordinaryIncomeTaxSelector(state);
     const capitalGainsTax = capitalGainsTaxSelector(state);
     const payrollTax = payrollTaxSelector(state);
-    const estateTax = estateTaxSelector(state);
     const acaTax = acaTaxSelector(state);
     const aggregatedTaxes = [
       ordinaryIncomeTax,
       capitalGainsTax,
       payrollTax,
-      estateTax,
       acaTax,
     ];
-    const totalCurrent = aggregatedTaxes.reduce((a, b) => (a.current ? a.current : a) + b.current);
-    const totalSanders = aggregatedTaxes.reduce((a, b) => (a.sanders ? a.sanders : a) + b.sanders);
-    const totalSavings = totalSavingsSelector(state);
-    const positiveTotalSavings = totalSavings >= 0;
 
     return {
       barData: [
@@ -102,13 +86,6 @@ export default connect(
           values: [
             { x: 'Current', y: ordinaryIncomeTax.current },
             { x: 'Sanders', y: ordinaryIncomeTax.sanders },
-          ],
-        },
-        {
-          name: 'Savings',
-          values: [
-            { x: 'Current', y: positiveTotalSavings ? 0 : Math.abs(totalCurrent - totalSanders) },
-            { x: 'Sanders', y: positiveTotalSavings ? Math.abs(totalSavings) : 0 },
           ],
         },
       ],
