@@ -1,5 +1,5 @@
 import cases from './cases';
 
 export default {
-  inputs: cases.case1,
+  inputs: cases.case2,
 };
