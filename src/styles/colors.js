@@ -5,9 +5,10 @@ export default {
   'positive-green': '#00C853',
   bernieBlue: '#147fd7',
   darkBernieBlue: '#003F70',
-  taxableIncome: '#FFB74D',
-  capitalGains: '#FFF59D',
-  payroll: '#80DEEA',
-  estate: '#FFAB91',
-  aca: '#EA80FC',
+
+  taxableIncome: '#A2D393',
+  aca: '#08B2E3',
+  payroll: '#96ACB7',
+  capitalGains: '#247BA0',
+  estate: '#5562AA',
 };
