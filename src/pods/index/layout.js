@@ -17,13 +17,13 @@ export default class IndexLayout extends Component {
       <div styleName="base">
         <Header />
         <div styleName="container">
-          <Instructions />
+          {/*<Instructions />
           <Cases />
           <MainViz />
           <TaxBlurbs />
-          <ScrollTopButton />
+          <ScrollTopButton />*/}
         </div>
-        <Footer />
+        {/*<Footer />*/}
       </div>
     );
   }
