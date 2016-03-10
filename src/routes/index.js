@@ -8,5 +8,6 @@ import IndexLayout from 'pods/index/layout';
 export default (store) => (
   <Route path="/">
     <IndexRoute component={IndexLayout} />
+    <Route path="test" component={IndexLayout} />
   </Route>
 );

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="44px" height="36px" viewBox="0 0 44 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Desktop-HD" sketch:type="MSArtboardGroup" transform="translate(-2103.000000, -1665.000000)" fill="#FFCDD2">
+            <g id="HTML" sketch:type="MSLayerGroup" transform="translate(0.000000, 189.000000)">
+                <g id="Footer" transform="translate(0.000000, 1331.000000)" sketch:type="MSShapeGroup">
+                    <g id="Links" transform="translate(1902.000000, 77.000000)">
+                        <g id="Us" transform="translate(0.000000, 58.000000)">
+                            <path d="M233,10 C228.824,10 225.148,12.137 223,15.372 C220.851,12.137 217.176,10 213,10 C206.373,10 201,15.373 201,22 C201,33.943 223,46 223,46 C223,46 245,34.045 245,22 C245,15.373 239.627,10 233,10" id="Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
