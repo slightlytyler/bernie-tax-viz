@@ -41,42 +41,75 @@ class MainViz extends Component {
     return (
       <div styleName="main-viz">
         <section styleName="container">
-          <header styleName="header">
-            <section styleName="large row">
-              Hi, I'm <span styleName="whom">a {userName} American</span>.
-            </section>
-            <section styleName="row">
-              I'll spend about&nbsp;
-              {
-                !netZeroSavings
-                && (
-                  <span
-                    styleName="savings"
-                    style={{
-                      color: savingsColor,
-                    }}
-                  >
-                    {accounting.formatMoney(savings, '$', 0)}
-                  </span>
-                )
-              }
-            </section>
-            <section styleName="row">
-              {netZeroSavings ? 'the same' : variationText} per year under Bernie's plan.
-            </section>
-          </header>
+          {
+            (difference.save !== 0 || difference.spend !== 0)
+            ? (
+              <header styleName="header">
+                <section styleName="large row">
+                  Hi, I'm <span styleName="whom">a {userName} American</span>.
+                </section>
+                <section styleName="row">
+                  I'll spend about&nbsp;
+                  {
+                    !netZeroSavings
+                    && (
+                      <span
+                        styleName="savings"
+                        style={{
+                          color: savingsColor,
+                        }}
+                      >
+                        {accounting.formatMoney(savings, '$', 0)}
+                      </span>
+                    )
+                  }
+                </section>
+                <section styleName="row">
+                  {netZeroSavings ? 'the same' : variationText} per year under Bernie's plan.
+                </section>
+              </header>
+            )
+            : (
+              <header styleName="header">
+                <section styleName="large row">
+                  Hi, I'm <span styleName="whom">a {userName} American</span>.
+                </section>
+                <section styleName="row">
+                  Fill out the form to the right
+                </section>
+                <section styleName="row">
+                  to get started
+                </section>
+              </header>
+            )
+          }
           <DifferenceBar
             spend={difference.spend}
             save={difference.save}
           />
-          <footer styleName="footer">
-            <section styleName="row">
-              I'll save the most on medical expenses
-            </section>
-            <section styleName="row">
-              and spend the most on payroll taxes.
-            </section>
-          </footer>
+          {
+            (difference.save !== 0 || difference.spend !== 0)
+            ? (
+              <footer styleName="footer">
+                <section styleName="row">
+                  I'll save the most on medical expenses
+                </section>
+                <section styleName="row">
+                  and spend the most on payroll taxes.
+                </section>
+              </footer>
+            )
+            : (
+              <footer styleName="footer">
+                <section styleName="row">
+                  We'll help you analyze the diffences,
+                </section>
+                <section styleName="row">
+                  just the facts
+                </section>
+              </footer>
+            )
+          }
           <section styleName="share-bar">
             Share
           </section>

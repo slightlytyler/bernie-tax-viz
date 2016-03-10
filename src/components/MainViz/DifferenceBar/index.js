@@ -15,7 +15,7 @@ export default class MainVizDiffenceBar extends Component {
     const total = spend + save;
     const toPercent = i => `${i / total * 100}%`;
 
-    if (spend && save) {
+    if (spend || save) {
       return (
         <section styleName="difference-bar">
           <secion
