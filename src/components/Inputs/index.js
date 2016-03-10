@@ -15,6 +15,7 @@ export default class Inputs extends Component {
     anticipatedYearlyHealthSpending: PropTypes.number,
     capitalGains: PropTypes.number,
     estateBenefits: PropTypes.number,
+    currentCase: PropTypes.string.isRequired,
     updateInputs: PropTypes.func,
   };
 
@@ -36,6 +37,7 @@ export default class Inputs extends Component {
           <ul styleName="list">
             <li styleName="item">
               <TextField
+                ref="firstInput"
                 type="number"
                 label="How much will you make this year?"
                 value={taxableIncome}
@@ -123,6 +125,7 @@ export default connect(
     anticipatedYearlyHealthSpending: anticipatedYearlyHealthSpendingSelector(state),
     capitalGains: capitalGainsSelector(state),
     estateBenefits: estateBenefitsSelector(state),
+    currentCase: state.userCase,
   }),
   dispatch => bindActionCreators({
     updateInputs: actions.updateInputs,

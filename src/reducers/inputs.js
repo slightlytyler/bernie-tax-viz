@@ -341,7 +341,7 @@ export default function (state = {}, action) {
       return Object.assign({}, state, { [action.key]: action.val });
 
     case UPDATE_USER_CASE:
-      return cases[action.userCase];
+      return Object.assign({}, cases[action.userCase]);
 
     default:
       return state;

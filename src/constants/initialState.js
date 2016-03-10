@@ -1,6 +1,6 @@
 import cases from './cases';
 
-const defaultCase = 'case2';
+const defaultCase = 'custom';
 
 export default {
   inputs: cases[defaultCase],
