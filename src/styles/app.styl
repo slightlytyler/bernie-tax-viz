@@ -3,12 +3,13 @@
 :global
   *
     box-sizing: border-box
+    font-weight: normal
+    -webkit-font-smoothing: antialiased
 
   html
     font-family: 'Lato', sans-serif
     color: $black
     background-color: $white
-    overflow: auto
 
   body
     margin: 0
@@ -16,8 +17,12 @@
   p
     line-height: 2
 
+  ul
+    list-style: none
+    padding: 0
+    margin: 0
+
   .pane
-    overflow: auto
     border-radius: 4px
 
     &:not(:last-child)

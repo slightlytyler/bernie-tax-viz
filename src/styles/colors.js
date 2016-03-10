@@ -1,8 +1,14 @@
 export default {
-  black: '#212121',
-  white: '#FAFAFA',
-  'negative-red': '#E57373',
-  'positive-green': '#00C853',
+  black: '#505460',
+  white: '#ffffff',
+  lightAlpha: 'rgba(255, 255, 255, .85)',
+  eggshell: '#F5F6FB',
+  eggshell2: '#EEEFF4',
+  gray: '#E7E9EF',
+  gray2: '#C1C3C9',
+  negativeRed: '#F07366',
+  positiveGreen: '#5BD4B9',
+
   bernieBlue: '#147fd7',
   darkBernieBlue: '#003F70',
 

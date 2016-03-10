@@ -6,58 +6,46 @@ import styles from './styles.styl';
 import colors from 'styles/colors';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
-export default class MainVizCategoriesItem extends Component {
+export default class CategoriesItem extends Component {
   static propTypes ={
     title: PropTypes.string.isRequired,
     savings: PropTypes.number.isRequired,
-    color: PropTypes.string.isRequired,
-    invertColor: PropTypes.bool,
   };
 
   render() {
-    const {
-      title,
-      savings,
-      color,
-      invertColor,
-    } = this.props;
+    const { title, savings } = this.props;
     const isPositive = savings >= 0;
     const netZero = savings === 0;
 
-    const magnitudeColor = isPositive ? colors['positive-green'] : colors['negative-red'];
-    const textColor = invertColor ? color : 'rgba(0, 0, 0, .7)';
+    let color;
+    let backgroundColor;
 
-    const titleBackgroundColor = invertColor ? colors.white : color;
+    if (netZero) {
+      color = colors.gray2;
+      backgroundColor = colors.gray;
+    } else {
+      color = colors.lightAlpha;
 
-    const savingsBackgroundColor = (invertColor || netZero) ? colors.white : magnitudeColor;
-    const savingsBorderColor = netZero ? color : magnitudeColor;
+      if (isPositive) {
+        backgroundColor = colors.positiveGreen;
+      } else {
+        backgroundColor = colors.negativeRed;
+      }
+    }
 
     return (
-      <li styleName="item">
-        <section
-          styleName="title"
-          style={{
-            color: textColor,
-            backgroundColor: titleBackgroundColor,
-          }}
-        >
-          {title}
-        </section>
-        <section
+      <tr styleName="item">
+        <td styleName="title">{title}</td>
+        <td
           styleName="savings"
           style={{
-            color: (
-              invertColor
-                ? magnitudeColor
-                : colors.black
-            ),
-            backgroundColor: savingsBackgroundColor,
-            borderColor: invertColor ? colors.white : savingsBorderColor,
+            color,
+            backgroundColor,
           }}
         >
           {accounting.formatMoney(savings, '$', 0)}
-        </section>
-      </li>
+        </td>
+      </tr>
     );
   }
 }

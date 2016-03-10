@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import colors from 'styles/colors';
 import Item from '../Item';
 
-class MainVizCategoriesCapitalGainsItem extends Component {
+class CategoriesCapitalGainsItem extends Component {
   static propTypes ={
     savings: PropTypes.number.isRequired,
   };
@@ -11,7 +10,6 @@ class MainVizCategoriesCapitalGainsItem extends Component {
     return (
       <Item
         title="Capital Gains"
-        color={colors.capitalGains}
         savings={this.props.savings}
       />
     );
@@ -25,4 +23,4 @@ export default connect(
   state => ({
     savings: capitalGainsSavingsSelector(state),
   }),
-)(MainVizCategoriesCapitalGainsItem);
+)(CategoriesCapitalGainsItem);

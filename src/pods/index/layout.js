@@ -3,12 +3,9 @@ import cssModules from 'react-css-modules';
 
 import styles from './styles.styl';
 import Header from 'components/Header';
-import Footer from 'components/Footer';
-import Instructions from 'components/Instructions';
 import Cases from 'components/Cases';
-import MainViz from 'components/MainViz';
-import TaxBlurbs from 'components/TaxBlurbs';
-import ScrollTopButton from 'components/ScrollTopButton';
+import Categories from 'components/Categories';
+import Footer from 'components/Footer';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class IndexLayout extends Component {
@@ -16,14 +13,21 @@ export default class IndexLayout extends Component {
     return (
       <div styleName="base">
         <Header />
-        <div styleName="container">
-          {/*<Instructions />
+        <div styleName="main">
           <Cases />
-          <MainViz />
-          <TaxBlurbs />
-          <ScrollTopButton />*/}
+          <div styleName="sections">
+            <section styleName="section">
+              inputs
+            </section>
+            <section styleName="section">
+              <Categories />
+            </section>
+            <section styleName="section">
+              viz
+            </section>
+          </div>
         </div>
-        {/*<Footer />*/}
+        <Footer />
       </div>
     );
   }

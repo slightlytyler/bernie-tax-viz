@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import colors from 'styles/colors';
 import Item from '../Item';
 
-class MainVizCategoriesEstateBenefitsItem extends Component {
+class CategoriesPayrollItem extends Component {
   static propTypes ={
     savings: PropTypes.number.isRequired,
   };
@@ -10,8 +9,7 @@ class MainVizCategoriesEstateBenefitsItem extends Component {
   render() {
     return (
       <Item
-        title=" Estate Benefits"
-        color={colors.estate}
+        title="Payroll"
         savings={this.props.savings}
       />
     );
@@ -19,10 +17,10 @@ class MainVizCategoriesEstateBenefitsItem extends Component {
 }
 
 import { connect } from 'react-redux';
-import { estateSavingsSelector } from 'reducers/inputs';
+import { payrollSavingsSelector } from 'reducers/inputs';
 
 export default connect(
   state => ({
-    savings: estateSavingsSelector(state),
+    savings: payrollSavingsSelector(state),
   }),
-)(MainVizCategoriesEstateBenefitsItem);
+)(CategoriesPayrollItem);

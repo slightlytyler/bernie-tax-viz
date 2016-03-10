@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import colors from 'styles/colors';
 import Item from '../Item';
 
-class MainVizCategoriesACATaxItem extends Component {
+class CategoriesEstateItem extends Component {
   static propTypes ={
     savings: PropTypes.number.isRequired,
   };
@@ -10,8 +9,7 @@ class MainVizCategoriesACATaxItem extends Component {
   render() {
     return (
       <Item
-        title="ACA Tax"
-        color={colors.aca}
+        title=" Estates"
         savings={this.props.savings}
       />
     );
@@ -19,10 +17,10 @@ class MainVizCategoriesACATaxItem extends Component {
 }
 
 import { connect } from 'react-redux';
-import { acaSavingsSelector } from 'reducers/inputs';
+import { estateSavingsSelector } from 'reducers/inputs';
 
 export default connect(
   state => ({
-    savings: acaSavingsSelector(state),
+    savings: estateSavingsSelector(state),
   }),
-)(MainVizCategoriesACATaxItem);
+)(CategoriesEstateItem);
