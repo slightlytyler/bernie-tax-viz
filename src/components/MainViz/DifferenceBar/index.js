@@ -6,14 +6,14 @@ import styles from './styles.styl';
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class MainVizDiffenceBar extends Component {
   static propTypes = {
-    spend: PropTypes.number.isRequired,
-    save: PropTypes.number.isRequired,
+    spend: PropTypes.number,
+    save: PropTypes.number,
   };
 
   render() {
     const { spend, save } = this.props;
     const total = spend + save;
-    const toPercent = i => `${i / total * 100}%`;
+    const toPercent = i => i ? `${i / total * 100}%` : 0;
 
     if (spend || save) {
       return (

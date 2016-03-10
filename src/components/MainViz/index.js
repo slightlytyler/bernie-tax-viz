@@ -15,18 +15,96 @@ class MainViz extends Component {
       save: PropTypes.number.isRequired,
     }),
     savings: PropTypes.number.isRequired,
+    maxSaveCategory: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.bool,
+    ]),
+    maxSpendCategory: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.bool,
+    ]),
     currentCase: PropTypes.string.isRequired,
   };
+
+  emptySubject = 'Normal';
+
+  renderEmpty() {
+    return (
+      <div styleName="main-viz">
+        <section styleName="container">
+          <header styleName="header">
+            <section styleName="large row">
+              Hi, I'm <span styleName="whom">a {this.emptySubject} American</span>.
+            </section>
+            <section styleName="row">
+              Fill out the form to the right
+            </section>
+            <section styleName="row">
+              to get started
+            </section>
+          </header>
+          <DifferenceBar />
+          <footer styleName="footer">
+            <section styleName="row">
+              We'll help you analyze the diffences,
+            </section>
+            <section styleName="row">
+              just the facts
+            </section>
+          </footer>
+          <section styleName="share-bar">
+            Share
+          </section>
+        </section>
+      </div>
+    );
+  }
+
+  renderFooter() {
+    const { maxSaveCategory, maxSpendCategory } = this.props;
+
+    if (maxSaveCategory && maxSpendCategory) {
+      return (
+        <footer styleName="footer">
+          <section styleName="row">
+            I'll save the most on {maxSaveCategory}
+          </section>
+          <section styleName="row">
+            and spend the most on {maxSpendCategory}.
+          </section>
+        </footer>
+      );
+    } else if (maxSpendCategory) {
+      return (
+        <footer styleName="footer">
+          <section styleName="row">
+            I'll spend the most on {maxSpendCategory}
+          </section>
+          <section styleName="row">
+          </section>
+        </footer>
+      );
+    }
+
+    return (
+      <footer styleName="footer">
+        <section styleName="row">
+          I'll save the most on {maxSaveCategory}
+        </section>
+        <section styleName="row">
+        </section>
+      </footer>
+    );
+  }
 
   render() {
     const { savings, difference, currentCase } = this.props;
     const positiveSavings = savings > 0;
     const netZeroSavings = savings === 0;
     const userName = currentCase === 'custom'
-      ? 'Normal'
+      ? this.emptySubject
       : userCases[currentCase].label
     ;
-
 
     let variationText;
     let savingsColor;
@@ -38,94 +116,65 @@ class MainViz extends Component {
       savingsColor = colors.negativeRed;
     }
 
-    return (
-      <div styleName="main-viz">
-        <section styleName="container">
-          {
-            (difference.save !== 0 || difference.spend !== 0)
-            ? (
-              <header styleName="header">
-                <section styleName="large row">
-                  Hi, I'm <span styleName="whom">a {userName} American</span>.
-                </section>
-                <section styleName="row">
-                  I'll spend about&nbsp;
-                  {
-                    !netZeroSavings
-                    && (
-                      <span
-                        styleName="savings"
-                        style={{
-                          color: savingsColor,
-                        }}
-                      >
-                        {accounting.formatMoney(savings, '$', 0)}
-                      </span>
-                    )
-                  }
-                </section>
-                <section styleName="row">
-                  {netZeroSavings ? 'the same' : variationText} per year under Bernie's plan.
-                </section>
-              </header>
-            )
-            : (
-              <header styleName="header">
-                <section styleName="large row">
-                  Hi, I'm <span styleName="whom">a {userName} American</span>.
-                </section>
-                <section styleName="row">
-                  Fill out the form to the right
-                </section>
-                <section styleName="row">
-                  to get started
-                </section>
-              </header>
-            )
-          }
-          <DifferenceBar
-            spend={difference.spend}
-            save={difference.save}
-          />
-          {
-            (difference.save !== 0 || difference.spend !== 0)
-            ? (
-              <footer styleName="footer">
-                <section styleName="row">
-                  I'll save the most on medical expenses
-                </section>
-                <section styleName="row">
-                  and spend the most on payroll taxes.
-                </section>
-              </footer>
-            )
-            : (
-              <footer styleName="footer">
-                <section styleName="row">
-                  We'll help you analyze the diffences,
-                </section>
-                <section styleName="row">
-                  just the facts
-                </section>
-              </footer>
-            )
-          }
-          <section styleName="share-bar">
-            Share
+    if (difference.save !== 0 || difference.spend !== 0) {
+      return (
+        <div styleName="main-viz">
+          <section styleName="container">
+            <header styleName="header">
+              <section styleName="large row">
+                Hi, I'm <span styleName="whom">a {userName} American</span>.
+              </section>
+              <section styleName="row">
+                I'll spend about&nbsp;
+                {
+                  !netZeroSavings
+                  && (
+                    <span
+                      styleName="savings"
+                      style={{
+                        color: savingsColor,
+                      }}
+                    >
+                      {accounting.formatMoney(savings, '$', 0)}
+                    </span>
+                  )
+                }
+              </section>
+              <section styleName="row">
+                {netZeroSavings ? 'the same' : variationText} per year under Bernie's plan.
+              </section>
+            </header>
+            <DifferenceBar
+              spend={difference.spend}
+              save={difference.save}
+            />
+            {this.renderFooter()}
+            <section styleName="share-bar">
+              Share
+            </section>
           </section>
-        </section>
-      </div>
-    );
+        </div>
+      );
+    }
+
+    return this.renderEmpty();
   }
 }
 
 import { connect } from 'react-redux';
-import { totalDifferenceSelector, totalSavingsSelector } from 'reducers/inputs';
+import {
+  totalDifferenceSelector,
+  totalSavingsSelector,
+  maxSaveCategorySelector,
+  maxSpendCategorySelector,
+} from 'reducers/inputs';
 
 export default connect(
   state => ({
     difference: totalDifferenceSelector(state),
     savings: totalSavingsSelector(state),
+    maxSaveCategory: maxSaveCategorySelector(state),
+    maxSpendCategory: maxSpendCategorySelector(state),
     currentCase: state.userCase,
   }),
 )(MainViz);

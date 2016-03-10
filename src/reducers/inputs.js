@@ -267,6 +267,42 @@ export const totalSavingsSelector = createSelector(
   difference => difference.save - difference.spend
 );
 
+const maxCategoryLabels = (income, capitalGains, payroll, aca) => ([
+  { value: income, label: 'income taxes' },
+  { value: capitalGains, label: 'capital gains taxes' },
+  { value: payroll, label: 'payroll taxes' },
+  { value: aca, label: 'medical expenses' },
+]);
+
+export const maxSaveCategorySelector = createSelector(
+  ordinaryIncomeSavingsSelector,
+  capitalGainsSavingsSelector,
+  payrollSavingsSelector,
+  acaSavingsSelector,
+  (income, capitalGains, payroll, aca) => {
+    const category =
+      maxCategoryLabels(income, capitalGains, payroll, aca)
+        .reduce((a, b) => a.value > b.value ? a : b)
+    ;
+
+    return category.value !== 0 ? category.label : false;
+  }
+);
+export const maxSpendCategorySelector = createSelector(
+  ordinaryIncomeSavingsSelector,
+  capitalGainsSavingsSelector,
+  payrollSavingsSelector,
+  acaSavingsSelector,
+  (income, capitalGains, payroll, aca) => {
+    const category =
+      maxCategoryLabels(income, capitalGains, payroll, aca)
+        .reduce((a, b) => a.value < b.value ? a : b)
+    ;
+
+    return category.value !== 0 ? category.label : false;
+  }
+);
+
 //
 // Actions
 //
