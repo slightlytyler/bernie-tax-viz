@@ -6,6 +6,7 @@ export default {
   eggshell2: '#EEEFF4',
   gray: '#E7E9EF',
   gray2: '#C1C3C9',
+  gray3: '#98999E',
   negativeRed: '#F07366',
   positiveGreen: '#5BD4B9',
 

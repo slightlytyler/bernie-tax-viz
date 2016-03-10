@@ -4,6 +4,7 @@ import cssModules from 'react-css-modules';
 import styles from './styles.styl';
 import Header from 'components/Header';
 import Cases from 'components/Cases';
+import Inputs from 'components/Inputs';
 import Categories from 'components/Categories';
 import MainViz from 'components/MainViz';
 import Footer from 'components/Footer';
@@ -17,15 +18,9 @@ export default class IndexLayout extends Component {
         <div styleName="main">
           <Cases />
           <div styleName="sections">
-            <section styleName="section">
-              inputs
-            </section>
-            <section styleName="section">
-              <Categories />
-            </section>
-            <section styleName="section">
-              <MainViz />
-            </section>
+            <Inputs />
+            <Categories />
+            <MainViz />
           </div>
         </div>
         <Footer />
