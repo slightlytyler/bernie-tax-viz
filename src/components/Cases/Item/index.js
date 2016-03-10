@@ -22,6 +22,7 @@ export default class CasesItem extends Component {
         backgroundColor={backgroundColor}
         labelColor={labelColor}
         labelStyle={{ fontWeight: 700 }}
+        onClick={this.handleClick}
       />
     );
   }

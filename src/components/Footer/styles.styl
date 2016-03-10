@@ -16,20 +16,32 @@
     display: flex
 
     .item
+      text-decoration: none
+
       &:not(:last-child):after
         content: '-'
         display: inline-block
         margin: 0 .2em
 
   .link
+    cursor: pointer
     color: inherit
 
-  .credit
-    .heart
-      display: inline
-      width: 1em
+    &:hover
+      text-decoration: underline
+
+  .icon
+    display: inline
+    width: 1em
+
+    &.twitter
+      transform: translateY(.175em)
+
+    &.heart
       margin: 0 .1em
       transform: translateY(.1em)
+
+  .credit
 
     .link
       text-decoration: underline
