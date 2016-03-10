@@ -1,10 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import cssModules from 'react-css-modules';
-import scrollTo from 'utils/scrollTo';
 
-import colors from 'styles/colors';
 import styles from './styles.styl';
-import RaisedButton from 'material-ui/lib/raised-button';
+import Item from './Item';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 class Cases extends Component {
@@ -13,38 +11,37 @@ class Cases extends Component {
     updateUserCase: PropTypes.func.isRequired,
   };
 
-  scrollToInputs = () => scrollTo('inputs');
+  userCases = [
+    { value: 'case1', label: 'Low Income' },
+    { value: 'case2', label: 'Median Income' },
+    { value: 'case3', label: 'High Income' },
+    { value: 'case4', label: 'Super High Income' },
+    { value: 'custom', label: 'What about me?' },
+  ];
+
+  changeCase = caseId => {
+    if (caseId !== 'custom') {
+      this.props.updateUserCase(caseId);
+    }
+  }
 
   render() {
-    const { currentCase, updateUserCase } = this.props;
+    const { changeCase } = this;
+    const { currentCase } = this.props;
 
     return (
       <div id="cases" styleName="cases">
-        <RaisedButton
-          label="Low income"
-          backgroundColor="white"
-          labelColor={colors.bernieBlue}
-        />
-        <RaisedButton
-          label="Median income"
-          backgroundColor="white"
-          labelColor={colors.bernieBlue}
-        />
-        <RaisedButton
-          label="High income"
-          backgroundColor="white"
-          labelColor={colors.bernieBlue}
-        />
-        <RaisedButton
-          label="Very high income"
-          backgroundColor="white"
-          labelColor={colors.bernieBlue}
-        />
-        <RaisedButton
-          label="What about me?"
-          backgroundColor="white"
-          labelColor={colors.bernieBlue}
-        />
+        {
+          this.userCases.map(userCase => (
+            <Item
+              key={userCase.value}
+              value={userCase.value}
+              label={userCase.label}
+              active={userCase.value === currentCase}
+              handleClick={changeCase}
+            />
+          ))
+        }
       </div>
     );
   }

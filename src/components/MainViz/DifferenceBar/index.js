@@ -1,20 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import cssModules from 'react-css-modules';
 
 import styles from './styles.styl';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class MainVizDiffenceBar extends Component {
+  static propTypes = {
+    spend: PropTypes.number.isRequired,
+    save: PropTypes.number.isRequired,
+  };
+
   render() {
+    const { spend, save } = this.props;
+    const total = spend + save;
+    const toPercent = i => `${i / total * 100}%`;
+
     return (
       <section styleName="difference-bar">
         <secion
           styleName="negative"
-          style={{ width: '40%' }}
+          style={{ width: toPercent(spend) }}
         />
         <section
           styleName="positive"
-          style={{ width: '60%' }}
+          style={{ width: toPercent(save) }}
         />
         <span styleName="origin" />
       </section>

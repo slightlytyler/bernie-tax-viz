@@ -255,13 +255,19 @@ export const acaSavingsSelector = createSelector(
   tax => tax.current - tax.sanders
 );
 
-export const totalSavingsSelector = createSelector(
+export const totalDifferenceSelector = createSelector(
   ordinaryIncomeSavingsSelector,
   capitalGainsSavingsSelector,
   payrollSavingsSelector,
   acaSavingsSelector,
-  (ordinaryIncomeSavings, capitalGainsSavings, payrollSavings, acaSavings) =>
-    ordinaryIncomeSavings + capitalGainsSavings + payrollSavings + acaSavings
+  (...savings) => ({
+    spend: Math.abs(savings.filter(s => s < 0).reduce((a, b) => a + b, 0)),
+    save: savings.filter(s => s > 0).reduce((a, b) => a + b, 0),
+  })
+);
+export const totalSavingsSelector = createSelector(
+  totalDifferenceSelector,
+  difference => difference.save - difference.spend
 );
 
 //
