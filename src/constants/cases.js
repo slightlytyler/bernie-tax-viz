@@ -1,5 +1,6 @@
 export default {
   case1: {
+    label: 'Low Income',
     taxableIncome: 17000,
     filingStatus: 'single',
     dependents: 3,
@@ -9,6 +10,7 @@ export default {
   },
 
   case2: {
+    label: 'Median Income',
     taxableIncome: 90000,
     filingStatus: 'married',
     dependents: 2,
@@ -18,6 +20,7 @@ export default {
   },
 
   case3: {
+    label: 'High Income',
     taxableIncome: 120000,
     filingStatus: 'single',
     dependents: 0,
@@ -27,6 +30,7 @@ export default {
   },
 
   case4: {
+    label: 'Super High Income',
     taxableIncome: 300000,
     filingStatus: 'married',
     dependents: 2,

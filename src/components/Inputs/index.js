@@ -20,7 +20,7 @@ export default class Inputs extends Component {
                 label="How much will you make this year?"
               />
             </li>
-            <li styleName="item">
+            <li styleName="item flush">
               <SelectField
                 options={[
                   { value: 'married', label: 'Married' },

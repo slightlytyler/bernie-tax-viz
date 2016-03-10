@@ -5,6 +5,7 @@ import accounting from 'accounting';
 import colors from 'styles/colors';
 import styles from './styles.styl';
 import DifferenceBar from './DifferenceBar';
+import userCases from 'constants/cases';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 class MainViz extends Component {
@@ -14,10 +15,11 @@ class MainViz extends Component {
       save: PropTypes.number.isRequired,
     }),
     savings: PropTypes.number.isRequired,
+    currentCase: PropTypes.string.isRequired,
   };
 
   render() {
-    const { savings, difference } = this.props;
+    const { savings, difference, currentCase } = this.props;
     const positiveSavings = savings > 0;
     const netZeroSavings = savings === 0;
 
@@ -36,7 +38,7 @@ class MainViz extends Component {
         <section styleName="container">
           <header styleName="header">
             <section styleName="large row">
-              Hi, I'm <span styleName="whom">a Low Income American</span>.
+              Hi, I'm <span styleName="whom">a {userCases[currentCase].label} American</span>.
             </section>
             <section styleName="row">
               I'll spend about&nbsp;
@@ -86,5 +88,6 @@ export default connect(
   state => ({
     difference: totalDifferenceSelector(state),
     savings: totalSavingsSelector(state),
+    currentCase: state.userCase,
   }),
 )(MainViz);
