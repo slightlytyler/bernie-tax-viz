@@ -16,7 +16,9 @@ export default class Footer extends Component {
             <a styleName="link item">Some link</a>
           </section>
           <section styleName="credit row">
-            made with <img src={hearticon} styleName="heart" /> by <a styleName="link">data-viz.work</a>
+            made with&nbsp;
+            <img src={hearticon} styleName="heart" />
+            &nbsp;by <a styleName="link">data-viz.work</a>
           </section>
           <section styleName="disclaimer row">
             super tiny disclaimer or something like that
