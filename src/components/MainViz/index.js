@@ -52,9 +52,7 @@ class MainViz extends Component {
               just the facts
             </section>
           </footer>
-          <section styleName="share-bar">
-            Share
-          </section>
+          {this.renderShareBar()}
         </section>
       </div>
     );
@@ -94,6 +92,27 @@ class MainViz extends Component {
         <section styleName="row">
         </section>
       </footer>
+    );
+  }
+
+  renderShareBar() {
+    return (
+      <section styleName="share-bar">
+        Feeling the bern?
+        <a
+          href="https://twitter.com/intent/tweet?button_hashtag=berniesplan"
+          className="twitter-hashtag-button"
+          data-url="bernies-tax.dataviz.work"
+        >
+          Tweet #berniesplan
+        </a>
+        <div
+          className="fb-share-button"
+          data-href="http://bernies-tax.dataviz.work/"
+          data-layout="button"
+          data-size="large"
+        />
+      </section>
     );
   }
 
@@ -149,9 +168,7 @@ class MainViz extends Component {
               save={difference.save}
             />
             {this.renderFooter()}
-            <section styleName="share-bar">
-              Share
-            </section>
+            {this.renderShareBar()}
           </section>
         </div>
       );
