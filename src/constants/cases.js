@@ -1,5 +1,14 @@
-export default {
-  case1: {
+export const cases = [
+  'low-income',
+  'median-income',
+  'high-income',
+  'super-high-income',
+  'custom',
+];
+
+export const casesById = {
+  'low-income': {
+    id: 'low-income',
     label: 'Low Income',
     taxableIncome: 17000,
     filingStatus: 'single',
@@ -9,7 +18,8 @@ export default {
     estateBenefits: 0,
   },
 
-  case2: {
+  'median-income': {
+    id: 'median-income',
     label: 'Median Income',
     taxableIncome: 90000,
     filingStatus: 'married',
@@ -19,7 +29,8 @@ export default {
     estateBenefits: 50000,
   },
 
-  case3: {
+  'high-income': {
+    id: 'high-income',
     label: 'High Income',
     taxableIncome: 120000,
     filingStatus: 'single',
@@ -29,7 +40,8 @@ export default {
     estateBenefits: 250000,
   },
 
-  case4: {
+  'super-high-income': {
+    id: 'super-high-income',
     label: 'Super High Income',
     taxableIncome: 300000,
     filingStatus: 'married',
@@ -40,6 +52,7 @@ export default {
   },
 
   custom: {
+    id: 'custom',
     label: 'Custom',
     taxableIncome: undefined,
     filingStatus: undefined,

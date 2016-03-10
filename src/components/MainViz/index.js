@@ -5,7 +5,7 @@ import accounting from 'accounting';
 import colors from 'styles/colors';
 import styles from './styles.styl';
 import DifferenceBar from './DifferenceBar';
-import userCases from 'constants/cases';
+import { casesById } from 'constants/cases';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 class MainViz extends Component {
@@ -122,7 +122,7 @@ class MainViz extends Component {
     const netZeroSavings = savings === 0;
     const userName = currentCase === 'custom'
       ? this.emptySubject
-      : userCases[currentCase].label
+      : casesById[currentCase].label
     ;
 
     let variationText;

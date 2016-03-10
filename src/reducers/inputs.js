@@ -333,7 +333,7 @@ export const actions = {
 //
 // Reducers
 //
-import cases from 'constants/cases';
+import { casesById } from 'constants/cases';
 
 export default function (state = {}, action) {
   switch (action.type) {
@@ -341,7 +341,7 @@ export default function (state = {}, action) {
       return Object.assign({}, state, { [action.key]: action.val });
 
     case UPDATE_USER_CASE:
-      return Object.assign({}, cases[action.userCase]);
+      return Object.assign({}, casesById[action.userCase]);
 
     default:
       return state;

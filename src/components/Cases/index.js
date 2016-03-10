@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import cssModules from 'react-css-modules';
 
+import { cases, casesById } from 'constants/cases';
 import styles from './styles.styl';
 import Item from './Item';
 
@@ -11,29 +12,25 @@ class Cases extends Component {
     updateUserCase: PropTypes.func.isRequired,
   };
 
-  userCases = [
-    { value: 'case1', label: 'Low Income' },
-    { value: 'case2', label: 'Median Income' },
-    { value: 'case3', label: 'High Income' },
-    { value: 'case4', label: 'Super High Income' },
-    { value: 'custom', label: 'What about me?' },
-  ];
-
   render() {
     const { currentCase, updateUserCase } = this.props;
 
     return (
       <div id="cases" styleName="cases">
         {
-          this.userCases.map(userCase => (
-            <Item
-              key={userCase.value}
-              value={userCase.value}
-              label={userCase.label}
-              active={userCase.value === currentCase}
-              handleClick={updateUserCase}
-            />
-          ))
+          cases.map(id => {
+            const userCase = casesById[id];
+
+            return (
+              <Item
+                key={id}
+                value={id}
+                label={userCase.label}
+                active={id === currentCase}
+                handleClick={updateUserCase}
+              />
+            );
+          })
         }
       </div>
     );

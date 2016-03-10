@@ -1,8 +1,8 @@
-import cases from './cases';
+import { casesById } from './cases';
 
 const defaultCase = 'custom';
 
 export default {
-  inputs: cases[defaultCase],
+  inputs: casesById[defaultCase],
   userCase: defaultCase,
 };
