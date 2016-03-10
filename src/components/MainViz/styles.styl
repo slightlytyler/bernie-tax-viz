@@ -1,18 +1,34 @@
 .main-viz
-  margin-bottom: 4rem
+  display: flex
+  justify-content: center
+  align-items: center
 
   .container
     display: flex;
+    flex-direction: column
 
-.line-items
-  list-style: none
-  display: flex
-  flex-direction: column
-  padding: 0
-  margin: 0
+  .header, .footer
+    font-size: 1.75em
+    font-weight: 300
 
-  .inputs
-    list-style: none
+    .row
+      &.large
+        margin-bottom: .25em
+        font-size: 1.5em
+
+      .whom
+        font-weight: 400
+        font-style: italic
+        text-decoration: underline
+
+      .savings
+        font-style: italic
+
+  .share-bar
     display: flex
-    padding: 0
-    margin: 0
+    justify-content: center
+    align-items: center
+    padding: 1em
+    margin-top: 2em
+    color: white
+    background-color: #147fd7

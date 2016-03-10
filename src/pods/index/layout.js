@@ -5,6 +5,7 @@ import styles from './styles.styl';
 import Header from 'components/Header';
 import Cases from 'components/Cases';
 import Categories from 'components/Categories';
+import MainViz from 'components/MainViz';
 import Footer from 'components/Footer';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
@@ -23,7 +24,7 @@ export default class IndexLayout extends Component {
               <Categories />
             </section>
             <section styleName="section">
-              viz
+              <MainViz />
             </section>
           </div>
         </div>
