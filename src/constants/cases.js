@@ -47,4 +47,8 @@ export default {
     capitalGains: 17000000,
     estateBenefits: 2500000,
   },
+
+  custom: {
+    label: 'Custom',
+  },
 };
