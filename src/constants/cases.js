@@ -39,16 +39,13 @@ export default {
     estateBenefits: 2500000,
   },
 
-  case5: {
-    taxableIncome: 7500000,
-    filingStatus: 'married',
-    dependents: 1,
-    anticipatedYearlyHealthSpending: 12000,
-    capitalGains: 17000000,
-    estateBenefits: 2500000,
-  },
-
   custom: {
     label: 'Custom',
+    taxableIncome: undefined,
+    filingStatus: undefined,
+    dependents: undefined,
+    anticipatedYearlyHealthSpending: undefined,
+    capitalGains: undefined,
+    estateBenefits: undefined,
   },
 };

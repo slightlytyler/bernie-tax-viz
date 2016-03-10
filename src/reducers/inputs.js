@@ -2,7 +2,6 @@
 // Constants
 //
 export const UPDATE_INPUTS = 'UPDATE_INPUTS';
-export const CLEAR_INPUTS = 'CLEAR_INPUTS';
 export const SAVE_INPUTS = 'SAVE_INPUTS';
 import { UPDATE_USER_CASE } from 'reducers/userCase';
 
@@ -46,7 +45,7 @@ export const agiSelector = createSelector(
   capitalGainsSelector,
   filingStatusSelector,
   dependentsSelector,
-  (income, capitalGains, filingStatus, dependents) => {
+  (income = 0, capitalGains = 0, filingStatus = 'single', dependents = 0) => {
     const exemptions = (filingStatus === 'married' ? 2 : 1) + dependents;
     const agi = (income + capitalGains) - (4000 * exemptions);
 
@@ -54,7 +53,7 @@ export const agiSelector = createSelector(
   }
 );
 
-function incomeTaxCalculator(type, agi, filingStatus) {
+function incomeTaxCalculator(type, agi, filingStatus = 'single') {
   const incomeTaxRatesForStatus = incomeTaxRates[filingStatus];
   const incomeTaxBrackets = Array.from(incomeTaxRatesForStatus.keys());
   let totalTax = {
@@ -99,10 +98,9 @@ function incomeTaxCalculator(type, agi, filingStatus) {
 }
 
 export const ordinaryIncomeTaxSelector = createSelector(
-  taxableIncomeSelector,
   filingStatusSelector,
   agiSelector,
-  (income, filingStatus, agi) => incomeTaxCalculator('ordinaryIncome', agi, filingStatus)
+  (filingStatus = 'single', agi) => incomeTaxCalculator('ordinaryIncome', agi, filingStatus)
 );
 export const ordinaryIncomeSavingsSelector = createSelector(
   ordinaryIncomeTaxSelector,
@@ -110,10 +108,9 @@ export const ordinaryIncomeSavingsSelector = createSelector(
 );
 
 export const capitalGainsTaxSelector = createSelector(
-  capitalGainsSelector,
   filingStatusSelector,
   agiSelector,
-  (income, filingStatus, agi) => incomeTaxCalculator('capitalGains', agi, filingStatus)
+  (filingStatus = 'single', agi) => incomeTaxCalculator('capitalGains', agi, filingStatus)
 );
 export const capitalGainsSavingsSelector = createSelector(
   capitalGainsTaxSelector,
@@ -123,7 +120,7 @@ export const capitalGainsSavingsSelector = createSelector(
 export const payrollTaxSelector = createSelector(
   agiSelector,
   filingStatusSelector,
-  (agi, filingStatus) => {
+  (agi, filingStatus = 'single') => {
     const payrollTaxRatesForStatus = payrollTaxRates[filingStatus];
     const payrollTaxBrackets = Array.from(payrollTaxRatesForStatus.keys());
 
@@ -175,7 +172,7 @@ export const payrollSavingsSelector = createSelector(
 export const estateTaxSelector = createSelector(
   estateBenefitsSelector,
   filingStatusSelector,
-  (income, filingStatus) => {
+  (income = 0, filingStatus = 'single') => {
     const { current: currentTaxRates, sanders: sandersTaxRates } = estateTaxRates;
 
     const currentTaxRatesForStatus = currentTaxRates[filingStatus];
@@ -245,7 +242,7 @@ const sandersACATaxRate = 2.2;
 export const acaTaxSelector = createSelector(
   agiSelector,
   anticipatedYearlyHealthSpendingSelector,
-  (agi, healthSpending) => ({
+  (agi, healthSpending = 0) => ({
     current: healthSpending,
     sanders: (sandersACATaxRate / 100) * agi,
   })
@@ -277,11 +274,17 @@ let inputsTimeout;
 
 export const actions = {
   updateInputs: (key, val) => dispatch => {
-    // No negative values
-    if (typeof val === 'number' && val < 0) {
-      return { type: UPDATE_INPUTS, key, val: 0 };
+    if (isNaN(Number(val))) {
+      dispatch({ type: UPDATE_INPUTS, key, val });
+    } else {
+      const normalizedVal = Math.round(Number(val));
+
+      if (normalizedVal < 0) {
+        dispatch({ type: UPDATE_INPUTS, key, val: 0 });
+      } else {
+        dispatch({ type: UPDATE_INPUTS, key, val: normalizedVal });
+      }
     }
-    dispatch({ type: UPDATE_INPUTS, key, val });
 
     if (inputsTimeout) {
       clearTimeout(inputsTimeout);
@@ -289,13 +292,11 @@ export const actions = {
 
     inputsTimeout = setTimeout(() => dispatch({ type: SAVE_INPUTS }), 1500);
   },
-  clearInputs: () => ({ type: CLEAR_INPUTS }),
 };
 
 //
 // Reducers
 //
-import blankInputs from 'constants/blankInputs';
 import cases from 'constants/cases';
 
 export default function (state = {}, action) {
@@ -305,9 +306,6 @@ export default function (state = {}, action) {
 
     case UPDATE_USER_CASE:
       return cases[action.userCase];
-
-    case CLEAR_INPUTS:
-      return Object.assign({}, blankInputs);
 
     default:
       return state;

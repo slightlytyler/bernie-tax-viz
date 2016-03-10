@@ -22,6 +22,11 @@ class MainViz extends Component {
     const { savings, difference, currentCase } = this.props;
     const positiveSavings = savings > 0;
     const netZeroSavings = savings === 0;
+    const userName = currentCase === 'custom'
+      ? 'Normal'
+      : userCases[currentCase].label
+    ;
+
 
     let variationText;
     let savingsColor;
@@ -38,7 +43,7 @@ class MainViz extends Component {
         <section styleName="container">
           <header styleName="header">
             <section styleName="large row">
-              Hi, I'm <span styleName="whom">a {userCases[currentCase].label} American</span>.
+              Hi, I'm <span styleName="whom">a {userName} American</span>.
             </section>
             <section styleName="row">
               I'll spend about&nbsp;

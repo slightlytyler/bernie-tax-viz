@@ -19,15 +19,8 @@ class Cases extends Component {
     { value: 'custom', label: 'What about me?' },
   ];
 
-  changeCase = caseId => {
-    if (caseId !== 'custom') {
-      this.props.updateUserCase(caseId);
-    }
-  }
-
   render() {
-    const { changeCase } = this;
-    const { currentCase } = this.props;
+    const { currentCase, updateUserCase } = this.props;
 
     return (
       <div id="cases" styleName="cases">
@@ -38,7 +31,7 @@ class Cases extends Component {
               value={userCase.value}
               label={userCase.label}
               active={userCase.value === currentCase}
-              handleClick={changeCase}
+              handleClick={updateUserCase}
             />
           ))
         }

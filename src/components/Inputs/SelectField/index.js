@@ -10,15 +10,24 @@ export default class InputsSelectField extends Component {
       value: PropTypes.any.isRequired,
       label: PropTypes.any.isRequired,
     })),
+    value: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
+    for: PropTypes.string,
     label: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
   };
 
+  handleChange = (e, index, value) => this.props.handleChange(this.props.for, value);
+
   render() {
-    const { options, label } = this.props;
+    const { options, label, value } = this.props;
 
     return (
       <SelectField
+        value={value}
+        onChange={this.handleChange}
         floatingLabelText={label}
         floatingLabelStyle={{ color: colors.gray3 }}
         style={{ fontSize: '1.25em' }}
