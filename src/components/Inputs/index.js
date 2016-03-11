@@ -70,7 +70,7 @@ export default class Inputs extends Component {
             <li styleName="item">
               <TextField
                 type="number"
-                label="What's your anticipated yearly health spending?"
+                label="How much will you spend on healthcare this year?"
                 value={anticipatedYearlyHealthSpending}
                 for="anticipatedYearlyHealthSpending"
                 step={1000}
@@ -90,7 +90,7 @@ export default class Inputs extends Component {
             <li styleName="item">
               <TextField
                 type="number"
-                label="What is your expected lifetime estate benefit?"
+                label="How much will you inherit in your lifetime?"
                 value={estateBenefits}
                 for="estateBenefits"
                 step={1000}

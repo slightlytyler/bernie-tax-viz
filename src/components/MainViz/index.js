@@ -46,10 +46,10 @@ class MainViz extends Component {
           <DifferenceBar />
           <footer styleName="footer">
             <section styleName="row">
-              We'll help you analyze the diffences,
+              Give us the facts
             </section>
             <section styleName="row">
-              just the facts.
+              and we'll show you the differences.
             </section>
           </footer>
           {this.renderShareBar()}
@@ -154,7 +154,7 @@ class MainViz extends Component {
                         color: savingsColor,
                       }}
                     >
-                      {accounting.formatMoney(savings, '$', 0)}
+                      {accounting.formatMoney(Math.abs(savings), '$', 0)}
                     </span>
                   )
                 }

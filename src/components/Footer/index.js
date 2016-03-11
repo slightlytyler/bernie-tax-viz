@@ -23,7 +23,7 @@ export default class Footer extends Component {
             &nbsp;by <a href="http://data-viz.work/" styleName="link">data-viz.work</a> & <a href="http://slightlytyler.com/" styleName="link">slightlytyler</a>
           </section>
           <section styleName="disclaimer row">
-            these are just like our thoughts man, not legal advice
+            these are just like our thoughts man, not tax or legal advice
           </section>
         </div>
       </footer>
