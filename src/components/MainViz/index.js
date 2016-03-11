@@ -8,6 +8,7 @@ import pick from 'lodash.pick';
 
 import colors from 'styles/colors';
 import styles from './styles.styl';
+import ShareCreator from 'components/ShareCreator';
 import DifferenceBar from './DifferenceBar';
 import { casesById, emptyCase } from 'constants/cases';
 
@@ -36,28 +37,19 @@ class MainViz extends Component {
 
   emptySubject = 'Normal';
 
-  share = () => {
+  share = (name, cb) => {
     const id = generateId();
     const shakenRecord = pick(this.props.inputs, input => typeof input !== 'undefined');
     const trimmedRecord = omit(shakenRecord, 'id', 'label', 'custom');
-    const filledInRecord = Object.assign({}, emptyCase, trimmedRecord);
+    const filledInRecord = Object.assign({}, emptyCase, trimmedRecord, { name });
 
     this.props.firebase.push(
       `/shares/${id}`,
       filledInRecord,
-      () => this.props.push(id)
-    );
-  }
-
-  renderShareBar() {
-    return (
-      <section
-        styleName="share-bar"
-        onClick={this.share}
-      >
-        Feeling the bern? Share your experience.
-        <iframe styleName="bernrate" src="http://www.bernrate.com/active" width="200" height="40"></iframe>
-      </section>
+      () => {
+        console.log(id);
+        cb(id);
+      },
     );
   }
 
@@ -122,7 +114,7 @@ class MainViz extends Component {
               and we'll show you the differences.
             </section>
           </footer>
-          {this.renderShareBar()}
+          <ShareCreator share={this.share} />
         </section>
       </div>
     );
@@ -180,7 +172,7 @@ class MainViz extends Component {
               save={difference.save}
             />
             {this.renderFooter()}
-            {this.renderShareBar()}
+            <ShareCreator share={this.share} />
           </section>
         </div>
       );

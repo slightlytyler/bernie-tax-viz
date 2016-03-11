@@ -45,6 +45,7 @@ class ShareLayout extends Component {
 
     return (
       <Viz
+        name={share.name}
         savings={totalSavingsSelector(mockState)}
         difference={totalDifferenceSelector(mockState)}
         maxSaveCategory={maxSaveCategorySelector(mockState)}
@@ -55,7 +56,7 @@ class ShareLayout extends Component {
 
   renderLoading() {
     return (
-      <div styleName="loading">Loading</div>
+      <div styleName="loading">Loading the results...</div>
     );
   }
 

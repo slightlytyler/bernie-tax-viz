@@ -1,0 +1,31 @@
+.share-creator
+  position: relative
+  display: flex
+  justify-content: center
+  align-items: center
+  padding: 0 1em .5em
+  margin-top: 2em
+  color: #147fd7
+  border: 3px solid #147fd7
+  border-radius: 2px
+  cursor: pointer
+
+  &.padded
+    padding: 1em
+
+
+  & > *:not(:last-child)
+    margin-right: 1em
+
+  .link
+    color: #147fd7
+    text-decoration: none
+
+.bernrate
+  position: absolute
+  left: 50%
+  top: 100%
+  margin-top: 1em
+  transform: translateX(-50%)
+  border: none
+  outline: none

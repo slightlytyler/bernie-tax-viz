@@ -9,6 +9,7 @@ import DifferenceBar from '../DifferenceBar';
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class MainVizViz extends Component {
   static propTypes = {
+    name: PropTypes.string,
     savings: PropTypes.number.isRequired,
     difference: PropTypes.shape({
       spend: PropTypes.number.isRequired,
@@ -71,7 +72,7 @@ export default class MainVizViz extends Component {
   }
 
   render() {
-    const { savings, difference } = this.props;
+    const { name, savings, difference } = this.props;
     const positiveSavings = savings > 0;
     const netZeroSavings = savings === 0;
 
@@ -90,7 +91,7 @@ export default class MainVizViz extends Component {
         <section styleName="container">
           <header styleName="header">
             <section styleName="large row">
-              Hi, I'm <span styleName="whom">an American taxpayer</span>.
+              Hi, I'm <span styleName="whom">{ name || 'an American taxpayer'}</span>.
             </section>
             <section styleName="row">
               I'll spend about&nbsp;
