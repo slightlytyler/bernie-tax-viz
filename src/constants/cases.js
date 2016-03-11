@@ -23,7 +23,7 @@ export const casesById = {
   'median-income': {
     id: 'median-income',
     label: 'Median Income',
-    taxableIncome: 90000,
+    taxableIncome: 51000,
     filingStatus: 'married',
     dependents: 2,
     anticipatedYearlyHealthSpending: 4800,

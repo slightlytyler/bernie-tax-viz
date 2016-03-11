@@ -58,7 +58,7 @@ export function incomeTax(agi, filingStatus = defaultFilingStatus) {
   return totalTax;
 }
 
-export function capitalGainsTax(capitalGains, agi, filingStatus = defaultFilingStatus) {
+export function capitalGainsTax(capitalGains = 0, agi, filingStatus = defaultFilingStatus) {
   const incomeTaxRatesForStatus = incomeTaxRates[filingStatus];
   const incomeTaxBrackets = Array.from(incomeTaxRatesForStatus.keys());
   let totalTax = {
