@@ -40,7 +40,7 @@ class MainViz extends Component {
               Fill out the form to the right
             </section>
             <section styleName="row">
-              to get started
+              to get started.
             </section>
           </header>
           <DifferenceBar />
@@ -49,7 +49,7 @@ class MainViz extends Component {
               We'll help you analyze the diffences,
             </section>
             <section styleName="row">
-              just the facts
+              just the facts.
             </section>
           </footer>
           {this.renderShareBar()}
@@ -76,7 +76,7 @@ class MainViz extends Component {
       return (
         <footer styleName="footer">
           <section styleName="row">
-            I'll spend the most on {maxSpendCategory}
+            I'll spend the most on {maxSpendCategory}.
           </section>
           <section styleName="row">
           </section>
@@ -87,7 +87,7 @@ class MainViz extends Component {
     return (
       <footer styleName="footer">
         <section styleName="row">
-          I'll save the most on {maxSaveCategory}
+          I'll save the most on {maxSaveCategory}.
         </section>
         <section styleName="row">
         </section>
