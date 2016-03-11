@@ -99,10 +99,12 @@ class MainViz extends Component {
     return (
       <section styleName="share-bar">
         Feeling the bern?
-        <a
-          href="https://twitter.com/intent/tweet?button_hashtag=berniesplan"
-          className="twitter-hashtag-button"
-          data-url="bernies-tax.dataviz.work"
+         <a
+          href="https://twitter.com/share"
+          className="twitter-share-button"
+          data-url="http://bernies-tax.dataviz.work/"
+          data-text="the Tax Plan ft. Bernie Sanders"
+          data-hashtags="berniesplan"
         >
           Tweet #berniesplan
         </a>
