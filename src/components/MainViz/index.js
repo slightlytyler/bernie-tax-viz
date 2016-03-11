@@ -112,6 +112,8 @@ class MainViz extends Component {
           data-layout="button"
           data-size="large"
         />
+
+        <iframe styleName="bernrate" src="http://www.bernrate.com/active" width="200" height="40"></iframe>
       </section>
     );
   }
