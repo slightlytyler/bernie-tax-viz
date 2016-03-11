@@ -48,7 +48,6 @@ import {
 
 export const agiSelector = createSelector(
   taxableIncomeSelector,
-  capitalGainsSelector,
   filingStatusSelector,
   dependentsSelector,
   adjustedGrossIncome,
@@ -65,6 +64,7 @@ export const ordinaryIncomeSavingsSelector = createSelector(
 );
 
 export const capitalGainsTaxSelector = createSelector(
+  capitalGainsSelector,
   agiSelector,
   filingStatusSelector,
   capitalGainsTax,

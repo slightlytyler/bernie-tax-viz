@@ -5,17 +5,17 @@ import estateTaxRates from 'constants/estateTaxRates';
 const defaultFilingStatus = 'single';
 
 export function adjustedGrossIncome(
-  income = 0, capitalGains = 0,
+  income = 0,
   filingStatus = defaultFilingStatus,
-  dependents = 0
+  dependents = 0,
 ) {
   const exemptions = (filingStatus === 'married' ? 2 : 1) + dependents;
-  const agi = (income + capitalGains) - (4000 * exemptions);
+  const agi = income - (4000 * exemptions);
 
   return agi > 0 ? agi : 0;
 }
 
-export function incomeTaxCalculator(type, agi, filingStatus = defaultFilingStatus) {
+export function incomeTax(agi, filingStatus = defaultFilingStatus) {
   const incomeTaxRatesForStatus = incomeTaxRates[filingStatus];
   const incomeTaxBrackets = Array.from(incomeTaxRatesForStatus.keys());
   let totalTax = {
@@ -39,10 +39,10 @@ export function incomeTaxCalculator(type, agi, filingStatus = defaultFilingStatu
     }
 
     const currentTax =
-      difference * (incomeTaxRatesForStatus.get(bracketCeiling).current[type] / 100)
+      difference * (incomeTaxRatesForStatus.get(bracketCeiling).current.ordinaryIncome / 100)
     ;
     const sandersTax =
-      difference * (incomeTaxRatesForStatus.get(bracketCeiling).sanders[type] / 100)
+      difference * (incomeTaxRatesForStatus.get(bracketCeiling).sanders.ordinaryIncome / 100)
     ;
 
     totalTax = {
@@ -55,16 +55,63 @@ export function incomeTaxCalculator(type, agi, filingStatus = defaultFilingStatu
     }
   }
 
-
   return totalTax;
 }
 
-export function incomeTax(agi, filingStatus = defaultFilingStatus) {
-  return incomeTaxCalculator('ordinaryIncome', agi, filingStatus);
-}
+export function capitalGainsTax(capitalGains, agi, filingStatus = defaultFilingStatus) {
+  const incomeTaxRatesForStatus = incomeTaxRates[filingStatus];
+  const incomeTaxBrackets = Array.from(incomeTaxRatesForStatus.keys());
+  let totalTax = {
+    current: 0,
+    sanders: 0,
+  };
 
-export function capitalGainsTax(agi, filingStatus = defaultFilingStatus) {
-  return incomeTaxCalculator('capitalGains', agi, filingStatus);
+  for (const bracketCeiling of incomeTaxBrackets) {
+    if (bracketCeiling < agi) {
+      continue;
+    }
+
+    const bracketIndex = incomeTaxBrackets.indexOf(bracketCeiling);
+    const bracketFloor =
+      bracketIndex === 0
+      ? 0
+      : incomeTaxBrackets[bracketIndex - 1]
+    ;
+    let difference;
+
+    if (capitalGains + agi > bracketCeiling) {
+      if (agi > bracketFloor) {
+        difference = bracketCeiling - agi;
+      } else {
+        difference = bracketCeiling - bracketFloor;
+      }
+    } else {
+      if (agi > bracketFloor) {
+        difference = capitalGains;
+      } else {
+        difference = agi + capitalGains - bracketFloor;
+      }
+    }
+
+    const currentTax =
+      difference * (incomeTaxRatesForStatus.get(bracketCeiling).current.capitalGains / 100)
+    ;
+    const sandersTax =
+      difference * (incomeTaxRatesForStatus.get(bracketCeiling).sanders.capitalGains / 100)
+    ;
+
+    totalTax = {
+      current: totalTax.current + currentTax,
+      sanders: totalTax.sanders + sandersTax,
+    };
+
+    if (capitalGains + agi <= bracketCeiling) {
+      break;
+    }
+  }
+
+
+  return totalTax;
 }
 
 export function payrollTax(agi, filingStatus = defaultFilingStatus) {
