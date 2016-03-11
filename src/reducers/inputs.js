@@ -194,7 +194,14 @@ import { casesById } from 'constants/cases';
 export default function (state = {}, action) {
   switch (action.type) {
     case UPDATE_INPUTS:
-      return Object.assign({}, state, { [action.key]: action.val });
+      return Object.assign(
+        {},
+        state,
+        {
+          [action.key]: action.val,
+          custom: true,
+        },
+      );
 
     case UPDATE_USER_CASE:
       return Object.assign({}, casesById[action.userCase]);

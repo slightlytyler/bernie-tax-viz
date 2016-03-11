@@ -21,18 +21,29 @@ const storageMiddleware = storage.createMiddleware(engine, [
 
 const load = storage.createLoader(engine);
 
-import { cases, casesById } from 'constants/cases';
+import { customKey, cases, casesById } from 'constants/cases';
 import { updateUserCase } from 'reducers/userCase';
 const loadCase = store => next => action => {
   const nextState = next(action);
 
   if (action.type === storage.LOAD) {
-    const { router: { locationBeforeTransitions: { pathname } } } = store.getState();
+    const {
+      router: {
+        locationBeforeTransitions: {
+          pathname,
+        },
+      },
+      inputs,
+    } = store.getState();
     const param = pathname.substr(1);
 
     if (casesById.hasOwnProperty(param)) {
-      if (param !== 'what-about-me') {
+      if (param !== customKey) {
         store.dispatch(updateUserCase(param));
+      } else {
+        if (!inputs.custom) {
+          store.dispatch(updateUserCase(customKey));
+        }
       }
     } else if (pathname === '/') {
       store.dispatch(updateUserCase(cases[0]));

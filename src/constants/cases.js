@@ -1,9 +1,11 @@
+export const customKey = 'what-about-me';
+
 export const cases = [
   'low-income',
   'median-income',
   'high-income',
   'super-high-income',
-  'what-about-me',
+  customKey,
 ];
 
 export const casesById = {
@@ -51,8 +53,9 @@ export const casesById = {
     estateBenefits: 2500000,
   },
 
-  'what-about-me': {
-    id: 'what-about-me',
+  [customKey]: {
+    custom: true,
+    id: customKey,
     label: 'What about me?',
     taxableIncome: undefined,
     filingStatus: undefined,
