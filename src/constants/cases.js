@@ -3,7 +3,7 @@ export const cases = [
   'median-income',
   'high-income',
   'super-high-income',
-  'custom',
+  'what-about-me',
 ];
 
 export const casesById = {
@@ -51,8 +51,8 @@ export const casesById = {
     estateBenefits: 2500000,
   },
 
-  custom: {
-    id: 'custom',
+  'what-about-me': {
+    id: 'what-about-me',
     label: 'What about me?',
     taxableIncome: undefined,
     filingStatus: undefined,

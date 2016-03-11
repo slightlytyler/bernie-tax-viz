@@ -9,11 +9,11 @@ import Item from './Item';
 class Cases extends Component {
   static propTypes = {
     currentCase: PropTypes.string.isRequired,
-    updateUserCase: PropTypes.func.isRequired,
+    push: PropTypes.func.isRequired,
   };
 
   render() {
-    const { currentCase, updateUserCase } = this.props;
+    const { currentCase, push } = this.props;
 
     return (
       <div id="cases" styleName="cases">
@@ -27,7 +27,7 @@ class Cases extends Component {
                 value={id}
                 label={userCase.label}
                 active={id === currentCase}
-                handleClick={updateUserCase}
+                handleClick={push}
               />
             );
           })
@@ -40,13 +40,11 @@ class Cases extends Component {
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actions } from 'reducers/userCase';
+import { push } from 'react-router-redux';
 
 export default connect(
-  state => ({
-    currentCase: state.userCase,
-  }),
+  undefined,
   dispatch => bindActionCreators({
-    updateUserCase: actions.updateUserCase,
+    push,
   }, dispatch)
 )(Cases);

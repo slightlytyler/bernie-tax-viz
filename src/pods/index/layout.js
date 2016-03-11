@@ -10,13 +10,13 @@ import MainViz from 'components/MainViz';
 import Footer from 'components/Footer';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
-export default class IndexLayout extends Component {
+class IndexLayout extends Component {
   render() {
     return (
       <div styleName="base">
         <Header />
         <div styleName="main">
-          <Cases />
+          <Cases currentCase={this.props.currentCase}/>
           <div styleName="sections">
             <Inputs />
             <Categories />
@@ -28,3 +28,12 @@ export default class IndexLayout extends Component {
     );
   }
 }
+
+import { connect } from 'react-redux';
+import { cases } from 'constants/cases';
+
+export default connect(
+  (state, props) => ({
+    currentCase: props.params.caseId || cases[0],
+  })
+)(IndexLayout);
