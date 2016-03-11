@@ -1,12 +1,15 @@
 import React, { Component, PropTypes } from 'react';
+import { firebase } from 'redux-react-firebase';
 import cssModules from 'react-css-modules';
 import accounting from 'accounting';
+import generateId from 'shortid';
 
 import colors from 'styles/colors';
 import styles from './styles.styl';
 import DifferenceBar from './DifferenceBar';
 import { casesById } from 'constants/cases';
 
+@firebase()
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 class MainViz extends Component {
   static propTypes = {
@@ -24,37 +27,28 @@ class MainViz extends Component {
       PropTypes.bool,
     ]),
     currentCase: PropTypes.string.isRequired,
+    firebase: PropTypes.object.isRequired,
+    push: PropTypes.func.isRequired,
   };
 
   emptySubject = 'Normal';
 
-  renderEmpty() {
+  share = () => {
+    const id = generateId();
+    this.props.firebase.push('/shares', { id });
+    // Do something with firebase
+    // this.props.push('id');
+  }
+
+  renderShareBar() {
     return (
-      <div styleName="main-viz">
-        <section styleName="container">
-          <header styleName="header">
-            <section styleName="large row">
-              Hi, I'm <span styleName="whom">a {this.emptySubject} American</span>.
-            </section>
-            <section styleName="row">
-              Fill out the form to the right
-            </section>
-            <section styleName="row">
-              to get started.
-            </section>
-          </header>
-          <DifferenceBar />
-          <footer styleName="footer">
-            <section styleName="row">
-              Give us the facts
-            </section>
-            <section styleName="row">
-              and we'll show you the differences.
-            </section>
-          </footer>
-          {this.renderShareBar()}
-        </section>
-      </div>
+      <section
+        styleName="share-bar"
+        onClick={this.share}
+      >
+        Feeling the bern? Share your experience.
+        <iframe styleName="bernrate" src="http://www.bernrate.com/active" width="200" height="40"></iframe>
+      </section>
     );
   }
 
@@ -95,28 +89,33 @@ class MainViz extends Component {
     );
   }
 
-  renderShareBar() {
+  renderEmpty() {
     return (
-      <section styleName="share-bar">
-        Feeling the bern?
-        <a
-          href="https://twitter.com/share"
-          className="twitter-share-button"
-          data-url="http://bernies-tax.dataviz.work/"
-          data-text="the Tax Plan ft. Bernie Sanders"
-          data-hashtags="berniesplan"
-        >
-          Tweet #berniesplan
-        </a>
-        <div
-          className="fb-share-button"
-          data-href="http://bernies-tax.dataviz.work/"
-          data-layout="button"
-          data-size="large"
-        />
-
-        <iframe styleName="bernrate" src="http://www.bernrate.com/active" width="200" height="40"></iframe>
-      </section>
+      <div styleName="main-viz">
+        <section styleName="container">
+          <header styleName="header">
+            <section styleName="large row">
+              Hi, I'm <span styleName="whom">a {this.emptySubject} American</span>.
+            </section>
+            <section styleName="row">
+              Fill out the form to the right
+            </section>
+            <section styleName="row">
+              to get started.
+            </section>
+          </header>
+          <DifferenceBar />
+          <footer styleName="footer">
+            <section styleName="row">
+              Give us the facts
+            </section>
+            <section styleName="row">
+              and we'll show you the differences.
+            </section>
+          </footer>
+          {this.renderShareBar()}
+        </section>
+      </div>
     );
   }
 
@@ -189,6 +188,7 @@ import {
   maxSaveCategorySelector,
   maxSpendCategorySelector,
 } from 'reducers/inputs';
+import { push } from 'react-router-redux';
 
 export default connect(
   state => ({
@@ -196,5 +196,8 @@ export default connect(
     savings: totalSavingsSelector(state),
     maxSaveCategory: maxSaveCategorySelector(state),
     maxSpendCategory: maxSpendCategorySelector(state),
+  }),
+  dispatch => ({
+    push: (id) => dispatch(push(`share/${id}`)),
   }),
 )(MainViz);

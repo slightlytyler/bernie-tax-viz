@@ -1,6 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import * as storage from 'redux-storage';
+import { reduxReactFirebase } from 'redux-react-firebase';
 import rootReducer from 'reducers';
 
 const reducer = storage.reducer(rootReducer);
@@ -69,7 +70,11 @@ export default function configureStore(initialState = {}, routerMiddleware) {
       : require('containers/DevTools').default.instrument()
     ;
 
-    middleware = compose(middleware, devTools);
+    middleware = compose(
+      middleware,
+      reduxReactFirebase('bernies-tax-viz.firebaseIO.com'),
+      devTools,
+    );
   }
 
   // Create final store and subscribe router in debug env ie. for devtools
