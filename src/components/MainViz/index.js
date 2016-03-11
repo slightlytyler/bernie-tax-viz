@@ -99,7 +99,7 @@ class MainViz extends Component {
     return (
       <section styleName="share-bar">
         Feeling the bern?
-         <a
+        <a
           href="https://twitter.com/share"
           className="twitter-share-button"
           data-url="http://bernies-tax.dataviz.work/"
