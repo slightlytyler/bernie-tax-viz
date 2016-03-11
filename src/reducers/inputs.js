@@ -185,7 +185,8 @@ export const actions = {
 //
 // Reducers
 //
-import { casesById } from 'constants/cases';
+import { LOCATION_CHANGE } from 'react-router-redux';
+import { cases, casesById } from 'constants/cases';
 
 export default function (state = {}, action) {
   switch (action.type) {
@@ -194,6 +195,9 @@ export default function (state = {}, action) {
 
     case UPDATE_USER_CASE:
       return Object.assign({}, casesById[action.userCase]);
+
+    case LOCATION_CHANGE:
+      return action.payload.pathname === '/' ? Object.assign({}, casesById[cases[0]]) : state;
 
     default:
       return state;
