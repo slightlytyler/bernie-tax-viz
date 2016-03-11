@@ -158,10 +158,13 @@ export const maxSpendCategorySelector = createSelector(
 //
 // Actions
 //
+import { push } from 'react-router-redux';
 let inputsTimeout;
 
 export const actions = {
   updateInputs: (key, val) => dispatch => {
+    dispatch(push('what-about-me'));
+
     if (isNaN(Number(val))) {
       dispatch({ type: UPDATE_INPUTS, key, val });
     } else {
