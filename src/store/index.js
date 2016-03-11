@@ -21,9 +21,37 @@ const storageMiddleware = storage.createMiddleware(engine, [
 
 const load = storage.createLoader(engine);
 
+import { cases, casesById } from 'constants/cases';
+import { updateUserCase } from 'reducers/userCase';
+const loadCase = store => next => action => {
+  const nextState = next(action);
+
+  if (action.type === storage.LOAD) {
+    const { router: { locationBeforeTransitions: { pathname } } } = store.getState();
+    const param = pathname.substr(1);
+
+    if (casesById.hasOwnProperty(param)) {
+      if (param !== 'what-about-me') {
+        store.dispatch(updateUserCase(param));
+      }
+    } else if (pathname === '/') {
+      store.dispatch(updateUserCase(cases[0]));
+    }
+  }
+
+  return nextState;
+};
+
+
 export default function configureStore(initialState = {}, routerMiddleware) {
   // Compose final middleware and use devtools in debug environment
-  let middleware = applyMiddleware(thunk, routerMiddleware, storageMiddleware);
+  let middleware = applyMiddleware(
+    thunk,
+    routerMiddleware,
+    storageMiddleware,
+    loadCase,
+  );
+
   if (__DEBUG__) {
     const devTools = window.devToolsExtension
       ? window.devToolsExtension()
