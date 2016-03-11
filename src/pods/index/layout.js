@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import cssModules from 'react-css-modules';
 
 import styles from './styles.styl';
@@ -11,16 +11,20 @@ import Footer from 'components/Footer';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 class IndexLayout extends Component {
+  static propTypes = {
+    currentCase: PropTypes.string.isRequired,
+  };
+
   render() {
     return (
       <div styleName="base">
         <Header />
         <div styleName="main">
-          <Cases currentCase={this.props.currentCase}/>
+          <Cases currentCase={this.props.currentCase} />
           <div styleName="sections">
-            <Inputs />
+            <Inputs currentCase={this.props.currentCase} />
             <Categories />
-            <MainViz />
+            <MainViz currentCase={this.props.currentCase} />
           </div>
         </div>
         <Footer />

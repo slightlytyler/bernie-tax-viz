@@ -192,6 +192,5 @@ export default connect(
     savings: totalSavingsSelector(state),
     maxSaveCategory: maxSaveCategorySelector(state),
     maxSpendCategory: maxSpendCategorySelector(state),
-    currentCase: state.userCase,
   }),
 )(MainViz);

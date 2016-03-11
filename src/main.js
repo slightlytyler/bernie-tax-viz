@@ -6,7 +6,6 @@ import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import makeRoutes from 'routes';
 import Root from 'containers/Root';
 import configureStore from 'store';
-import initialState from 'constants/initialState';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
@@ -14,7 +13,7 @@ injectTapEventPlugin();
 const browserHistory = useRouterHistory(createBrowserHistory)({
   basename: __BASENAME__,
 });
-const store = configureStore(initialState, routerMiddleware(browserHistory));
+const store = configureStore({}, routerMiddleware(browserHistory));
 const history = syncHistoryWithStore(browserHistory, store, {
   selectLocationState: (state) => state.router,
 });

@@ -39,12 +39,15 @@ class Cases extends Component {
 
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { push } from 'react-router-redux';
+import { updateUserCase } from 'reducers/userCase';
 
 export default connect(
   undefined,
-  dispatch => bindActionCreators({
-    push,
-  }, dispatch)
+  dispatch => ({
+    push: caseId => {
+      dispatch(push(caseId));
+      dispatch(updateUserCase(caseId));
+    },
+  }),
 )(Cases);
