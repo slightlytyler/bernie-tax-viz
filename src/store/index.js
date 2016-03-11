@@ -69,13 +69,15 @@ export default function configureStore(initialState = {}, routerMiddleware) {
 
     middleware = compose(
       middleware,
-      reduxReactFirebase('bernies-tax-viz.firebaseIO.com'),
       devTools,
     );
   }
 
   // Create final store and subscribe router in debug env ie. for devtools
-  const store = middleware(createStore)(reducer, initialState);
+  const store = compose(
+    middleware,
+    reduxReactFirebase('bernies-tax-viz.firebaseIO.com'),
+  )(createStore)(reducer, initialState);
 
   if (module.hot) {
     module.hot.accept('reducers', () => {
