@@ -119,7 +119,7 @@ export const totalSavingsSelector = createSelector(
   difference => difference.save - difference.spend
 );
 
-const maxCategoryLabels = (income, capitalGains, payroll, aca) => ([
+export const maxCategoryLabels = (income, capitalGains, payroll, aca) => ([
   { value: income, label: 'income taxes' },
   { value: capitalGains, label: 'capital gains taxes' },
   { value: payroll, label: 'payroll taxes' },

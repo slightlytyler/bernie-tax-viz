@@ -3,6 +3,7 @@ import { firebase } from 'redux-react-firebase';
 import cssModules from 'react-css-modules';
 import accounting from 'accounting';
 import generateId from 'shortid';
+import omit from 'lodash.omit';
 
 import colors from 'styles/colors';
 import styles from './styles.styl';
@@ -17,6 +18,7 @@ class MainViz extends Component {
       spend: PropTypes.number.isRequired,
       save: PropTypes.number.isRequired,
     }),
+    inputs: PropTypes.object.isRequired,
     savings: PropTypes.number.isRequired,
     maxSaveCategory: PropTypes.oneOfType([
       PropTypes.string,
@@ -35,9 +37,14 @@ class MainViz extends Component {
 
   share = () => {
     const id = generateId();
-    this.props.firebase.push('/shares', { id });
-    // Do something with firebase
-    // this.props.push('id');
+    this.props.firebase.push(
+      `/shares/${id}`,
+      {
+        id,
+        ...omit(this.props.inputs, 'id', 'label', 'custom'),
+      },
+      () => this.props.push(id)
+    );
   }
 
   renderShareBar() {
@@ -183,6 +190,7 @@ class MainViz extends Component {
 
 import { connect } from 'react-redux';
 import {
+  inputsSelector,
   totalDifferenceSelector,
   totalSavingsSelector,
   maxSaveCategorySelector,
@@ -192,6 +200,7 @@ import { push } from 'react-router-redux';
 
 export default connect(
   state => ({
+    inputs: inputsSelector(state),
     difference: totalDifferenceSelector(state),
     savings: totalSavingsSelector(state),
     maxSaveCategory: maxSaveCategorySelector(state),

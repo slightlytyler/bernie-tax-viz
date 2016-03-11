@@ -81,6 +81,8 @@
     "lodash.compact": "^3.0.1",
     "lodash.delay": "^4.0.1",
     "lodash.mapvalues": "^4.2.0",
+    "lodash.omit": "^4.1.0",
+    "lodash.without": "^4.1.1",
     "material-ui": "^0.14.4",
     "react": "^0.14.0",
     "react-css-modules": "^3.7.5",
