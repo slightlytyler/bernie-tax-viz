@@ -34,7 +34,6 @@ const loadCase = store => next => action => {
           pathname,
         },
       },
-      inputs,
     } = store.getState();
     const param = pathname.substr(1);
 
@@ -42,9 +41,7 @@ const loadCase = store => next => action => {
       if (param !== customKey) {
         store.dispatch(updateUserCase(param));
       } else {
-        if (!inputs.custom) {
-          store.dispatch(updateUserCase(customKey));
-        }
+        store.dispatch(updateUserCase(customKey));
       }
     } else if (pathname === '/') {
       store.dispatch(updateUserCase(cases[0]));

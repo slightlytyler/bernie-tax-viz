@@ -5,7 +5,6 @@ import accounting from 'accounting';
 import colors from 'styles/colors';
 import styles from './styles.styl';
 import DifferenceBar from '../DifferenceBar';
-import { Link } from 'react-router';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class MainVizViz extends Component {
@@ -15,15 +14,22 @@ export default class MainVizViz extends Component {
       spend: PropTypes.number.isRequired,
       save: PropTypes.number.isRequired,
     }),
-    maxSaveCategory: PropTypes.string.isRequired,
-    maxSpendCategory: PropTypes.string.isRequired,
+    maxSaveCategory: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.bool,
+    ]),
+    maxSpendCategory: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.bool,
+    ]),
+    push: PropTypes.func.isRequired,
   };
 
   renderShareBar() {
     return (
-      <Link to="/what-about-me" styleName="share-bar">
+      <section styleName="share-bar" onClick={this.props.push}>
         What about me?
-      </Link>
+      </section>
     );
   }
 
@@ -117,3 +123,13 @@ export default class MainVizViz extends Component {
     );
   }
 }
+
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+
+export default connect(
+  undefined,
+  dispatch => ({
+    push: () => dispatch(push(`/what-about-me`)),
+  }),
+)(MainVizViz);

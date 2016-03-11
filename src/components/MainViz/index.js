@@ -4,11 +4,12 @@ import cssModules from 'react-css-modules';
 import accounting from 'accounting';
 import generateId from 'shortid';
 import omit from 'lodash.omit';
+import pick from 'lodash.pick';
 
 import colors from 'styles/colors';
 import styles from './styles.styl';
 import DifferenceBar from './DifferenceBar';
-import { casesById } from 'constants/cases';
+import { casesById, emptyCase } from 'constants/cases';
 
 @firebase()
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
@@ -37,12 +38,13 @@ class MainViz extends Component {
 
   share = () => {
     const id = generateId();
+    const shakenRecord = pick(this.props.inputs, input => typeof input !== 'undefined');
+    const trimmedRecord = omit(shakenRecord, 'id', 'label', 'custom');
+    const filledInRecord = Object.assign({}, emptyCase, trimmedRecord);
+
     this.props.firebase.push(
       `/shares/${id}`,
-      {
-        id,
-        ...omit(this.props.inputs, 'id', 'label', 'custom'),
-      },
+      filledInRecord,
       () => this.props.push(id)
     );
   }
