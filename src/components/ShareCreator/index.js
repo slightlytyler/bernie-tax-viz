@@ -1,10 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import cssModules from 'react-css-modules';
+import classTool from 'classnames';
 
 import colors from 'styles/colors';
 import styles from './styles.styl';
 import TextField from 'material-ui/lib/text-field';
 import { Link } from 'react-router';
+import { TwitterButton } from 'react-social-buttons';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class ShareCreator extends Component {
@@ -67,10 +69,25 @@ export default class ShareCreator extends Component {
     let content;
 
     if (shareLinkId) {
+      const url = `http://bernies-tax.dataviz.work/share/${shareLinkId}`;
+
       content = (
-        <Link to={`/share/${shareLinkId}`} styleName="link">
-        http://bernies-tax.dataviz.work/share/{shareLinkId}
-      </Link>
+        <section styleName="container">
+          <section>
+            <Link to={`/share/${shareLinkId}`} styleName="link">
+              {url}
+            </Link>
+          </section>
+          <section styleName="share-buttons">
+            <TwitterButton
+              url={url}
+              text="the Tax Plan ft. Bernie Sanders #berniesplan"
+              size={32}
+            >
+              Tweet #berniesplan
+            </TwitterButton>
+          </section>
+        </section>
       );
     } else {
       content = isPrompting
@@ -80,10 +97,12 @@ export default class ShareCreator extends Component {
     }
     return (
       <section
-        styleName={isPrompting ? 'share-creator' : 'share-creator padded'}
+        styleName={classTool('share-creator', { padded: !isPrompting, complete: shareLinkId })}
         onClick={this.handleShare}
       >
-        { content }
+        <section styleName="content">
+          { content }
+        </section>
         <iframe styleName="bernrate" src="http://www.bernrate.com/active" width="200" height="40"></iframe>
       </section>
     );

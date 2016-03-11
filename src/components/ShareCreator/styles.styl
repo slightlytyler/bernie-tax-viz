@@ -1,8 +1,4 @@
 .share-creator
-  position: relative
-  display: flex
-  justify-content: center
-  align-items: center
   padding: 0 1em .5em
   margin-top: 2em
   color: #147fd7
@@ -13,9 +9,23 @@
   &.padded
     padding: 1em
 
+  &.complete
+    padding-bottom: 0
 
-  & > *:not(:last-child)
-    margin-right: 1em
+  .content
+    position: relative
+
+    &, .container
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+
+    .container > *
+      display: flex
+      justify-content: center
+      align-items: center
+      margin-bottom: 1em
 
   .link
     color: #147fd7

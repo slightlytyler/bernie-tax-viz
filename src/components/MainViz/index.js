@@ -46,10 +46,7 @@ class MainViz extends Component {
     this.props.firebase.push(
       `/shares/${id}`,
       filledInRecord,
-      () => {
-        console.log(id);
-        cb(id);
-      },
+      () => cb(id),
     );
   }
 
