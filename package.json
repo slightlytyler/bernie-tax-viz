@@ -19,6 +19,7 @@
     "test": "better-npm-run test",
     "test:dev": "npm run test -- --watch",
     "deploy": "better-npm-run deploy",
+    "deploy:staging": "better-npm-run deploy:staging",
     "flow:check": "babel-node bin/flow-check",
     "codecov": "cat coverage/*/lcov.info | codecov"
   },
@@ -38,6 +39,13 @@
     },
     "deploy": {
       "command": "npm run clean && npm run compile && surge --project ./dist",
+      "env": {
+        "NODE_ENV": "production",
+        "DEBUG": "app:*"
+      }
+    },
+    "deploy:staging": {
+      "command": "npm run clean && npm run compile && surge ./dist bernie-tax-viz-test.surge.sh",
       "env": {
         "NODE_ENV": "production",
         "DEBUG": "app:*"
