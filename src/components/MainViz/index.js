@@ -37,7 +37,7 @@ class MainViz extends Component {
               Hi, I'm <span styleName="whom">a {this.emptySubject} American</span>.
             </section>
             <section styleName="row">
-              Fill out the form to the right
+              Fill out the form to the left
             </section>
             <section styleName="row">
               to get started.
