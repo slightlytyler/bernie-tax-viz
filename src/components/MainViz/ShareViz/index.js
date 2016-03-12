@@ -7,7 +7,7 @@ import styles from './styles.styl';
 import DifferenceBar from '../DifferenceBar';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
-export default class MainVizViz extends Component {
+export default class MainVizShareViz extends Component {
   static propTypes = {
     name: PropTypes.string,
     savings: PropTypes.number.isRequired,
@@ -127,10 +127,15 @@ export default class MainVizViz extends Component {
 
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
+import { customKey } from 'constants/cases';
+import { updateUserCase } from 'reducers/userCase';
 
 export default connect(
   undefined,
   dispatch => ({
-    push: () => dispatch(push(`/what-about-me`)),
+    push: () => {
+      dispatch(updateUserCase(customKey));
+      dispatch(push(`/${customKey}`));
+    },
   }),
-)(MainVizViz);
+)(MainVizShareViz);

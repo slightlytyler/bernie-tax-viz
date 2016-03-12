@@ -3,7 +3,7 @@ import cssModules from 'react-css-modules';
 
 import styles from './styles.styl';
 import Header from 'components/Header';
-import Viz from 'components/MainViz/Viz';
+import ShareViz from 'components/MainViz/ShareViz';
 import Footer from 'components/Footer';
 
 import { connect } from 'react-redux';
@@ -44,7 +44,7 @@ class ShareLayout extends Component {
     };
 
     return (
-      <Viz
+      <ShareViz
         name={share.name}
         savings={totalSavingsSelector(mockState)}
         difference={totalDifferenceSelector(mockState)}
