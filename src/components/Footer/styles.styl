@@ -15,7 +15,22 @@
   .links
     display: flex
 
+    .inner
+      position: relative
+
+    .special
+      z-index: 0
+      position: absolute
+      left: -.25em
+      top: -.25em
+      width: calc(100% + .5em)
+      height: calc(100% + .5em)
+      border: 1px solid currentColor
+      border-radius: 4px
+      pointer-events: none
+
     .item
+      z-index: 1
       text-decoration: none
 
       &:not(:last-child):after

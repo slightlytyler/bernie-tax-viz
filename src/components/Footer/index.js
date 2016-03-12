@@ -11,9 +11,12 @@ export default class Footer extends Component {
       <footer styleName="footer">
         <div styleName="container">
           <section styleName="links row">
-            <a href="https://vote.berniesanders.com/" styleName="link item">Vote</a>
-            <a href="https://go.berniesanders.com/page/content/contribute/" styleName="link item">Donate</a>
-            <a href="https://go.berniesanders.com/page/content/phonebank" styleName="link item">Phonebank</a>
+              <div styleName="inner">
+                <section styleName="special" />
+                <a href="https://vote.berniesanders.com/" styleName="link item">Vote</a>
+                <a href="https://go.berniesanders.com/page/content/contribute/" styleName="link item">Donate</a>
+                <a href="https://go.berniesanders.com/page/content/phonebank" styleName="link item">Phonebank</a>
+              </div>
           </section>
           <section styleName="links row">
             <a href="http://taxfoundation.org/article/details-and-analysis-senator-bernie-sanders-s-tax-plan" styleName="link item">The analysis</a>
