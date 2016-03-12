@@ -123,7 +123,7 @@ export const maxCategoryLabels = (income, capitalGains, payroll, aca) => ([
   { value: income, label: 'income taxes' },
   { value: capitalGains, label: 'capital gains taxes' },
   { value: payroll, label: 'payroll taxes' },
-  { value: aca, label: 'medical expenses' },
+  { value: aca, label: 'healthcare expenses' },
 ]);
 
 export const maxSaveCategorySelector = createSelector(

@@ -9,7 +9,7 @@ class CategoriesEstateItem extends Component {
   render() {
     return (
       <Item
-        title=" Estates"
+        title=" Estate"
         savings={this.props.savings}
       />
     );

@@ -101,7 +101,7 @@ export default class ShareCreator extends Component {
             Feeling the bern?&nbsp;
             <span styleName="fire icon">🔥</span>
             <img src={shareIcon} styleName="share icon" />&nbsp;
-            Share your experience.
+            Share your experience!
           </span>
         )
       ;

@@ -35,7 +35,7 @@ class MainViz extends Component {
     push: PropTypes.func.isRequired,
   };
 
-  emptySubject = 'Normal';
+  emptySubject = 'American taxpayer';
 
   share = (name, cb) => {
     const id = generateId();
@@ -87,14 +87,27 @@ class MainViz extends Component {
     );
   }
 
-  renderEmpty() {
+  renderGreeting(userName) {
+    return (
+      <section styleName="large row">
+        Hi, I'm &nbsp;
+        <span styleName="whom">
+          {
+            userName === this.emptySubject
+              ? `an ${userName}`
+              : `a ${userName} American`
+          }
+        </span>.
+      </section>
+    );
+  }
+
+  renderEmpty(userName) {
     return (
       <div styleName="main-viz">
         <section styleName="container">
           <header styleName="header">
-            <section styleName="large row">
-              Hi, I'm <span styleName="whom">a {this.emptySubject} American</span>.
-            </section>
+            {this.renderGreeting(userName)}
             <section styleName="row">
               Fill out the form to the right
             </section>
@@ -141,9 +154,7 @@ class MainViz extends Component {
         <div styleName="main-viz">
           <section styleName="container">
             <header styleName="header">
-              <section styleName="large row">
-                Hi, I'm <span styleName="whom">a {userName} American</span>.
-              </section>
+              {this.renderGreeting(userName)}
               <section styleName="row">
                 I'll spend about&nbsp;
                 {
@@ -175,7 +186,7 @@ class MainViz extends Component {
       );
     }
 
-    return this.renderEmpty();
+    return this.renderEmpty(userName);
   }
 }
 
