@@ -12,7 +12,10 @@ import { TwitterButton, FacebookShareButton } from 'react-social-buttons';
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class ShareCreator extends Component {
   static propTypes ={
-    share: PropTypes.func.isRequired,
+    handleShare: PropTypes.func,
+    currentName: PropTypes.string,
+    updateName: PropTypes.func,
+    disabled: PropTypes.bool,
   };
 
   state = {
@@ -31,7 +34,8 @@ export default class ShareCreator extends Component {
   };
 
   sendShare = name => {
-    this.props.share(name, this.completeShare);
+    this.props.updateName(name);
+    this.props.handleShare(name, this.completeShare);
   };
 
   completeShare = id => {
@@ -115,10 +119,11 @@ export default class ShareCreator extends Component {
               prompting: isPrompting,
               padded: !isPrompting,
               complete: shareLinkId,
+              disabled: this.props.disabled,
             },
           )
         }
-        onClick={!(shareLinkId || isPrompting) && this.handleShare}
+        onClick={!(shareLinkId || isPrompting || this.props.disabled) && this.handleShare}
       >
         <section styleName="content">
           { content }

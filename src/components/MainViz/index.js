@@ -33,6 +33,7 @@ class MainViz extends Component {
     currentCase: PropTypes.string.isRequired,
     firebase: PropTypes.object.isRequired,
     push: PropTypes.func.isRequired,
+    updateName: PropTypes.func.isRequired,
   };
 
   emptySubject = 'American taxpayer';
@@ -88,6 +89,16 @@ class MainViz extends Component {
   }
 
   renderGreeting(userName) {
+    const customName = this.props.inputs.name;
+
+    if (customName) {
+      return (
+        <section styleName="large row">
+          Hi, I'm <span styleName="whom">{customName}</span>.
+        </section>
+      );
+    }
+
     return (
       <section styleName="large row">
         Hi, I'm &nbsp;
@@ -124,14 +135,14 @@ class MainViz extends Component {
               and we'll show you the differences.
             </section>
           </footer>
-          <ShareCreator share={this.share} />
+          <ShareCreator disabled />
         </section>
       </div>
     );
   }
 
   render() {
-    const { savings, difference, currentCase } = this.props;
+    const { inputs, savings, difference, currentCase, updateName } = this.props;
     const positiveSavings = savings > 0;
     const netZeroSavings = savings === 0;
     const userName = currentCase === customKey
@@ -180,7 +191,11 @@ class MainViz extends Component {
               save={difference.save}
             />
             {this.renderFooter()}
-            <ShareCreator share={this.share} />
+            <ShareCreator
+              handleShare={this.share}
+              currentName={inputs.name}
+              updateName={updateName}
+            />
           </section>
         </div>
       );
@@ -199,6 +214,7 @@ import {
   maxSpendCategorySelector,
 } from 'reducers/inputs';
 import { push } from 'react-router-redux';
+import { actions as inputsActions } from 'reducers/inputs';
 
 export default connect(
   state => ({
@@ -209,6 +225,7 @@ export default connect(
     maxSpendCategory: maxSpendCategorySelector(state),
   }),
   dispatch => ({
-    push: (id) => dispatch(push(`share/${id}`)),
+    push: id => dispatch(push(`share/${id}`)),
+    updateName: name => dispatch(inputsActions.updateInputs('name', name)),
   }),
 )(MainViz);
