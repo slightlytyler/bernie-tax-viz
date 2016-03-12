@@ -10,6 +10,16 @@ import { Link } from 'react-router';
 import { TwitterButton, FacebookShareButton } from 'react-social-buttons';
 
 class FBButton extends FacebookShareButton {
+  renderWidget(){
+    setTimeout(function () {
+      const elem = document.getElementById('fbbutton');
+
+      if (elem && elem.getAttribute('fb-xfbml-state') === null) {
+        FB.XFBML.parse();
+      }
+    }, 1000);
+  }
+
   render() {
     return (
       <div
