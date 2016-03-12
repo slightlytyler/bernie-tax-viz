@@ -8,7 +8,6 @@ import styles from './styles.styl';
 import TextField from 'material-ui/lib/text-field';
 import { Link } from 'react-router';
 import { TwitterButton } from 'react-social-buttons';
-import reactEmoji from 'react-emoji';
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class ShareCreator extends Component {
@@ -97,7 +96,7 @@ export default class ShareCreator extends Component {
         : (
           <span styleName="container horizontal">
             Feeling the bern?&nbsp;
-            <span styleName="fire icon">{reactEmoji.emojify(':fire:')}</span>&nbsp;
+            <span styleName="fire icon">🔥</span>
             <img src={shareIcon} styleName="share icon" />&nbsp;
             Share your experience.
           </span>

@@ -29,7 +29,7 @@ export default class MainVizShareViz extends Component {
   renderShareBar() {
     return (
       <section styleName="share-bar" onClick={this.props.push}>
-        What about me?
+        What about me? <span styleName="emoji">🤔</span>
       </section>
     );
   }
