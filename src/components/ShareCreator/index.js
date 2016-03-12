@@ -9,30 +9,6 @@ import TextField from 'material-ui/lib/text-field';
 import { Link } from 'react-router';
 import { TwitterButton, FacebookShareButton } from 'react-social-buttons';
 
-class FBButton extends FacebookShareButton {
-  renderWidget(){
-    setTimeout(function () {
-      const elem = document.getElementById('fbbutton');
-
-      if (elem && elem.getAttribute('fb-xfbml-state') === null) {
-        FB.XFBML.parse();
-      }
-    }, 1000);
-  }
-
-  render() {
-    return (
-      <div
-        id="fbsharebutton"
-        ref="fbsharebutton"
-        className="fb-share-button"
-        data-href={this.props.url}
-        data-layout="button"
-      />
-    );
-  }
-}
-
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class ShareCreator extends Component {
   static propTypes ={
@@ -109,7 +85,7 @@ export default class ShareCreator extends Component {
               text="the Tax Plan ft. Bernie Sanders #berniesplan"
               size={32}
             />
-            <FBButton
+            <FacebookShareButton
               url={url}
               text="the Tax Plan ft. Bernie Sanders #berniesplan"
               size={32}
