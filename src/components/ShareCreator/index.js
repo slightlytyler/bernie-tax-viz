@@ -7,7 +7,21 @@ import colors from 'styles/colors';
 import styles from './styles.styl';
 import TextField from 'material-ui/lib/text-field';
 import { Link } from 'react-router';
-import { TwitterButton, FacebookShareButton } from 'react-social-buttons';
+import { TwitterButton, FacebookShareButton as FBButton } from 'react-social-buttons';
+
+class FacebookShareButton extends FBButton {
+  render() {
+    return (
+      <div
+        id="fbsharebutton"
+        ref="fbsharebutton"
+        className="fb-share-button"
+        data-href={this.props.url}
+        data-layout="button"
+      />
+    );
+  }
+}
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class ShareCreator extends Component {
