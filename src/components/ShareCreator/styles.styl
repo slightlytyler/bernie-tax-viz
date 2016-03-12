@@ -5,7 +5,14 @@
   color: #147fd7
   border: 3px solid #147fd7
   border-radius: 2px
-  cursor: pointer
+  transition: color .05s ease-in-out, background-color .05s ease-in-out
+
+  &:not(.prompting):not(.complete)
+    cursor: default
+
+    &:hover
+      color: white
+      background-color: #147fd7
 
   &.padded
     padding: 1em

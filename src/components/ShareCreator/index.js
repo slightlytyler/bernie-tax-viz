@@ -106,7 +106,16 @@ export default class ShareCreator extends Component {
     }
     return (
       <section
-        styleName={classTool('share-creator', { padded: !isPrompting, complete: shareLinkId })}
+        styleName={
+          classTool(
+            'share-creator',
+            {
+              prompting: isPrompting,
+              padded: !isPrompting,
+              complete: shareLinkId,
+            },
+          )
+        }
         onClick={this.handleShare}
       >
         <section styleName="content">
