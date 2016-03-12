@@ -70,7 +70,7 @@ export default class Inputs extends Component {
             <li styleName="item">
               <TextField
                 type="number"
-                label="How much will you spend on healthcare this year?"
+                label="What is your health spending this year? (premiums too!)"
                 value={anticipatedYearlyHealthSpending}
                 for="anticipatedYearlyHealthSpending"
                 step={1000}

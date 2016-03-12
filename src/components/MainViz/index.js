@@ -10,7 +10,7 @@ import colors from 'styles/colors';
 import styles from './styles.styl';
 import ShareCreator from 'components/ShareCreator';
 import DifferenceBar from './DifferenceBar';
-import { casesById, emptyCase } from 'constants/cases';
+import { customKey, casesById, emptyCase } from 'constants/cases';
 
 @firebase()
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
@@ -121,7 +121,7 @@ class MainViz extends Component {
     const { savings, difference, currentCase } = this.props;
     const positiveSavings = savings > 0;
     const netZeroSavings = savings === 0;
-    const userName = currentCase === 'custom'
+    const userName = currentCase === customKey
       ? this.emptySubject
       : casesById[currentCase].label
     ;
