@@ -7,7 +7,21 @@ import colors from 'styles/colors';
 import styles from './styles.styl';
 import TextField from 'material-ui/lib/text-field';
 import { Link } from 'react-router';
-import { TwitterButton } from 'react-social-buttons';
+import { TwitterButton, FacebookShareButton } from 'react-social-buttons';
+
+class FBButton extends FacebookShareButton {
+  render() {
+    return (
+      <div
+        id="fbsharebutton"
+        ref="fbsharebutton"
+        className="fb-share-button"
+        data-href={this.props.url}
+        data-layout="button"
+      />
+    );
+  }
+}
 
 @cssModules(styles, { allowMultiple: true, errorWhenNotFound: false })
 export default class ShareCreator extends Component {
@@ -84,9 +98,12 @@ export default class ShareCreator extends Component {
               url={url}
               text="the Tax Plan ft. Bernie Sanders #berniesplan"
               size={32}
-            >
-              Tweet #berniesplan
-            </TwitterButton>
+            />
+            <FBButton
+              url={url}
+              text="the Tax Plan ft. Bernie Sanders #berniesplan"
+              size={32}
+            />
           </section>
         </section>
       );
