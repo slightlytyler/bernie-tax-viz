@@ -20,15 +20,25 @@
       justify-content: center
       align-items: center
 
-    .container > *
+      &.horizontal
+        flex-direction: row
+
+    .container:not(.horizontal) > *
       display: flex
       justify-content: center
       align-items: center
       margin-bottom: 1em
 
+
   .link
     color: #147fd7
     text-decoration: none
+
+  .icon
+    width: 1.5em
+
+    &:last-of-class
+      margin: 0 .25em
 
 .bernrate
   position: absolute
