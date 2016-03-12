@@ -34,6 +34,7 @@ class MainViz extends Component {
     firebase: PropTypes.object.isRequired,
     push: PropTypes.func.isRequired,
     updateName: PropTypes.func.isRequired,
+    updateShareLinkId: PropTypes.func.isRequired,
   };
 
   emptySubject = 'American taxpayer';
@@ -47,7 +48,10 @@ class MainViz extends Component {
     this.props.firebase.push(
       `/shares/${id}`,
       filledInRecord,
-      () => cb(id),
+      () => {
+        this.props.updateShareLinkId(id);
+        cb();
+      },
     );
   }
 
@@ -194,6 +198,7 @@ class MainViz extends Component {
             <ShareCreator
               handleShare={this.share}
               currentName={inputs.name}
+              shareLinkId={inputs.shareLinkId}
               updateName={updateName}
             />
           </section>
@@ -227,5 +232,6 @@ export default connect(
   dispatch => ({
     push: id => dispatch(push(`share/${id}`)),
     updateName: name => dispatch(inputsActions.updateInputs('name', name)),
+    updateShareLinkId: id => dispatch(inputsActions.updateInputs('shareLinkId', id)),
   }),
 )(MainViz);

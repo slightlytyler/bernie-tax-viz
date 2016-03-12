@@ -29,12 +29,12 @@ export default class ShareCreator extends Component {
     handleShare: PropTypes.func,
     currentName: PropTypes.string,
     updateName: PropTypes.func,
+    shareLinkId: PropTypes.string,
     disabled: PropTypes.bool,
   };
 
   state = {
     isPrompting: false,
-    shareLinkId: undefined,
   };
 
   handleShare = () => {
@@ -52,10 +52,9 @@ export default class ShareCreator extends Component {
     this.props.handleShare(name, this.completeShare);
   };
 
-  completeShare = id => {
+  completeShare = () => {
     this.setState({
       isPrompting: false,
-      shareLinkId: id,
     });
   };
 
@@ -84,7 +83,8 @@ export default class ShareCreator extends Component {
   }
 
   render() {
-    const { shareLinkId, isPrompting } = this.state;
+    const { shareLinkId } = this.props;
+    const { isPrompting } = this.state;
     let content;
 
     if (shareLinkId) {
@@ -124,6 +124,7 @@ export default class ShareCreator extends Component {
         )
       ;
     }
+
     return (
       <section
         styleName={
