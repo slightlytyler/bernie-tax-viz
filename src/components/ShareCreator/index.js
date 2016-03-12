@@ -115,7 +115,7 @@ export default class ShareCreator extends Component {
             },
           )
         }
-        onClick={this.handleShare}
+        onClick={!(shareLinkId || isPrompting) && this.handleShare}
       >
         <section styleName="content">
           { content }
