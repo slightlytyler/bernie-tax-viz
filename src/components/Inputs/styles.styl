@@ -29,6 +29,9 @@
     font-size: 1.75em
     color: #147fd7
 
+    @media (max-width: 100rem)
+      margin-bottom: 2em
+
   .list
     display: flex
     flex-direction: column
@@ -37,3 +40,7 @@
   .item
     &:not(.flush)
       margin-bottom: 1em
+
+      &:not(:last-child)
+        @media (max-width: 100rem)
+          margin-bottom: 3em
