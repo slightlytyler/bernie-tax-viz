@@ -124,7 +124,9 @@ class MainViz extends Component {
           <header styleName="header">
             {this.renderGreeting(userName)}
             <section styleName="row">
-              Fill out the form to the right
+              Fill out the form&nbsp;
+              <span className="desktop-only">to the right</span>
+              <span className="mobile-only">below</span>
             </section>
             <section styleName="row">
               to get started.

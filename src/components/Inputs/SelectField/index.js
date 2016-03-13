@@ -30,27 +30,11 @@ export default class InputsSelectField extends Component {
         onChange={this.handleChange}
         floatingLabelText={label}
         floatingLabelStyle={{
-          top: 0,
           color: colors.gray3,
-          lineHeight: '1em',
-          whiteSpace: 'nowrap',
-          transform: 'perspective(.1em) scale(0.75) translate3d(.1em, -1.25em, 0px)',
-        }}
-        style={{
-          position: 'relative',
-          height: '1em',
-          marginBottom: '-14px',
-          fontSize: '1.25em',
         }}
         labelStyle={{
-          top: 'calc(0 - 14px)',
-          fontSize: '1em',
-          lineHeight: '1em',
+          color: colors.black,
         }}
-        iconStyle={{
-          top: '-.75em',
-        }}
-        underlineStyle={{ bottom: '-.5em' }}
         underlineFocusStyle={{ borderColor: colors.bernieBlue }}
         fullWidth
       >
@@ -60,10 +44,6 @@ export default class InputsSelectField extends Component {
               key={option.value}
               value={option.value}
               primaryText={option.label}
-              style={{
-                fontSize: '1.5em',
-                lineHeight: '1.5em',
-              }}
             />
           ))
         }
