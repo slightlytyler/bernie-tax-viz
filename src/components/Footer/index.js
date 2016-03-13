@@ -10,9 +10,9 @@ export default class Footer extends Component {
     return (
       <footer styleName="footer">
         <div styleName="container">
-          <section styleName="links row">
+          <section styleName="links special row">
               <div styleName="inner">
-                <section styleName="special" />
+                <section styleName="border" />
                 <a href="https://vote.berniesanders.com/" styleName="link item">Vote</a>
                 <a href="https://go.berniesanders.com/page/content/contribute/" styleName="link item">Donate</a>
                 <a href="https://go.berniesanders.com/page/content/phonebank" styleName="link item">Phonebank</a>
