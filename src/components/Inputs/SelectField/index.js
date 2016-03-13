@@ -29,9 +29,12 @@ export default class InputsSelectField extends Component {
         value={value}
         onChange={this.handleChange}
         floatingLabelText={label}
-        floatingLabelStyle={{ color: colors.gray3 }}
-        style={{ fontSize: '1.25em' }}
-        inputStyle={{ color: colors.black }}
+        floatingLabelStyle={{
+          color: colors.gray3,
+        }}
+        labelStyle={{
+          color: colors.black,
+        }}
         underlineFocusStyle={{ borderColor: colors.bernieBlue }}
         fullWidth
       >

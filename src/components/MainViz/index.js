@@ -42,7 +42,7 @@ class MainViz extends Component {
   share = (name, cb) => {
     const id = generateId();
     const shakenRecord = pick(this.props.inputs, input => typeof input !== 'undefined');
-    const trimmedRecord = omit(shakenRecord, 'id', 'label', 'custom');
+    const trimmedRecord = omit(shakenRecord, 'id', 'label', 'mobileLabel', 'custom');
     const filledInRecord = Object.assign({}, emptyCase, trimmedRecord, { name });
 
     this.props.firebase.push(
@@ -124,7 +124,9 @@ class MainViz extends Component {
           <header styleName="header">
             {this.renderGreeting(userName)}
             <section styleName="row">
-              Fill out the form to the right
+              Fill out the form&nbsp;
+              <span className="desktop-only">to the right</span>
+              <span className="mobile-only">below</span>
             </section>
             <section styleName="row">
               to get started.

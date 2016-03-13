@@ -11,12 +11,17 @@
   padding: 2rem 6rem 4rem
   background-color: #F5F6FB
 
+  @media (max-width: 1024px)
+    padding: 2rem 2rem 4rem
+
   .sections
-    position: relative
     display: flex
     flex: 1
     justify-content: space-between
     align-items: center
+
+    @media (max-width: 1024px)
+      flex-direction: column-reverse
 
   .loading
     position: absolute
@@ -25,3 +30,4 @@
     transform: translate(-50%, -50%)
     font-size: 3em
     color: #C1C3C9
+    white-space: nowrap

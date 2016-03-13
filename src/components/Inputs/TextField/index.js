@@ -29,7 +29,6 @@ export default class InputsTextField extends Component {
         onChange={this.handleChange}
         floatingLabelText={label}
         floatingLabelStyle={{ color: colors.gray3 }}
-        style={{ fontSize: '1.25em' }}
         inputStyle={{ color: colors.black }}
         underlineFocusStyle={{ borderColor: colors.bernieBlue }}
         fullWidth

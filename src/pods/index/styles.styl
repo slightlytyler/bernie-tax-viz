@@ -11,8 +11,14 @@
   padding: 2rem 6rem 4rem
   background-color: #F5F6FB
 
+  @media (max-width: 1024px)
+    padding: 2rem 2rem 4rem
+
   .sections
     display: flex
     flex: 1
     justify-content: space-between
     align-items: center
+
+    @media (max-width: 1024px)
+      flex-direction: column-reverse
