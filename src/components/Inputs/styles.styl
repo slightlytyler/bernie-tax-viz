@@ -25,22 +25,23 @@
       top: auto
 
   .header
-    margin-bottom: .5em
+    margin-bottom: 2em
     font-size: 1.75em
     color: #147fd7
-
-    @media (max-width: 100rem)
-      margin-bottom: 2em
 
   .list
     display: flex
     flex-direction: column
     padding-right: 1em
 
-  .item
-    &:not(.flush)
-      margin-bottom: 1em
+    @media (max-width: 100rem)
+      padding-right: 0
 
-      &:not(:last-child)
-        @media (max-width: 100rem)
-          margin-bottom: 3em
+  .item
+    &:not(:last-child)
+      margin-bottom: 4em
+
+      &.flush
+        margin-bottom: calc(4em - 14px)
+
+

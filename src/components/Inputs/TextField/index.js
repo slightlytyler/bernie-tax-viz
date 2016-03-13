@@ -28,9 +28,22 @@ export default class InputsTextField extends Component {
         step={step}
         onChange={this.handleChange}
         floatingLabelText={label}
-        floatingLabelStyle={{ color: colors.gray3 }}
-        style={{ fontSize: '1.25em' }}
-        inputStyle={{ color: colors.black }}
+        floatingLabelStyle={{
+          top: 0,
+          color: colors.gray3,
+          lineHeight: '1em',
+          whiteSpace: 'nowrap',
+          transform: 'perspective(.1em) scale(0.75) translate3d(.1em, -1.25em, 0px)',
+        }}
+        style={{
+          height: '1em',
+          fontSize: '1.25em',
+        }}
+        inputStyle={{
+          marginTop: 0,
+          color: colors.black,
+        }}
+        underlineStyle={{ bottom: '-.5em' }}
         underlineFocusStyle={{ borderColor: colors.bernieBlue }}
         fullWidth
       />
