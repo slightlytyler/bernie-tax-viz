@@ -1,5 +1,15 @@
 .cases
+  display: flex
+  justify-content: flex-start
+  align-items: center
   margin-bottom: 2rem
 
-  & > *:not(:last-child)
-    margin-right: 2rem
+  & > *
+    @media (max-width: 100rem)
+      font-size: .8em
+
+    &:not(:last-child)
+      margin-right: 2em
+
+      @media (max-width: 100rem)
+        .5em

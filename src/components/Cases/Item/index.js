@@ -20,8 +20,9 @@ export default class CasesItem extends Component {
       <RaisedButton
         label={this.props.label}
         backgroundColor={backgroundColor}
+        style={{ height: '2em' }}
         labelColor={labelColor}
-        labelStyle={{ fontWeight: 700 }}
+        labelStyle={{ fontSize: '1em', fontWeight: 700 }}
         onClick={this.handleClick}
       />
     );
