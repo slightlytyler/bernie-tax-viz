@@ -11,7 +11,6 @@ import filter from 'redux-storage-decorator-filter';
 const engine = filter(
   createEngine('bernie-tax-viz'),
   ['inputs'],
-  ['router'],
 );
 
 import { UPDATE_INPUTS } from 'reducers/inputs';
