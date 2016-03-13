@@ -198,9 +198,10 @@ export default function (state = {}, action) {
         {},
         state,
         {
-          [action.key]: action.val,
           custom: true,
+          shareLinkId: undefined,
         },
+        { [action.key]: action.val },
       );
 
     case UPDATE_USER_CASE:
