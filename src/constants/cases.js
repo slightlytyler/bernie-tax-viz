@@ -21,6 +21,7 @@ export const casesById = {
   'low-income': {
     id: 'low-income',
     label: 'low income',
+    mobileLabel: '$',
     taxableIncome: 17000,
     filingStatus: 'single',
     dependents: 3,
@@ -32,6 +33,7 @@ export const casesById = {
   'median-income': {
     id: 'median-income',
     label: 'median income',
+    mobileLabel: '$$',
     taxableIncome: 51000,
     filingStatus: 'married',
     dependents: 2,
@@ -43,6 +45,7 @@ export const casesById = {
   'high-income': {
     id: 'high-income',
     label: 'high income',
+    mobileLabel: '$$$',
     taxableIncome: 145000,
     filingStatus: 'single',
     dependents: 0,
@@ -54,6 +57,7 @@ export const casesById = {
   'super-high-income': {
     id: 'super-high-income',
     label: 'super high income',
+    mobileLabel: '$$$$',
     taxableIncome: 484000,
     filingStatus: 'married',
     dependents: 2,
@@ -66,6 +70,7 @@ export const casesById = {
     custom: true,
     id: customKey,
     label: 'What about me?',
+    mobileLabel: 'Me?',
     taxableIncome: undefined,
     filingStatus: undefined,
     dependents: undefined,

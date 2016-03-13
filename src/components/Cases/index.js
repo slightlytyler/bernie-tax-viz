@@ -26,6 +26,7 @@ class Cases extends Component {
                 key={id}
                 value={id}
                 label={userCase.label}
+                mobileLabel={userCase.mobileLabel}
                 active={id === currentCase}
                 handleClick={push}
               />
